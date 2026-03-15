@@ -1106,6 +1106,19 @@ if(window.location.search.indexOf('test=1') === -1){
   var utmData = {};
   utmKeys.forEach(function(k){ var v = urlParams.get(k); if(v) utmData[k] = v; });
 
+  // Auto-detect Meta ad traffic when UTM params are missing
+  if(!utmData.utm_source){
+    var fbclid = urlParams.get('fbclid');
+    var ref = document.referrer.toLowerCase();
+    var isMeta = fbclid || ref.indexOf('facebook.com') !== -1 || ref.indexOf('instagram.com') !== -1 || ref.indexOf('fb.com') !== -1 || ref.indexOf('lm.facebook.com') !== -1;
+    if(isMeta){
+      utmData.utm_source = 'meta';
+      utmData.utm_medium = 'paid';
+      utmData.utm_campaign = utmData.utm_campaign || 'auto_detected';
+      if(ref.indexOf('instagram') !== -1) utmData.utm_source = 'instagram';
+    }
+  }
+
   // ===== LINE URL =====
   var msg = '大型の花タトゥーの相談をしたいです。\n' + SCHEDULE_MONTH + 'の空き状況を教えてください。';
   var baseLineUrl = 'https://lealinebot-production.up.railway.app/r';
@@ -1115,11 +1128,8 @@ if(window.location.search.indexOf('test=1') === -1){
     var params = [];
     params.push('src=' + encodeURIComponent('premium_' + source));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
-    // UTM이 있으면 /r 리다이렉트 (서버에 UTM 저장), 없으면 직접 LINE
-    if(utmData.utm_source || utmData.utm_campaign){
-      return baseLineUrl + '?' + params.join('&');
-    }
-    return directLineUrl + (params.length ? '?' + params.join('&') : '');
+    // Always route through Railway to track clicks
+    return baseLineUrl + '?' + params.join('&');
   }
 
   // Set all LINE links (default source)
@@ -1194,7 +1204,7 @@ if(window.location.search.indexOf('test=1') === -1){
           currency: 'JPY'
         });
       }
-      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'premium_lp', value: 650000, currency: 'JPY'});
+      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'premium_lp', value: 650000, currency: 'JPY', send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
     }
   }
 
@@ -1226,7 +1236,7 @@ if(window.location.search.indexOf('test=1') === -1){
       fbq('track', 'Lead', leadData);
       fbq('trackCustom', 'LeadPremium', leadData);
       fbq('trackCustom', 'LineOpenAttemptPremium', {source: source, utm_campaign: utmData.utm_campaign || ''});
-      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: 650000, currency: 'JPY', event_source: source});
+      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: 650000, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
     }
     // Detect LINE open failure (3s for friend-add URL)
     var lineOpened = false;
