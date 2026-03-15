@@ -1198,6 +1198,7 @@ if(window.location.search.indexOf('test=1') === -1){
           currency: 'JPY'
         });
       }
+      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'standard_lp', value: 120000, currency: 'JPY'});
     }
   }
 
@@ -1229,6 +1230,7 @@ if(window.location.search.indexOf('test=1') === -1){
       fbq('track', 'Lead', leadData);
       fbq('trackCustom', 'LeadStandard', leadData);
       fbq('trackCustom', 'LineOpenAttemptStandard', {source: source, utm_campaign: utmData.utm_campaign || ''});
+      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'standard_line_send', value: 120000, currency: 'JPY', event_source: source});
     }
     // Detect LINE open failure (3s for friend-add URL)
     var lineOpened = false;

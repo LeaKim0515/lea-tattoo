@@ -1194,6 +1194,7 @@ if(window.location.search.indexOf('test=1') === -1){
           currency: 'JPY'
         });
       }
+      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'premium_lp', value: 650000, currency: 'JPY'});
     }
   }
 
@@ -1225,6 +1226,7 @@ if(window.location.search.indexOf('test=1') === -1){
       fbq('track', 'Lead', leadData);
       fbq('trackCustom', 'LeadPremium', leadData);
       fbq('trackCustom', 'LineOpenAttemptPremium', {source: source, utm_campaign: utmData.utm_campaign || ''});
+      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: 650000, currency: 'JPY', event_source: source});
     }
     // Detect LINE open failure (3s for friend-add URL)
     var lineOpened = false;
