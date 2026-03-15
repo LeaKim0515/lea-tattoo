@@ -1479,5 +1479,96 @@ if(window.location.search.indexOf('test=1') === -1){
 })();
 </script>
 
+<!-- ===== 자체 UX 트래킹 (Clarity 대체) ===== -->
+<script>
+(function(){
+  var API = 'https://lealinebot-production.up.railway.app/api/track';
+  var sid = 's_' + Math.random().toString(36).substr(2,9) + '_' + Date.now();
+  var page = location.pathname;
+  var queue = [];
+  var flushTimer = null;
+
+  function flush() {
+    if (queue.length === 0) return;
+    var batch = queue.splice(0);
+    navigator.sendBeacon(API + '/batch', JSON.stringify({ events: batch }));
+  }
+  function pushEvent(type, data) {
+    queue.push({ session_id: sid, event_type: type, page_path: page, data: data });
+    clearTimeout(flushTimer);
+    flushTimer = setTimeout(flush, 2000);
+  }
+
+  // 1) Pageview
+  pushEvent('pageview', { referrer: document.referrer, url: location.href });
+
+  // 2) Scroll depth (10,25,50,75,100)
+  var scrollFired = {};
+  window.addEventListener('scroll', function() {
+    var pct = Math.round(((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100);
+    [10,25,50,75,100].forEach(function(t) {
+      if (pct >= t && !scrollFired[t]) {
+        scrollFired[t] = true;
+        pushEvent('scroll_depth', { depth: t });
+      }
+    });
+  }, { passive: true });
+
+  // 3) Rage click (같은 위치 3회 이상 빠른 클릭)
+  var clickLog = [];
+  document.addEventListener('click', function(e) {
+    var now = Date.now();
+    clickLog.push({ x: e.clientX, y: e.clientY, t: now });
+    // 최근 2초만 유지
+    clickLog = clickLog.filter(function(c) { return now - c.t < 2000; });
+    // 반경 30px 이내 3회 이상
+    var nearby = clickLog.filter(function(c) {
+      return Math.abs(c.x - e.clientX) < 30 && Math.abs(c.y - e.clientY) < 30;
+    });
+    if (nearby.length >= 3) {
+      pushEvent('rage_click', { x: e.clientX, y: e.clientY, target: e.target.tagName });
+      clickLog = [];
+    }
+  });
+
+  // 4) Dead click (클릭했는데 인터랙티브 요소가 아닌 곳)
+  document.addEventListener('click', function(e) {
+    var tag = e.target.tagName.toLowerCase();
+    var interactive = ['a','button','input','select','textarea','label'];
+    var isInteractive = interactive.indexOf(tag) !== -1 || e.target.closest('a,button,[role="button"],[onclick]');
+    if (!isInteractive) {
+      pushEvent('dead_click', { x: e.clientX, y: e.clientY, target: tag, text: (e.target.textContent || '').substring(0,50) });
+    }
+  });
+
+  // 5) Quick exit (5초 이내 이탈)
+  var entryTime = Date.now();
+  window.addEventListener('beforeunload', function() {
+    if (Date.now() - entryTime < 5000) {
+      pushEvent('quick_exit', { duration: Date.now() - entryTime });
+    }
+    flush();
+  });
+
+  // 6) JS error 감지
+  window.addEventListener('error', function(e) {
+    pushEvent('js_error', { message: e.message, source: e.filename, line: e.lineno });
+  });
+
+  // 7) 세션 체류 시간 (30초마다 heartbeat, 최대 10분)
+  var heartbeats = 0;
+  var hbInterval = setInterval(function() {
+    heartbeats++;
+    pushEvent('heartbeat', { elapsed: heartbeats * 30 });
+    if (heartbeats >= 20) clearInterval(hbInterval);
+  }, 30000);
+
+  // 페이지 떠날 때 남은 이벤트 전송
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'hidden') flush();
+  });
+})();
+</script>
+
 </body>
 </html>
