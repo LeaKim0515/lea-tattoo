@@ -3,20 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>lea — 大型花タトゥー専門 · 大阪</title>
-<meta name="description" content="Lea Kim — 半袖〜フルスリーブ規模の花タトゥー。体に沿って一本ずつ設計する完全オーダーメイド。月1〜2名限定 · 大阪。">
+<title>lea — 花タトゥー専門 · 大阪 | 大型作品</title>
+<meta name="description" content="Lea Kim — 大阪の花タトゥー専門。体のラインに合わせてその場で調整しながらデザイン。完全オーダーメイドの大型花タトゥー。65万円〜">
 
-<meta property="og:title" content="lea — 大型花タトゥー専門 · 大阪">
-<meta property="og:description" content="半袖〜フルスリーブ規模。体に沿って一本ずつ設計する、完全オーダーメイドの花タトゥー。">
-<meta property="og:image" content="https://lea-tattoo.netlify.app/hero.jpg">
+<!-- OG -->
+<meta property="og:title" content="lea — 花タトゥー専門 · 大阪 | 大型作品">
+<meta property="og:description" content="体に合わせてその場で調整しながらデザインする、完全オーダーメイドの大型花タトゥー。65万円〜">
+<meta property="og:image" content="https://lea-tattoo.netlify.app/88.jpg">
 <meta property="og:url" content="https://lea-tattoo.netlify.app/premium/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 
+<!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400&display=swap"></noscript>
 
+<!-- META PIXEL -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -26,11 +30,39 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1003353476194605');
-fbq('track', 'PageView');
+if(window.location.search.indexOf('test=1') === -1){
+  fbq('init', '1003353476194605');
+  fbq('track', 'PageView');
+} else {
+  window.fbq = function(){};
+}
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></noscript>
+
+<!-- GA4 -->
+<script>
+if(window.location.search.indexOf('test=1') === -1){
+  var s=document.createElement('script');s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-QZSP3DHNW6';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QZSP3DHNW6');
+}
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+if(window.location.search.indexOf('test=1') === -1){
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vintd57trs");
+}
+</script>
 
 <style>
   :root {
@@ -38,6 +70,7 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
     --bg2: #0e0e0e;
     --text: #e8e0d4;
     --sub: #8a8078;
+    --info: #6a6561;
     --muted: #504a44;
     --accent: #bfa98a;
     --accent-h: #d4c0a6;
@@ -61,6 +94,7 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
     -webkit-font-smoothing:antialiased;
   }
 
+  /* ===== HERO ===== */
   .hero{
     position:relative;
     min-height:100vh;
@@ -80,18 +114,19 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
     transform:scale(1.1);
     transform-origin:25% 58%;
     will-change:transform;
+    cursor:pointer;
   }
 
   .hero-grad{
     position:absolute;
     bottom:0;left:0;right:0;
-    height:70%;
+    height:55%;
     background:linear-gradient(
       to top,
       var(--bg) 0%,
-      rgba(8,8,8,.97) 30%,
-      rgba(8,8,8,.85) 50%,
-      rgba(8,8,8,.5) 70%,
+      rgba(8,8,8,.95) 35%,
+      rgba(8,8,8,.7) 60%,
+      rgba(8,8,8,.3) 80%,
       transparent 100%
     );
     z-index:1;
@@ -99,98 +134,120 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
 
   .hero-c{
     position:relative;z-index:2;
-    padding:0 24px 32px;
+    padding:0 24px 20px;
     max-width:480px;
     margin:0 auto;width:100%;
   }
 
+  /* Brand */
   .brand{
     display:flex;align-items:center;gap:12px;
-    margin-bottom:18px;
-    opacity:0;animation:fu .7s ease .2s forwards;
+    margin-bottom:12px;
+    opacity:0;animation:fu .7s ease .1s forwards;
     text-shadow:var(--shadow);
+    transition:opacity .15s ease;
+    cursor:pointer;
+    -webkit-tap-highlight-color:rgba(201,168,124,.15);
   }
-
+  .brand:active{opacity:.6}
   .brand-mark{
-    font-family:var(--en);
-    font-size:28px;font-weight:300;
-    font-style:italic;color:var(--accent);
-    letter-spacing:2px;line-height:1;
+    font-family:var(--en);font-size:28px;font-weight:300;
+    font-style:italic;color:var(--accent);letter-spacing:2px;line-height:1;
   }
-
   .brand-line{width:1px;height:28px;background:var(--muted)}
-
   .brand-name{
-    font-family:var(--ui);font-size:12px;
-    font-weight:400;color:var(--text);
-    letter-spacing:1.5px;
+    font-family:var(--ui);font-size:12px;font-weight:400;
+    color:var(--text);letter-spacing:1.5px;
+    transition:opacity .15s ease;
+    padding:8px 12px;margin:-8px -12px;
   }
-
+  .brand-name:active{opacity:.5}
   .brand-meta{
     font-family:var(--jp);font-size:11px;
-    color:var(--text);letter-spacing:.5px;
-    opacity:.7;
+    color:var(--text);letter-spacing:.5px;opacity:.7;
   }
 
+  /* USP pill */
   .usp{
     display:inline-flex;align-items:center;gap:6px;
     padding:5px 12px;
     border:1px solid rgba(255,255,255,.08);
     background:rgba(8,8,8,.7);
     margin-bottom:14px;
-    opacity:0;animation:fu .7s ease .35s forwards;
+    opacity:0;animation:fu .7s ease .15s forwards;
     text-shadow:var(--shadow);
   }
-
   .usp-dot{
     width:6px;height:6px;border-radius:50%;
     background:var(--accent);flex-shrink:0;
   }
-
   .usp-text{
     font-family:var(--jp);font-size:12px;
-    color:var(--text);letter-spacing:.04em;
-    opacity:.7;
+    color:var(--text);letter-spacing:.04em;opacity:.7;
   }
 
   .hero-h{
     font-family:var(--jp);
     font-size:clamp(24px,7vw,36px);
     font-weight:400;line-height:1.4;
-    letter-spacing:.05em;
-    margin-bottom:4px;
-    opacity:0;animation:fu .7s ease .45s forwards;
+    letter-spacing:.05em;margin-bottom:4px;
+    opacity:0;animation:fu .7s ease .2s forwards;
     text-shadow:var(--shadow);
+    cursor:default;user-select:none;
   }
-
   .hero-h em{font-style:normal;color:var(--accent)}
 
   .hero-h-en{
-    font-family:var(--en);font-size:14px;
-    font-weight:300;font-style:italic;
-    color:var(--sub);letter-spacing:1px;
-    margin-bottom:16px;
-    opacity:0;animation:fu .7s ease .55s forwards;
+    font-family:var(--jp);font-size:15px;font-weight:400;
+    color:var(--sub);letter-spacing:.06em;
+    margin-bottom:10px;line-height:1.6;
+    opacity:0;animation:fu .7s ease .25s forwards;
     text-shadow:var(--shadow);
+    cursor:default;user-select:none;
   }
 
+  /* Hero price */
   .price{
-    display:flex;align-items:baseline;gap:10px;
     padding:10px 16px;
     background:rgba(8,8,8,.75);
     border:1px solid var(--border);
-    margin-bottom:18px;
+    margin-bottom:12px;
     opacity:0;animation:fu .7s ease .65s forwards;
+    cursor:default;user-select:none;
   }
-
+  .price-top{
+    display:flex;align-items:baseline;gap:10px;
+  }
   .price-num{
-    font-family:var(--en);font-size:26px;
-    font-weight:300;color:var(--accent);
+    font-family:var(--en);font-size:34px;
+    font-weight:300;color:var(--accent);letter-spacing:.18em;
+  }
+  .price-size{
+    font-family:var(--jp);font-size:12px;
+    color:var(--sub);letter-spacing:.05em;font-weight:400;
+  }
+  .price-date{font-size:11px;color:var(--muted);margin-top:4px}
+  .price-justify{
+    font-family:var(--jp);font-size:10px;
+    color:var(--info);letter-spacing:.04em;margin-top:6px;
   }
 
-  .price-detail{font-size:11px;color:var(--muted);line-height:1.4}
-  .price-detail .jp{font-family:var(--jp);display:block}
+  /* Hero LINE CTA */
+  .hero-line-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:14px;font-weight:500;
+    letter-spacing:.08em;text-decoration:none;
+    padding:13px 24px;margin-top:8px;
+    transition:opacity .2s ease;
+    opacity:0;animation:fu .7s ease .35s forwards;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .hero-line-cta:hover{opacity:.9}
+  .hero-line-cta svg{width:18px;height:18px;flex-shrink:0}
 
+  /* CTA */
   .cta{
     display:flex;align-items:center;justify-content:center;gap:10px;
     width:100%;
@@ -199,407 +256,479 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
     letter-spacing:.1em;text-decoration:none;
     padding:15px 24px;
     transition:all .3s ease;
-    opacity:0;animation:fu .7s ease .75s forwards;
+    opacity:0;animation:fu .7s ease .3s forwards;
     cursor:pointer;border:none;
+    -webkit-tap-highlight-color:transparent;
   }
-
   .cta:hover{
     background:var(--accent-h);
     transform:translateY(-1px);
     box-shadow:0 8px 28px rgba(191,169,138,.18);
   }
-
   .cta:active{transform:translateY(0)}
   .cta svg{width:18px;height:18px;flex-shrink:0}
 
   .scarcity{
     text-align:center;font-size:11px;
-    color:var(--accent);margin-top:10px;
-    font-family:var(--jp);
-    letter-spacing:.06em;
-    opacity:0;animation:fu .7s ease .8s forwards;
+    color:var(--info);margin-top:10px;
+    font-family:var(--jp);letter-spacing:.06em;
+    opacity:0;animation:fu .7s ease .35s forwards;
     text-shadow:var(--shadow);
+    cursor:default;user-select:none;
   }
 
-  .cta-note{
-    text-align:center;font-size:11px;
-    color:var(--sub);margin-top:6px;
-    opacity:0;animation:fu .7s ease .85s forwards;
-    text-shadow:var(--shadow);
-  }
-
-  .cta-note .jp{font-family:var(--jp)}
-
+  /* ===== TRUST / PORTFOLIO ===== */
   .trust{padding:28px 0 0;position:relative}
-
   .trust-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
     letter-spacing:.2em;padding:0 24px 12px;
   }
-
   .trust-grid{
-    display:grid;grid-template-columns:1fr 1fr 1fr;
-    gap:2px;max-width:480px;margin:0 auto;
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:2px;max-width:400px;margin:0 auto;
   }
-
   .trust-item{
     aspect-ratio:3/4;overflow:hidden;background:var(--bg2);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;
   }
-
   .trust-item img{
     width:100%;height:100%;object-fit:cover;
     transition:transform .5s ease;
   }
-
   .trust-item:hover img{transform:scale(1.03)}
+  .trust-item-price{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:6px 0;
+    background:linear-gradient(to top,rgba(0,0,0,.75) 60%,transparent);
+    text-align:center;pointer-events:none;
+  }
+  .trust-item-price span{
+    font-family:var(--en);font-size:11px;font-weight:300;
+    letter-spacing:.12em;
+    color:rgba(255,255,255,.8);
+  }
+  .trust-item::after{
+    content:'';position:absolute;
+    bottom:34px;right:6px;width:22px;height:22px;
+    background:rgba(0,0,0,.55);border-radius:50%;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23c4bdb6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cpolyline points='9 21 3 21 3 15'/%3E%3Cline x1='21' y1='3' x2='14' y2='10'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:center;background-size:12px;
+  }
 
   .credentials{
     max-width:480px;margin:0 auto;
     padding:18px 24px 0;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
+    display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
   }
-
-  .cred-item{display:flex;align-items:center;gap:6px}
-
+  .cred-item{
+    display:flex;align-items:center;gap:6px;
+    cursor:default;user-select:none;
+  }
   .cred-num{
     font-family:var(--en);font-size:18px;
-    font-weight:300;color:var(--accent);
-    line-height:1;
+    font-weight:300;color:var(--text);line-height:1;
   }
-
   .cred-text{
     font-family:var(--jp);font-size:10px;
-    color:var(--muted);letter-spacing:.03em;
-    line-height:1.4;
+    color:var(--muted);letter-spacing:.03em;line-height:1.4;
   }
-
-  .cred-divider{
-    width:1px;height:24px;
-    background:var(--border);flex-shrink:0;
-  }
+  .cred-divider{width:1px;height:24px;background:var(--border);flex-shrink:0}
 
   .trust-usp{
     max-width:480px;margin:0 auto;
-    padding:18px 24px 0;
-    text-align:center;
+    padding:18px 24px 0;text-align:center;
+    cursor:default;user-select:none;
   }
-
   .trust-usp-text{
-    font-family:var(--jp);
-    font-size:13px;font-weight:400;
-    color:var(--sub);
-    line-height:1.8;
-    letter-spacing:.03em;
+    font-family:var(--jp);font-size:13px;font-weight:400;
+    color:var(--sub);line-height:1.8;letter-spacing:.03em;
   }
 
-  .trust-usp-en{
-    font-family:var(--ui);
-    font-size:11px;color:var(--muted);
-    margin-top:6px;letter-spacing:.5px;
-  }
-
+  /* ===== REVIEW ===== */
   .review{
     max-width:480px;margin:0 auto;
     padding:28px 24px 0;
   }
-
   .review-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
     letter-spacing:.2em;margin-bottom:16px;
   }
-
   .review-card{
-    position:relative;
-    padding:20px 20px 16px;
-    border:1px solid var(--border);
-    background:var(--bg2);
+    position:relative;padding:20px 20px 16px;
+    border:1px solid var(--border);background:var(--bg2);
+    cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,124,.15);
+    transition:opacity .15s ease;
   }
-
+  .review-card:active{opacity:.7}
+  .review-see-more{
+    position:absolute;bottom:12px;right:16px;
+    font-family:var(--jp);font-size:10px;
+    color:var(--accent);letter-spacing:.03em;opacity:.7;
+  }
   .review-quote{
-    font-family:var(--en);
-    font-size:48px;font-weight:300;
-    color:var(--accent);
-    line-height:1;
-    opacity:.3;
-    position:absolute;
-    top:8px;left:16px;
+    font-family:var(--en);font-size:48px;font-weight:300;
+    color:var(--accent);line-height:1;opacity:.3;
+    position:absolute;top:8px;left:16px;
   }
-
   .review-text{
-    font-family:var(--jp);
-    font-size:13px;font-weight:400;
-    color:var(--sub);
-    line-height:2;
-    letter-spacing:.03em;
-    padding-top:12px;
+    font-family:var(--jp);font-size:13px;font-weight:400;
+    color:var(--sub);line-height:2;letter-spacing:.03em;padding-top:12px;
   }
-
   .review-sub{
-    font-family:var(--jp);
-    font-size:11px;
-    color:var(--muted);
-    line-height:1.8;
-    letter-spacing:.02em;
-    margin-top:10px;
-    padding-top:10px;
-    border-top:1px solid var(--border);
+    font-family:var(--jp);font-size:11px;color:var(--muted);
+    line-height:1.8;letter-spacing:.02em;margin-top:10px;
+    padding-top:10px;border-top:1px solid var(--border);
   }
-
-  .review-author{
-    display:flex;align-items:center;gap:10px;
-    margin-top:14px;
-  }
-
+  .review-author{display:flex;align-items:center;gap:10px;margin-top:14px}
   .review-avatar{
-    width:32px;height:32px;
-    border-radius:50%;
-    background:var(--border);
-    flex-shrink:0;
+    width:32px;height:32px;border-radius:50%;
+    background:var(--border);flex-shrink:0;
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--en);font-size:13px;font-weight:300;
-    color:var(--muted);
+    font-family:var(--en);font-size:13px;font-weight:300;color:var(--muted);
+  }
+  .review-name{font-family:var(--jp);font-size:11px;color:var(--sub);letter-spacing:.03em}
+  .review-via{font-family:var(--ui);font-size:9px;color:var(--muted);letter-spacing:.3px;margin-top:1px}
+
+  /* Review Lightbox */
+  .rl-overlay{
+    position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(0,0,0,.92);z-index:9999;
+    display:none;align-items:center;justify-content:center;
+    flex-direction:column;padding:24px 16px;
+  }
+  .rl-overlay.open{display:flex}
+  .rl-close{
+    position:fixed;top:14px;right:18px;
+    font-family:var(--en);font-size:28px;font-weight:300;
+    color:var(--sub);cursor:pointer;z-index:10000;
+    line-height:1;padding:8px;-webkit-tap-highlight-color:transparent;
+  }
+  .rl-close:active{opacity:.5}
+  .rl-body{max-width:400px;width:100%;text-align:center;padding:0 8px}
+  .rl-quote{
+    font-family:var(--en);font-size:56px;font-weight:300;
+    color:var(--accent);opacity:.25;line-height:1;margin-bottom:8px;
+  }
+  .rl-text{
+    font-family:var(--jp);font-size:14px;color:var(--sub);
+    line-height:2.2;letter-spacing:.04em;margin-bottom:16px;
+  }
+  .rl-sub{
+    font-family:var(--jp);font-size:11px;color:var(--muted);
+    line-height:1.8;letter-spacing:.02em;margin-bottom:20px;
+    padding-top:12px;border-top:1px solid rgba(255,255,255,.06);
+  }
+  .rl-author{font-family:var(--jp);font-size:11px;color:var(--muted);letter-spacing:.04em;margin-bottom:4px}
+  .rl-via{font-family:var(--ui);font-size:9px;color:var(--border);letter-spacing:.3px}
+  .rl-nav{display:flex;align-items:center;justify-content:center;gap:32px;margin-top:24px}
+  .rl-progress{display:flex;gap:6px;justify-content:center;margin-top:16px}
+  .rl-dot{width:6px;height:6px;border-radius:50%;background:var(--border);transition:all .25s ease}
+  .rl-dot.active{background:var(--accent);width:18px;border-radius:3px}
+  .rl-arrow{
+    font-family:var(--en);font-size:28px;color:var(--sub);
+    cursor:pointer;padding:12px 16px;
+    -webkit-tap-highlight-color:transparent;
+    transition:all .15s ease;user-select:none;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:4px;background:rgba(255,255,255,.03);
+  }
+  .rl-arrow:active{
+    color:var(--accent);border-color:rgba(191,169,138,.3);
+    background:rgba(191,169,138,.06);
+  }
+  .rl-counter{font-family:var(--en);font-size:11px;color:var(--border);letter-spacing:1px}
+  .rl-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:24px;padding:12px 28px;
+    font-family:var(--jp);font-size:13px;
+    color:#fff;background:#06C755;
+    border:none;letter-spacing:.08em;
+    cursor:pointer;-webkit-tap-highlight-color:transparent;
+    transition:all .2s ease;text-decoration:none;
+  }
+  .rl-cta:active{opacity:.7}
+  .rl-cta svg{width:14px;height:14px;flex-shrink:0}
+  .rl-bottom-close{
+    font-family:var(--jp);font-size:12px;color:var(--muted);
+    letter-spacing:.05em;margin-top:16px;cursor:pointer;
+    padding:8px 0;-webkit-tap-highlight-color:transparent;
+  }
+  .rl-bottom-close:active{color:var(--text)}
+
+  /* ===== ARTIST SECTION ===== */
+  .artist{
+    max-width:480px;margin:0 auto;
+    padding:32px 24px 0;
+    text-align:center;
+  }
+  .artist-photo{
+    width:80px;height:80px;border-radius:50%;
+    object-fit:cover;margin:0 auto 16px;display:block;
+    border:2px solid var(--border);
+  }
+  .artist-name{
+    font-family:var(--ui);font-size:18px;
+    color:var(--text);letter-spacing:2px;margin-bottom:4px;
+  }
+  .artist-sub{
+    font-family:var(--ui);font-size:11px;
+    color:var(--muted);letter-spacing:1px;margin-bottom:20px;
+  }
+  .artist-info{
+    text-align:left;padding:16px 0;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+  }
+  .artist-row{
+    display:flex;gap:10px;
+    font-family:var(--jp);font-size:12px;
+    color:var(--sub);line-height:1.7;margin-bottom:6px;
+  }
+  .artist-row:last-child{margin-bottom:0}
+  .artist-row span:first-child{
+    color:var(--muted);flex-shrink:0;
+    font-family:var(--ui);font-size:10px;
+    letter-spacing:.5px;min-width:48px;padding-top:2px;
   }
 
-  .review-name{
-    font-family:var(--jp);font-size:11px;
-    color:var(--sub);letter-spacing:.03em;
-  }
-
-  .review-via{
-    font-family:var(--ui);font-size:9px;
-    color:var(--muted);letter-spacing:.3px;
-    margin-top:1px;
-  }
-
+  /* ===== PROCESS ===== */
   .process{
     max-width:480px;margin:0 auto;
     padding:32px 24px 0;
   }
-
   .process-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
     letter-spacing:.2em;margin-bottom:18px;
   }
-
   .process-steps{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap:4px;
+    display:flex;align-items:flex-start;
+    justify-content:space-between;gap:4px;
   }
-
-  .process-step{flex:1;text-align:center}
-
+  .process-step{
+    flex:1;text-align:center;
+    cursor:default;user-select:none;
+  }
   .process-num{
     display:flex;align-items:center;justify-content:center;
     width:28px;height:28px;
-    border:1px solid var(--border);
-    background:var(--bg2);
-    font-family:var(--en);font-size:12px;
-    color:var(--accent);
-    margin:0 auto 8px;
-    border-radius:50%;
+    border:1px solid var(--border);background:var(--bg2);
+    font-family:var(--en);font-size:12px;color:var(--accent);
+    margin:0 auto 8px;border-radius:50%;
   }
-
   .process-jp{
     font-family:var(--jp);font-size:11px;
-    color:var(--sub);letter-spacing:.03em;
-    line-height:1.5;
+    color:var(--sub);letter-spacing:.03em;line-height:1.5;
   }
-
   .process-en{
     font-family:var(--ui);font-size:9px;
-    color:var(--muted);margin-top:2px;
-    letter-spacing:.3px;
+    color:var(--muted);margin-top:2px;letter-spacing:.3px;
   }
-
+  .process-sub{
+    font-family:var(--jp);font-size:10px;
+    color:var(--muted);letter-spacing:.02em;
+    line-height:1.5;margin-top:4px;
+  }
   .process-arrow{
-    flex:0 0 auto;
-    color:var(--border);
-    font-size:10px;
-    margin-top:8px;
+    flex:0 0 auto;color:var(--border);
+    font-size:10px;margin-top:8px;
+    cursor:default;user-select:none;
   }
-
   .process-note{
-    text-align:center;
-    font-family:var(--jp);font-size:11px;
-    color:var(--muted);
-    margin-top:14px;
-    letter-spacing:.03em;
+    text-align:center;font-family:var(--jp);font-size:11px;
+    color:var(--muted);margin-top:14px;letter-spacing:.03em;
+    cursor:default;user-select:none;
   }
 
-  .contact{
+  /* ===== LINE CTA SECTION ===== */
+  .line-section{
     max-width:480px;margin:0 auto;
-    padding:36px 24px 40px;
+    padding:36px 24px 0;
+    background:rgba(255,255,255,.03);
+    border-top:1px solid rgba(191,169,138,.15);
   }
-
-  .contact-h{
-    font-family:var(--jp);font-size:18px;
-    font-weight:500;letter-spacing:.15em;
-    text-align:center;margin-bottom:4px;
-  }
-
-  .contact-h-en{
-    font-family:var(--en);font-size:14px;
-    font-weight:300;font-style:italic;
-    color:var(--sub);text-align:center;
+  .line-title{
+    text-align:center;font-family:var(--jp);
+    font-size:15px;font-weight:400;
+    color:var(--text);letter-spacing:.06em;
     margin-bottom:6px;
   }
-
-  .contact-note{
-    text-align:center;font-size:11px;
-    color:var(--muted);margin-bottom:22px;
-    font-family:var(--jp);letter-spacing:.03em;
-  }
-
-  .form-group{margin-bottom:16px}
-
-  .form-label{
-    display:block;
-    font-family:var(--jp);font-size:12px;
-    color:var(--sub);letter-spacing:.04em;
-    margin-bottom:6px;
-  }
-
-  .form-label-en{
-    font-family:var(--ui);font-size:10px;
-    color:var(--muted);margin-left:6px;
-    letter-spacing:.3px;
-  }
-
-  .form-input,
-  .form-select{
-    width:100%;
-    background:var(--bg2);
-    border:1px solid var(--border);
-    color:var(--text);
-    font-family:var(--ui);font-size:14px;
-    font-weight:300;
-    padding:12px 14px;
-    transition:border-color .2s ease;
-    -webkit-appearance:none;
-    appearance:none;
-    border-radius:0;
-  }
-
-  .form-input::placeholder{color:var(--muted)}
-  .form-input:focus,
-  .form-select:focus{
-    outline:none;
-    border-color:var(--accent);
-  }
-
-  .form-select{
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%238a8078' stroke-width='1.5'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;
-    background-position:right 14px center;
-    padding-right:36px;
-  }
-
-  .form-select option{
-    background:var(--bg2);
-    color:var(--text);
-  }
-
-  .form-submit{
-    display:flex;align-items:center;justify-content:center;gap:10px;
-    width:100%;
-    background:var(--accent);color:var(--bg);
-    font-family:var(--jp);font-size:15px;font-weight:500;
-    letter-spacing:.1em;
-    padding:15px 24px;
-    border:none;cursor:pointer;
-    transition:all .3s ease;
-  }
-
-  .form-submit:hover{
-    background:var(--accent-h);
-    transform:translateY(-1px);
-  }
-
-  .form-submit:active{transform:translateY(0)}
-
-  .form-submit:disabled{
-    opacity:.5;cursor:not-allowed;
-    transform:none;
-  }
-
-  .form-submit svg{width:16px;height:16px;flex-shrink:0}
-
-  .form-price{
-    text-align:center;margin-top:14px;
+  .line-title-sub{
+    text-align:center;font-family:var(--jp);
     font-size:11px;color:var(--muted);
-    letter-spacing:.5px;
+    letter-spacing:.04em;margin-bottom:6px;
+  }
+  .line-date{
+    text-align:center;font-family:var(--jp);
+    font-size:11px;color:var(--muted);
+    letter-spacing:.04em;line-height:1.8;margin-bottom:22px;
+  }
+  .line-date-main{
+    color:var(--text);font-size:14px;
+    font-weight:500;letter-spacing:.06em;
   }
 
-  .form-price .jp{font-family:var(--jp)}
+  .line-reassure{
+    text-align:center;font-family:var(--jp);font-size:11px;
+    color:var(--muted);letter-spacing:.03em;margin-bottom:16px;
+  }
+  .line-reassure span{color:var(--info)}
 
-  .form-dm{
-    text-align:center;margin-top:16px;
-    padding-top:16px;
-    border-top:1px solid var(--border);
+  .line-btn{
+    display:flex;align-items:center;justify-content:center;gap:10px;
+    width:100%;padding:16px 24px;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:15px;font-weight:500;
+    letter-spacing:.1em;text-decoration:none;
+    transition:opacity .2s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .line-btn:hover{opacity:.9}
+  .line-btn svg{width:20px;height:20px;flex-shrink:0}
+
+  .line-expect{
+    text-align:center;font-family:var(--jp);font-size:10px;
+    color:var(--muted);letter-spacing:.04em;margin-top:10px;
   }
 
-  .form-dm-text{
+  /* Fallback */
+  .line-fallback{
+    display:none;margin-top:12px;padding:14px 16px;
+    background:rgba(191,169,138,.08);
+    border:1px solid rgba(191,169,138,.2);
+    text-align:center;animation:fu .3s ease forwards;
+  }
+  .line-fallback.show{display:block}
+  .line-fallback-text{
     font-family:var(--jp);font-size:11px;
-    color:var(--muted);letter-spacing:.03em;
-    margin-bottom:6px;
-  }
-
-  .form-dm-link{
-    font-family:var(--ui);font-size:12px;
-    color:var(--accent);text-decoration:none;
-    letter-spacing:.5px;
-    transition:color .2s ease;
-  }
-
-  .form-dm-link:hover{color:var(--accent-h)}
-
-  .form-success{
-    display:none;
-    text-align:center;
-    padding:24px 0;
-  }
-
-  .form-success.show{display:block}
-
-  .form-success-icon{
-    font-size:32px;margin-bottom:12px;
-    color:var(--accent);
-  }
-
-  .form-success-h{
-    font-family:var(--jp);font-size:16px;
-    font-weight:500;letter-spacing:.1em;
-    margin-bottom:6px;
-  }
-
-  .form-success-text{
-    font-family:var(--jp);font-size:12px;
     color:var(--sub);line-height:1.8;
-    letter-spacing:.03em;
+    letter-spacing:.03em;margin-bottom:10px;
+  }
+  .send-sub{display:flex;gap:8px;justify-content:center}
+  .send-sub-btn{
+    flex:1;max-width:180px;padding:12px 16px;
+    font-family:var(--jp);font-size:12px;
+    color:var(--sub);letter-spacing:.03em;
+    background:var(--bg2);border:1px solid var(--border);
+    cursor:pointer;text-align:center;text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:all .15s ease;
+  }
+  .send-sub-btn:hover{border-color:var(--muted);color:var(--text)}
+
+  .line-bottom{padding:18px 0 40px;text-align:center}
+  .line-bottom-text{
+    font-family:var(--jp);font-size:10px;
+    color:var(--muted);letter-spacing:.04em;
   }
 
-  .form-success-en{
+  /* Copy toast */
+  .copy-toast{
+    position:fixed;bottom:80px;left:50%;
+    transform:translateX(-50%) translateY(20px);
+    background:rgba(191,169,138,.95);color:var(--bg);
+    font-family:var(--jp);font-size:12px;letter-spacing:.04em;
+    padding:10px 20px;opacity:0;transition:all .3s ease;
+    z-index:500;pointer-events:none;white-space:nowrap;
+  }
+  .copy-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  /* ===== ARTIST MODAL ===== */
+  .am{
+    position:fixed;inset:0;z-index:9998;
+    background:rgba(0,0,0,.88);
+    display:none;align-items:center;justify-content:center;
+    padding:24px 16px;
+  }
+  .am.open{display:flex}
+  .am-card{
+    background:var(--bg);
+    border:1px solid var(--border);
+    padding:32px 24px 24px;
+    max-width:360px;width:100%;
+    position:relative;text-align:center;
+  }
+  .am-close{
+    position:absolute;top:12px;right:14px;
+    font-family:var(--en);font-size:24px;font-weight:300;
+    color:var(--sub);cursor:pointer;
+    background:none;border:none;line-height:1;padding:4px;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .am-close:active{opacity:.5}
+  .am-photo{
+    width:80px;height:80px;border-radius:50%;
+    object-fit:cover;margin:0 auto 16px;display:block;
+    border:2px solid var(--border);
+  }
+  .am-name{
+    font-family:var(--ui);font-size:18px;
+    color:var(--text);letter-spacing:2px;margin-bottom:4px;
+  }
+  .am-sub{
     font-family:var(--ui);font-size:11px;
-    color:var(--muted);margin-top:6px;
+    color:var(--muted);letter-spacing:1px;margin-bottom:20px;
+  }
+  .am-info{
+    text-align:left;padding:16px 0;
+    border-top:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    margin-bottom:20px;
+  }
+  .am-row{
+    display:flex;gap:10px;
+    font-family:var(--jp);font-size:12px;
+    color:var(--sub);line-height:1.7;margin-bottom:6px;
+  }
+  .am-row:last-child{margin-bottom:0}
+  .am-row span:first-child{
+    color:var(--muted);flex-shrink:0;
+    font-family:var(--ui);font-size:10px;
+    letter-spacing:.5px;min-width:48px;padding-top:2px;
+  }
+  .am-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:14px 20px;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:13px;font-weight:500;
+    letter-spacing:.1em;border:none;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition:opacity .2s ease;text-decoration:none;
+  }
+  .am-cta:hover{opacity:.9}
+  .am-cta svg{width:14px;height:14px;flex-shrink:0}
+
+  /* ===== FOOTER ===== */
+  /* ===== MID-PAGE CTA ===== */
+  .mid-cta-wrap{
+    padding:20px 24px;text-align:center;
+  }
+  .mid-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;max-width:480px;margin:0 auto;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:14px;font-weight:500;
+    letter-spacing:.1em;text-decoration:none;
+    padding:14px 20px;border:none;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition:opacity .2s ease;
+  }
+  .mid-cta:hover{opacity:.9}
+  .mid-cta svg{width:16px;height:16px;flex-shrink:0}
+  .mid-cta-sub{
+    font-family:var(--jp);font-size:10px;
+    color:var(--muted);margin-top:8px;
     letter-spacing:.3px;
   }
-
   footer{
     padding:20px 24px;text-align:center;
-    border-top:1px solid var(--border);
+    border-top:1px solid var(--border);margin-top:0;
   }
+  .foot{font-size:11px;color:var(--muted);letter-spacing:.5px;cursor:default;user-select:none}
 
-  .foot{font-size:11px;color:var(--muted);letter-spacing:.5px}
-  .foot a{color:var(--accent);text-decoration:none}
-
+  /* ===== STICKY CTA ===== */
   .sticky{
     position:fixed;bottom:0;left:0;right:0;
     z-index:100;padding:8px 12px;
@@ -609,26 +738,78 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
     transition:transform .35s ease;
     pointer-events:none;
   }
-
   .sticky.show{transform:translateY(0);pointer-events:auto}
-
   .sticky-price{
     text-align:center;font-size:10px;
     color:var(--muted);margin-bottom:5px;
-    letter-spacing:.5px;
+    letter-spacing:.5px;cursor:default;user-select:none;
   }
-
   .sticky-btn{
     display:flex;align-items:center;justify-content:center;gap:8px;
     width:100%;max-width:480px;margin:0 auto;
-    background:var(--accent);color:var(--bg);
+    background:#06C755;color:#fff;
     font-family:var(--jp);font-size:14px;font-weight:500;
     letter-spacing:.1em;text-decoration:none;
-    padding:13px 20px;
-    border:none;cursor:pointer;
+    padding:13px 20px;border:none;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
   }
-
   .sticky-btn svg{width:16px;height:16px;flex-shrink:0}
+
+  /* ===== LIGHTBOX ===== */
+  .lb{
+    position:fixed;inset:0;z-index:200;
+    background:rgba(0,0,0,.97);
+    display:none;flex-direction:column;
+    overflow-y:auto;-webkit-overflow-scrolling:touch;
+  }
+  .lb.open{display:flex}
+  .lb-header{
+    position:sticky;top:0;z-index:210;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:10px 16px;
+    background:linear-gradient(rgba(0,0,0,.9),transparent);
+  }
+  .lb-counter{font-family:var(--ui);font-size:12px;color:var(--muted);letter-spacing:1px}
+  .lb-close{
+    font-size:24px;color:var(--sub);
+    cursor:pointer;background:none;border:none;
+    padding:4px;line-height:1;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .lb-main{
+    flex:1;display:flex;align-items:center;justify-content:center;
+    padding:0 16px;min-height:0;
+  }
+  .lb-main img{max-width:100%;max-height:60vh;object-fit:contain}
+  .lb-label{
+    text-align:center;font-family:var(--jp);font-size:10px;
+    color:var(--muted);letter-spacing:.1em;padding:12px 0 6px;
+  }
+  .lb-thumbs{
+    display:flex;gap:4px;padding:0 16px 12px;
+    overflow-x:auto;justify-content:center;flex-shrink:0;
+  }
+  .lb-thumb{
+    width:48px;height:48px;object-fit:cover;
+    cursor:pointer;opacity:.4;transition:opacity .2s;
+    flex-shrink:0;-webkit-tap-highlight-color:transparent;
+  }
+  .lb-thumb.active{opacity:1;outline:1px solid var(--accent)}
+  .lb-cta-wrap{padding:0 16px 12px;flex-shrink:0}
+  .lb-line-btn{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:14px;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:13px;font-weight:500;
+    letter-spacing:.08em;text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .lb-line-btn svg{width:16px;height:16px;flex-shrink:0}
+  .lb-bottom-close{text-align:center;padding:0 16px 20px;flex-shrink:0}
+  .lb-bottom-close span{
+    font-family:var(--jp);font-size:11px;color:var(--muted);
+    cursor:pointer;letter-spacing:.06em;-webkit-tap-highlight-color:transparent;
+  }
 
   @keyframes fu{
     from{opacity:0;transform:translateY(12px)}
@@ -636,7 +817,7 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
   }
 
   @media(min-width:768px){
-    .hero-c,.contact,.trust-usp,.process,.credentials,.review{max-width:560px}
+    .hero-c,.trust-usp,.process,.credentials,.review,.artist,.line-section{max-width:560px}
     .trust-grid{max-width:560px}
     .sticky{display:none}
   }
@@ -645,307 +826,650 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
 
 <body>
 
+<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-bg">
-    <img src="../hero.jpg" alt="Large-scale freehand floral tattoo by Lea Kim, Osaka" width="720" height="960" loading="eager" fetchpriority="high">
+    <img id="heroImg" src="../88.jpg" alt="Freehand floral tattoo on torso by Lea Kim, Osaka" width="720" height="960" loading="eager" fetchpriority="high">
     <div class="hero-grad"></div>
   </div>
 
   <div class="hero-c">
-
-    <div class="brand">
+    <div class="brand" id="brandArea">
       <div class="brand-mark">lea</div>
       <div class="brand-line"></div>
       <div>
         <div class="brand-name">LEA KIM</div>
-        <div class="brand-meta">大阪 · 大型花タトゥー専門</div>
+        <div class="brand-meta">大阪 · 花タトゥー専門</div>
       </div>
     </div>
 
     <div class="usp">
       <div class="usp-dot"></div>
-      <div class="usp-text">体に沿って一本ずつ設計 — 完全オーダーメイド</div>
+      <div class="usp-text">半袖〜フルスリーブ規模。体に沿って一本ずつ設計します</div>
     </div>
 
-    <h1 class="hero-h"><em>体を纏う花</em>。<br>半袖からフルスリーブまで</h1>
-    <p class="hero-h-en">Large-scale floral tattoo — designed to flow with your body</p>
+    <h1 class="hero-h">体を<em>纏う花</em></h1>
+    <p class="hero-h-en">大型の花タトゥーを、あなたの体に合わせて</p>
 
-    <div class="price" id="priceTag">
-      <div class="price-num">&#165;650,000&#12316;</div>
-      <div class="price-detail">
-        tax included
-        <span class="jp">半袖〜フルスリーブ規模（税込）</span>
+    <div class="price">
+      <div class="price-top">
+        <div class="price-num">¥650,000〜</div>
+        <div class="price-size">4月 — 残り1枠</div>
       </div>
+      <div class="price-date">4月7日〜22日 · 大阪</div>
+      <div class="price-justify">複数回セッション · 体に沿って一本ずつ設計 · 完全予約制</div>
     </div>
 
-    <a href="#contact" class="cta" id="heroCta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      無料相談を申し込む
+    <a href="#" class="cta" id="heroCta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      作品を見る
     </a>
-    <div class="scarcity">4月の予約受付中 — 月1〜2名限定</div>
-    <div class="cta-note">
-      <span class="jp">下のフォームに進みます · 30秒で完了</span>
-    </div>
-
+    <a href="#" class="hero-line-cta" id="heroLineCta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      LINEでご相談
+    </a>
+    <div class="scarcity">大型作品は月1〜2名のみ · 今月を逃すと次は数ヶ月先</div>
   </div>
 </section>
 
-<section class="trust" id="trustSection">
+<!-- ===== TRUST ===== -->
+<section class="trust">
   <div class="trust-label">— 作品の一部 —</div>
   <div class="trust-grid">
-    <div class="trust-item">
-      <img src="../work-1.jpg" alt="Freehand forearm floral tattoo" width="480" height="640" loading="lazy">
-    </div>
-    <div class="trust-item">
-      <img src="../work-2.jpg" alt="Freehand upper arm floral tattoo" width="480" height="640" loading="lazy">
-    </div>
-    <div class="trust-item">
+    <div class="trust-item" data-gallery="1">
       <img src="../work-3.jpg" alt="Freehand full sleeve floral tattoo" width="480" height="640" loading="lazy">
+      <div class="trust-item-price"><span>¥650,000〜</span></div>
+    </div>
+    <div class="trust-item" data-gallery="2">
+      <img src="../105.jpg" alt="Freehand large floral tattoo" width="480" height="640" loading="lazy">
+      <div class="trust-item-price"><span>¥650,000〜</span></div>
     </div>
   </div>
 
-  <div class="credentials">
-    <div class="cred-item">
-      <div class="cred-num">4</div>
-      <div class="cred-text">ヶ国で経験<br><span style="font-family:var(--ui);font-size:9px;color:var(--muted)">FR · UK · TW · KR</span></div>
-    </div>
-    <div class="cred-divider"></div>
-    <div class="cred-item">
-      <div class="cred-num">数百件</div>
-      <div class="cred-text">以上の施術実績</div>
-    </div>
-    <div class="cred-divider"></div>
-    <div class="cred-item">
-      <div class="cred-num">月1〜2名</div>
-      <div class="cred-text">限定で施術</div>
-    </div>
-  </div>
-
-  <div class="trust-usp">
-    <div class="trust-usp-text">
-      半袖からフルスリーブまで、<br>体のラインに沿って一本ずつ花を配置。<br>複数回に分けて丁寧に仕上げます。
-    </div>
-    <div class="trust-usp-en">
-      From half-sleeve to full-sleeve — each flower is placed<br>one by one to flow naturally with your body.
+  <div class="trust-usp" id="trustUsp">
+    <div class="trust-usp-text" style="font-size:12px;line-height:1.6">
+      5ヶ国 · 数百件以上の実績 · 月1〜2名限定の完全オーダーメイド
     </div>
   </div>
 </section>
 
-<section class="review">
-  <div class="review-label">— お客様の声 —</div>
-  <div class="review-card">
-    <div class="review-quote">"</div>
-    <div class="review-text">
-      繊細で美しく優しさもあり、<br>その中に力強さもある雰囲気が<br>作品に表れていると<br>彫って頂いたタトゥーを見て思います。
-    </div>
-    <div class="review-sub">
-      自分にとってとても大切なタトゥーを<br>担当して頂けて嬉しく思っています。
-    </div>
-    <div class="review-author">
-      <div class="review-avatar">C</div>
-      <div class="review-meta">
-        <div class="review-name">リピーター · 東京</div>
-        <div class="review-via">Instagram DM より</div>
-      </div>
-    </div>
+<div class="mid-cta-wrap">
+  <div style="text-align:center;margin-bottom:12px">
+    <div style="font-family:var(--ui);font-size:22px;font-weight:500;color:var(--text);letter-spacing:1px">¥650,000〜</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:4px">半袖〜フルスリーブ規模 · ご相談の上お見積もり</div>
   </div>
-</section>
+  <a href="#" class="mid-cta" id="midCta1" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+    LINEで相談する
+  </a>
+  <div class="mid-cta-sub">残り枠の空き状況をすぐにお届けします</div>
+</div>
 
+
+<!-- ===== PROCESS ===== -->
 <section class="process">
   <div class="process-label">— ご予約の流れ —</div>
   <div class="process-steps">
     <div class="process-step">
       <div class="process-num">1</div>
-      <div class="process-jp">無料相談</div>
-      <div class="process-en">Free consultation</div>
+      <div class="process-jp">相談</div>
+      <div class="process-en">Consult</div>
+      <div class="process-sub">LINEでご相談</div>
     </div>
     <div class="process-arrow">▸</div>
     <div class="process-step">
       <div class="process-num">2</div>
-      <div class="process-jp">お見積り</div>
-      <div class="process-en">Quote</div>
+      <div class="process-jp">設計</div>
+      <div class="process-en">Design</div>
+      <div class="process-sub">体に合わせて調整</div>
     </div>
     <div class="process-arrow">▸</div>
     <div class="process-step">
       <div class="process-num">3</div>
-      <div class="process-jp">ご予約</div>
-      <div class="process-en">Booking</div>
-    </div>
-    <div class="process-arrow">▸</div>
-    <div class="process-step">
-      <div class="process-num">4</div>
       <div class="process-jp">施術</div>
-      <div class="process-en">Session</div>
+      <div class="process-en">Tattoo</div>
+      <div class="process-sub">あなたの花が完成</div>
     </div>
   </div>
-  <div class="process-note">※ 大型作品は複数回の施術が必要です · まずは無料相談からどうぞ</div>
-</section>
+  <div class="process-note">相談無料 · 予約義務なし · 24時間以内に返信</div>
 
-<section class="contact" id="contact">
-  <div class="contact-h">無料相談フォーム</div>
-  <div class="contact-h-en">Free Consultation</div>
-  <div class="contact-note">24時間以内にInstagramのDMまたはLINEでご連絡します</div>
-
-  <form id="consultForm" name="consultation-premium" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-    <input type="hidden" name="form-name" value="consultation-premium">
-    <p style="display:none"><label>Don't fill this out: <input name="bot-field"></label></p>
-
-    <div class="form-group">
-      <label class="form-label" for="area">希望部位 <span class="form-label-en">Placement</span></label>
-      <select class="form-select" id="area" name="area" required>
-        <option value="" disabled selected>選択してください</option>
-        <option value="half-sleeve">半袖 — Half Sleeve</option>
-        <option value="full-sleeve">フルスリーブ — Full Sleeve</option>
-        <option value="back-piece">背中 — Back Piece</option>
-        <option value="leg-sleeve">脚スリーブ — Leg Sleeve</option>
-        <option value="torso-side">脇腹〜腰 — Torso/Side</option>
-        <option value="other">その他 — Other</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="ref">イメージ写真 <span class="form-label-en">Reference</span></label>
-      <select class="form-select" id="ref" name="reference" required>
-        <option value="" disabled selected>選択してください</option>
-        <option value="yes">ある — I have references</option>
-        <option value="no">まだない — Not yet</option>
-        <option value="discuss">相談したい — Want to discuss</option>
-      </select>
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="ig">Instagram ID <span class="form-label-en">（連絡先）</span></label>
-      <input class="form-input" type="text" id="ig" name="instagram" placeholder="@your_id" required autocomplete="off" inputmode="text">
-    </div>
-
-    <div class="form-group">
-      <label class="form-label" for="contact2">LINE ID / メールアドレス <span class="form-label-en">（任意 · Optional）</span></label>
-      <input class="form-input" type="text" id="contact2" name="contact_backup" placeholder="LINE ID / メールアドレス" autocomplete="off" inputmode="text">
-      <div style="font-family:var(--jp);font-size:10px;color:var(--muted);margin-top:5px;letter-spacing:.02em">※ 非公開アカウントの場合はLINE IDの入力をおすすめします</div>
-    </div>
-
-    <div style="text-align:center;font-family:var(--jp);font-size:10px;color:var(--muted);margin-bottom:10px;letter-spacing:.02em">※ 24時間以内にご連絡します · 相談は無料です</div>
-
-    <button type="submit" class="form-submit" id="submitBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      無料相談を申し込む
-    </button>
-  </form>
-
-  <div class="form-price">
-    <span class="jp">ご質問だけでもお気軽にどうぞ</span>
-  </div>
-
-  <div class="form-dm">
-    <div class="form-dm-text">フォームが難しい場合はこちらからも受付中</div>
-    <a href="https://ig.me/m/lea.inked?ref=premium_dm_sub" class="form-dm-link" id="igDmLink" onclick="openIgApp(event)">@lea.inked にDMを送る →</a>
-    <div style="margin-top:8px">
-      <a href="https://line.me/ti/p/hEgBFy7qL3" class="form-dm-link" target="_blank" rel="noopener">LINEで相談する →</a>
-    </div>
-  </div>
-
-  <div class="form-success" id="formSuccess">
-    <div class="form-success-icon">✓</div>
-    <div class="form-success-h">送信が完了しました</div>
-    <div class="form-success-text">
-      24時間以内にInstagramのDMまたはLINEで<br>ご連絡いたします。<br>しばらくお待ちください。
-    </div>
-    <div class="form-success-en">
-      We'll contact you via Instagram DM or LINE within 24 hours.
-    </div>
-    <div style="margin-top:16px">
-      <a href="https://www.instagram.com/lea.inked" onclick="openIgApp(event)" data-type="profile" style="font-family:var(--ui);font-size:12px;color:var(--accent);text-decoration:none;letter-spacing:.5px">@lea.inked をフォローする →</a>
-    </div>
+  <div class="mid-cta-wrap" style="padding-top:24px">
+    <a href="#" class="mid-cta" id="midCta2" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      LINEで相談する
+    </a>
   </div>
 </section>
+
+<!-- ===== REVIEW ===== -->
+<section class="review">
+  <div class="review-label">— お客様の声 —</div>
+  <div class="review-card" id="reviewOpen">
+    <div class="review-quote">"</div>
+    <div class="review-text">
+      繊細で美しく優しさもあり、<br>
+      その中に力強さもある雰囲気が<br>
+      作品に表れていると<br>
+      彫って頂いたタトゥーを見て思います。
+    </div>
+    <div class="review-sub">
+      自分にとってとても大切なタトゥーを<br>
+      担当して頂けて嬉しく思っています。
+    </div>
+    <div class="review-author">
+      <div class="review-avatar">C</div>
+      <div>
+        <div class="review-name">東京在住 Cさん</div>
+        <div class="review-via">Instagram DM より</div>
+      </div>
+    </div>
+    <div class="review-see-more">他4件 ▸</div>
+  </div>
+</section>
+
+<!-- ===== ARTIST ===== -->
+<section class="artist" id="artistSection">
+  <img class="artist-photo" id="artistPhoto" src="../79.jpg" alt="Lea Kim" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
+  <div class="artist-name">LEA KIM</div>
+  <div class="artist-sub">花タトゥー専門 · 大阪</div>
+  <div class="artist-info">
+    <div class="artist-row"><span>作業</span><span>体に合わせてその場で<br>ラインを調整しながら描きます</span></div>
+    <div class="artist-row"><span>場所</span><span>大阪中心部（詳細は予約確定後にご案内）</span></div>
+  </div>
+</section>
+
+
+<!-- ===== LINE CTA ===== -->
+<section class="line-section" id="lineSection">
+  <div class="line-title">LINEで相談する</div>
+  <div class="line-title-sub">まずはご相談ください</div>
+  <div class="line-date">
+    <span class="line-date-main">施術可能日: 4月7日〜22日</span><br>
+    ご都合に合わせて調整します
+  </div>
+
+  <div class="line-reassure"><span>✓</span> 残り枠が埋まり次第、受付終了となります</div>
+
+  <a href="#" class="line-btn" id="lineBtn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+    LINEで相談する
+  </a>
+
+  <div class="line-expect">※ 友だち追加後すぐにご案内が届きます</div>
+
+  <div class="line-fallback" id="lineFallback">
+    <div class="line-fallback-text">LINEが開かない場合は<br>下のボタンをご利用ください</div>
+    <div class="send-sub">
+      <a href="#" class="send-sub-btn" id="emailBtn">メールで送信</a>
+      <button class="send-sub-btn" id="copyBtn">内容をコピー</button>
+    </div>
+  </div>
+
+  <div class="line-bottom">
+    <div class="line-bottom-text">施術費 ¥650,000〜 · 半袖〜フルスリーブ規模</div>
+  </div>
+</section>
+
+<div class="copy-toast" id="copyToast">コピーしました</div>
 
 <footer>
-  <div class="foot">
-    lea · Osaka, Japan · <a href="https://www.instagram.com/lea.inked" onclick="openIgApp(event)" data-type="profile">@lea.inked</a>
-  </div>
+  <div class="foot">lea · Osaka, Japan</div>
 </footer>
 
+<!-- ===== STICKY CTA ===== -->
 <div class="sticky" id="sticky">
-  <div class="sticky-price">4月予約受付中 — 月1〜2名限定</div>
-  <a href="#contact" class="sticky-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-    無料相談 — Free Consultation
+  <div class="sticky-price">4月 残り1枠 · 相談無料</div>
+  <a href="#" class="sticky-btn" id="stickyBtn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+    LINEで相談する
   </a>
 </div>
 
+<!-- ===== REVIEW LIGHTBOX ===== -->
+<div class="rl-overlay" id="rlOverlay">
+  <div class="rl-close" id="rlClose">✕</div>
+  <div class="rl-body">
+    <div class="rl-quote">"</div>
+    <div class="rl-text" id="rlText"></div>
+    <div class="rl-sub" id="rlSub"></div>
+    <div class="rl-author" id="rlAuthor"></div>
+    <div class="rl-via" id="rlVia"></div>
+    <div class="rl-nav">
+      <div class="rl-arrow" id="rlPrev">‹</div>
+      <div class="rl-counter" id="rlCounter"></div>
+      <div class="rl-arrow" id="rlNext">›</div>
+    </div>
+    <div class="rl-progress" id="rlProgress"></div>
+    <a class="rl-cta" id="rlCta" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      LINEで相談する
+    </a>
+    <div class="rl-bottom-close" id="rlBottomClose">閉じる</div>
+  </div>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lb" id="lb">
+  <div class="lb-header">
+    <div class="lb-counter" id="lbCounter"></div>
+    <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  </div>
+  <div class="lb-main" id="lbMain"></div>
+  <div class="lb-label">その他の作品</div>
+  <div class="lb-thumbs" id="lbThumbs"></div>
+  <div class="lb-cta-wrap">
+    <a href="#" class="lb-line-btn" id="lbLineBtn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      LINEで相談する
+    </a>
+  </div>
+  <div class="lb-bottom-close" id="lbBottomClose"><span>閉じる</span></div>
+</div>
+
+<!-- ===== ARTIST MODAL ===== -->
+<div class="am" id="am">
+  <div class="am-card">
+    <button class="am-close" id="amClose" aria-label="Close">&times;</button>
+    <img class="am-photo" src="../79.jpg" alt="Lea Kim">
+    <div class="am-name">LEA KIM</div>
+    <div class="am-sub">花タトゥー専門 · 大阪</div>
+    <div class="am-info">
+      <div class="am-row"><span>作業</span><span>体に合わせてその場で<br>ラインを調整しながら描きます</span></div>
+      <div class="am-row"><span>場所</span><span>大阪中心部（詳細は予約確定後にご案内）</span></div>
+      <div class="am-row"><span>経験</span><span>5ヶ国（US·UK·FR·KR·TW）<br>数百件以上の施術実績</span></div>
+      <div class="am-row"><span>費用</span><span>¥650,000〜（半袖〜フルスリーブ規模）</span></div>
+    </div>
+    <a class="am-cta" id="amCta" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      LINEで相談する
+    </a>
+  </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
 <script>
-  (function() {
-    try {
-      var hero = document.querySelector('.hero');
-      if (hero) { hero.style.minHeight = window.innerHeight + 'px'; }
-    } catch(e) {}
-  })();
+(function(){
 
-  var consultForm = document.getElementById('consultForm');
-  var submitBtn = document.getElementById('submitBtn');
-  var formSuccess = document.getElementById('formSuccess');
+  // ===== 날짜 설정 (이 한 줄만 바꾸면 전체 반영) =====
+  var SCHEDULE_DATE = '4月7日〜22日';
+  var SCHEDULE_MONTH = SCHEDULE_DATE.match(/(\d+月)/)[1];
+  var SCHEDULE_CITY = '大阪';
 
-  consultForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-    submitBtn.disabled = true;
-    var btnSvg = submitBtn.querySelector('svg').outerHTML;
-    submitBtn.innerHTML = btnSvg + ' 送信中...';
+  // ===== UTM PARAMS =====
+  // Fix: Meta ads sometimes double-encode '?' as '%3F' in URL params
+  var rawSearch = window.location.search;
+  if(rawSearch.indexOf('%3F') !== -1 || rawSearch.indexOf('%3f') !== -1){
+    rawSearch = rawSearch.replace(/%3F/gi, '&');
+  }
+  var urlParams = new URLSearchParams(rawSearch);
+  var utmKeys = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  var utmData = {};
+  utmKeys.forEach(function(k){ var v = urlParams.get(k); if(v) utmData[k] = v; });
 
-    var formData = new FormData(consultForm);
+  // ===== LINE URL =====
+  var msg = '大型の花タトゥーの相談をしたいです。\n' + SCHEDULE_MONTH + 'の空き状況を教えてください。';
+  var baseLineUrl = 'https://lealinebot-production.up.railway.app/r';
+  var directLineUrl = 'https://line.me/R/ti/p/@722xsnht';
 
-    fetch('/premium/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: new URLSearchParams(formData).toString()
-    })
-    .then(function(response) {
-      if (!response.ok) throw new Error('Network error');
-      if (typeof fbq === 'function') {
-        fbq('track', 'Lead', {
-          content_name: 'consultation_form_premium',
-          content_category: 'tattoo_premium',
+  function buildLineUrl(source){
+    var params = [];
+    params.push('src=' + encodeURIComponent('premium_' + source));
+    utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
+    // UTM이 있으면 /r 리다이렉트 (서버에 UTM 저장), 없으면 직접 LINE
+    if(utmData.utm_source || utmData.utm_campaign){
+      return baseLineUrl + '?' + params.join('&');
+    }
+    return directLineUrl + (params.length ? '?' + params.join('&') : '');
+  }
+
+  // Set all LINE links (default source)
+  var lineLinks = ['lineBtn','stickyBtn','lbLineBtn','rlCta','amCta','midCta1','midCta2','heroLineCta'];
+  lineLinks.forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.href = buildLineUrl(id);
+  });
+
+  // Hero CTA scrolls to portfolio
+  var heroCta = document.getElementById('heroCta');
+  if(heroCta){
+    heroCta.href = '#';
+    heroCta.addEventListener('click', function(e){
+      e.preventDefault();
+      document.querySelector('.trust').scrollIntoView({behavior:'smooth'});
+    });
+  }
+
+  // 날짜 동적 반영
+  var priceDate = document.querySelector('.price-date');
+  if(priceDate) priceDate.textContent = SCHEDULE_DATE + ' · ' + SCHEDULE_CITY;
+  var lineDateMain = document.querySelector('.line-date-main');
+  if(lineDateMain) lineDateMain.textContent = '施術可能日: ' + SCHEDULE_DATE;
+  var stickyPrice = document.querySelector('.sticky-price');
+  if(stickyPrice) stickyPrice.textContent = SCHEDULE_MONTH + ' 残り1枠 · 相談無料';
+
+  // Email
+  var emailSubject = encodeURIComponent('花タトゥー相談 - lea.ink');
+  var emailBody = encodeURIComponent(msg);
+  document.getElementById('emailBtn').href = 'mailto:kimlea0328@gmail.com?subject=' + emailSubject + '&body=' + emailBody;
+
+  // Copy
+  document.getElementById('copyBtn').addEventListener('click', function(){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(msg).catch(function(){});
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = msg;ta.style.cssText='position:fixed;opacity:0';
+      document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy')}catch(e){}
+      document.body.removeChild(ta);
+    }
+    var toast = document.getElementById('copyToast');
+    toast.classList.add('show');
+    setTimeout(function(){ toast.classList.remove('show'); }, 3000);
+    if(typeof fbq === 'function') fbq('trackCustom','CopyClickPremium');
+  });
+
+  // ===== PIXEL EVENTS =====
+  var viewContentFired = false;
+  var leadFired = false;
+
+  // ViewContent: scroll 15% + 2s dwell
+  var scrollReached = false;
+  var dwellReached = false;
+
+  function checkViewContent(){
+    if(viewContentFired) return;
+    if(scrollReached && dwellReached){
+      viewContentFired = true;
+      if(typeof fbq === 'function'){
+        fbq('track', 'ViewContent', {
+          content_name: 'premium_lp',
+          content_category: 'tattoo',
+          value: 650000,
+          currency: 'JPY'
+        });
+        fbq('trackCustom', 'ViewContentPremium', {
+          content_name: 'premium_lp',
           value: 650000,
           currency: 'JPY'
         });
       }
-      consultForm.style.display = 'none';
-      document.querySelector('.form-price').style.display = 'none';
-      document.querySelector('.form-dm').style.display = 'none';
-      formSuccess.classList.add('show');
-    })
-    .catch(function() {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = btnSvg + ' 無料相談を申し込む';
-      alert('送信に失敗しました。もう一度お試しください。');
+    }
+  }
+
+  window.addEventListener('scroll', function(){
+    if(scrollReached) return;
+    var pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+    if(pct >= 0.15){ scrollReached = true; checkViewContent(); }
+  }, {passive:true});
+
+  setTimeout(function(){ dwellReached = true; checkViewContent(); }, 2000);
+
+  // Lead: LINE click
+  function handleLineClick(source){
+    // Update href with correct source param
+    var srcMap = {mainCTA:'lineBtn',stickyCTA:'stickyBtn',lightboxCTA:'lbLineBtn',reviewCTA:'rlCta',artistCTA:'amCta',midCTA1:'midCta1',midCTA2:'midCta2',heroLineCTA:'heroLineCta'};
+    var clickedEl = document.getElementById(srcMap[source] || source);
+    if(clickedEl) clickedEl.href = buildLineUrl(source);
+
+    if(!leadFired && typeof fbq === 'function'){
+      leadFired = true;
+      var leadData = {
+        content_name: 'premium_line_send',
+        content_category: 'tattoo',
+        value: 650000,
+        currency: 'JPY'
+      };
+      if(utmData.utm_campaign) leadData.utm_campaign = utmData.utm_campaign;
+      if(utmData.utm_source) leadData.utm_source = utmData.utm_source;
+      fbq('track', 'Lead', leadData);
+      fbq('trackCustom', 'LeadPremium', leadData);
+      fbq('trackCustom', 'LineOpenAttemptPremium', {source: source, utm_campaign: utmData.utm_campaign || ''});
+    }
+    // Detect LINE open failure (3s for friend-add URL)
+    var lineOpened = false;
+    function onHidden(){ if(document.hidden) lineOpened = true; }
+    document.addEventListener('visibilitychange', onHidden);
+    setTimeout(function(){
+      document.removeEventListener('visibilitychange', onHidden);
+      if(!lineOpened){
+        document.getElementById('lineFallback').classList.add('show');
+        if(typeof fbq === 'function') fbq('trackCustom','LineFallbackShownPremium');
+      }
+    }, 3000);
+  }
+
+  document.getElementById('lineBtn').addEventListener('click', function(){ handleLineClick('mainCTA'); });
+  document.getElementById('stickyBtn').addEventListener('click', function(){ handleLineClick('stickyCTA'); });
+  document.getElementById('lbLineBtn').addEventListener('click', function(){ handleLineClick('lightboxCTA'); });
+  document.getElementById('rlCta').addEventListener('click', function(){ handleLineClick('reviewCTA'); });
+  document.getElementById('midCta1').addEventListener('click', function(){ handleLineClick('midCTA1'); });
+  document.getElementById('midCta2').addEventListener('click', function(){ handleLineClick('midCTA2'); });
+  document.getElementById('heroLineCta').addEventListener('click', function(){ handleLineClick('heroLineCTA'); });
+
+  document.getElementById('emailBtn').addEventListener('click', function(){
+    if(typeof fbq === 'function') fbq('trackCustom','EmailClickPremium');
+  });
+
+  // ===== ARTIST MODAL =====
+  var am = document.getElementById('am');
+  function openAm(){
+    am.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    if(typeof fbq === 'function') fbq('trackCustom','ArtistViewPremium');
+  }
+  function closeAm(){
+    am.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('brandArea').addEventListener('click', openAm);
+  document.getElementById('artistPhoto').addEventListener('click', openAm);
+  document.getElementById('amClose').addEventListener('click', closeAm);
+  am.addEventListener('click', function(e){ if(e.target === am) closeAm(); });
+  document.getElementById('amCta').addEventListener('click', function(){
+    closeAm();
+    handleLineClick('artistCTA');
+  });
+
+  document.getElementById('heroCta').addEventListener('click', function(e){
+    if(typeof fbq === 'function') fbq('trackCustom','HeroCTAClickPremium');
+    // scroll only - no LINE open
+  });
+
+  // ===== STICKY CTA =====
+  var sticky = document.getElementById('sticky');
+  var heroCta = document.getElementById('heroCta');
+  var stickyObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(!entry.isIntersecting) sticky.classList.add('show');
+      else sticky.classList.remove('show');
+    });
+  }, {threshold:0});
+  stickyObserver.observe(heroCta);
+
+  // ===== LIGHTBOX =====
+  var galleries = {
+    '1': ['../work-3.jpg','../75.jpg','../76.jpg','../77.jpg'],
+    '2': ['../105.jpg','../106.jpg','../107.jpg','../108.jpg','../109.jpg'],
+    'hero': ['../88.jpg','../98.JPG','../99.jpg','../100.jpg']
+  };
+
+  var lb = document.getElementById('lb');
+  var lbMain = document.getElementById('lbMain');
+  var lbThumbs = document.getElementById('lbThumbs');
+  var lbCounter = document.getElementById('lbCounter');
+  var currentGallery = [];
+  var currentIdx = 0;
+
+  function openLb(imgs, startIdx){
+    currentGallery = imgs;
+    currentIdx = startIdx || 0;
+    renderLb();
+    lb.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    history.pushState({lb:'gallery'}, '');
+  }
+
+  function renderLb(){
+    var img = document.createElement('img');
+    img.src = currentGallery[currentIdx];
+    img.alt = 'Portfolio';
+    lbMain.innerHTML = '';
+    lbMain.appendChild(img);
+    lbCounter.textContent = (currentIdx + 1) + ' / ' + currentGallery.length;
+    lbThumbs.innerHTML = '';
+    currentGallery.forEach(function(src, i){
+      var t = document.createElement('img');
+      t.src = src; t.className = 'lb-thumb';
+      if(i === currentIdx) t.classList.add('active');
+      t.addEventListener('click', function(){ currentIdx = i; renderLb(); });
+      lbThumbs.appendChild(t);
+    });
+  }
+
+  function closeLb(skipHistory){
+    if(!lb.classList.contains('open')) return;
+    lb.classList.remove('open');
+    document.body.style.overflow = '';
+    if(!skipHistory && history.state && history.state.lb === 'gallery') history.back();
+  }
+
+  // Swipe
+  var touchStartX = 0;
+  lbMain.addEventListener('touchstart', function(e){ touchStartX = e.touches[0].clientX; }, {passive:true});
+  lbMain.addEventListener('touchend', function(e){
+    var diff = touchStartX - e.changedTouches[0].clientX;
+    if(Math.abs(diff) > 50){
+      if(diff > 0 && currentIdx < currentGallery.length - 1){ currentIdx++; renderLb(); }
+      else if(diff < 0 && currentIdx > 0){ currentIdx--; renderLb(); }
+    }
+  });
+
+  document.getElementById('lbClose').addEventListener('click', function(){ closeLb(); });
+  document.getElementById('lbBottomClose').addEventListener('click', function(){ closeLb(); });
+  lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
+
+  // Gallery items
+  document.querySelectorAll('.trust-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var id = item.getAttribute('data-gallery');
+      if(galleries[id]){
+        openLb(galleries[id], 0);
+        if(typeof fbq === 'function') fbq('trackCustom','GalleryOpenPremium',{gallery:id});
+      }
     });
   });
 
-  var formSectionFired = false;
-  var formSectionObs = new IntersectionObserver(function(entries) {
-    if (entries[0].isIntersecting && !formSectionFired) {
-      formSectionFired = true;
-      if (typeof fbq === 'function') {
-        fbq('track', 'ViewContent', {
-          content_name: 'ig_field_viewed_premium',
-          content_category: 'tattoo_premium'
-        });
-      }
+  // Hero image → gallery
+  document.getElementById('heroImg').addEventListener('click', function(){
+    openLb(galleries['hero'], 0);
+    if(typeof fbq === 'function') fbq('trackCustom','HeroImageOpenGalleryPremium');
+  });
+
+  // ===== REVIEW LIGHTBOX =====
+  var reviews = [
+    {
+      text: '繊細で美しく優しさもあり、<br>その中に力強さもある雰囲気が<br>作品に表れていると<br>彫って頂いたタトゥーを見て思います。',
+      sub: '自分にとってとても大切なタトゥーを<br>担当して頂けて嬉しく思っています。',
+      author: '東京在住 Cさん',
+      via: 'Instagram DM より'
+    },
+    {
+      text: 'とても素晴らしい物を<br>ありがとうございました。<br>脇腹に入れる勇気が出た際には<br>またよろしくお願いいたします！',
+      sub: '',
+      author: '東京在住 Tさん',
+      via: 'Instagram DM より'
+    },
+    {
+      text: '最高に可愛いくて美しく<br>完成がとても楽しみです！<br>またよろしくお願いします。',
+      sub: '',
+      author: '大阪在住 Kさん',
+      via: 'Instagram DM より'
+    },
+    {
+      text: 'このタトゥーは私にとって<br>本当に大切なものです。<br>お会いできてとても嬉しかったです。<br>またいつかお会いできますように。',
+      sub: '',
+      author: 'フランス在住 Aさん',
+      via: 'Instagram DM より'
+    },
+    {
+      text: '周りのアーティスト仲間たちも<br>「本当に素敵な作品だね」と。<br>meisakuですね。必ず行きます！',
+      sub: '',
+      author: '東京在住 Nさん',
+      via: 'Instagram DM より'
     }
-  }, { threshold: 0.5 });
-  formSectionObs.observe(document.getElementById('ig'));
+  ];
 
-  var stickyEl = document.getElementById('sticky');
-  var heroEl = document.querySelector('.hero');
-  var contactEl = document.getElementById('contact');
+  var rlOverlay = document.getElementById('rlOverlay');
+  var rlIdx = 0;
 
-  new IntersectionObserver(function(e) {
-    if (!e[0].isIntersecting) stickyEl.classList.add('show');
-    else stickyEl.classList.remove('show');
-  }, { threshold: 0.05 }).observe(heroEl);
+  function rlShow(i){
+    rlIdx = i;
+    var r = reviews[rlIdx];
+    document.getElementById('rlText').innerHTML = r.text;
+    var subEl = document.getElementById('rlSub');
+    if(r.sub){ subEl.innerHTML = r.sub; subEl.style.display = ''; }
+    else { subEl.style.display = 'none'; }
+    document.getElementById('rlAuthor').textContent = r.author;
+    document.getElementById('rlVia').textContent = r.via;
+    document.getElementById('rlCounter').textContent = (rlIdx + 1) + ' / ' + reviews.length;
+    var dots = document.querySelectorAll('.rl-dot');
+    dots.forEach(function(d, di){ d.classList.toggle('active', di === rlIdx); });
+  }
 
-  new IntersectionObserver(function(e) {
-    if (e[0].isIntersecting) stickyEl.classList.remove('show');
-  }, { threshold: 0.15 }).observe(contactEl);
+  function rlOpen(startIdx){
+    var prog = document.getElementById('rlProgress');
+    prog.innerHTML = '';
+    for(var p = 0; p < reviews.length; p++){
+      var dot = document.createElement('div');
+      dot.className = 'rl-dot';
+      prog.appendChild(dot);
+    }
+    rlShow(startIdx || 0);
+    rlOverlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    history.pushState({lb:'review'}, '');
+  }
+
+  function rlClose(skipHistory){
+    if(!rlOverlay.classList.contains('open')) return;
+    rlOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if(!skipHistory && history.state && history.state.lb === 'review') history.back();
+  }
+
+  document.getElementById('reviewOpen').addEventListener('click', function(){
+    rlOpen(0);
+    if(typeof fbq === 'function') fbq('trackCustom','ReviewOpenPremium');
+  });
+  document.getElementById('rlClose').addEventListener('click', function(){ rlClose(); });
+  document.getElementById('rlBottomClose').addEventListener('click', function(){ rlClose(); });
+  rlOverlay.addEventListener('click', function(e){ if(e.target === rlOverlay) rlClose(); });
+
+  document.getElementById('rlPrev').addEventListener('click', function(){
+    if(rlIdx > 0) rlShow(rlIdx - 1);
+  });
+  document.getElementById('rlNext').addEventListener('click', function(){
+    if(rlIdx < reviews.length - 1) rlShow(rlIdx + 1);
+  });
+
+  // popstate
+  window.addEventListener('popstate', function(){
+    if(lb.classList.contains('open')) closeLb(true);
+    if(rlOverlay.classList.contains('open')) rlClose(true);
+  });
+
+  // ===== SCROLL DEPTH =====
+  var depthsFired = {};
+  window.addEventListener('scroll', function(){
+    var pct = Math.round(((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100);
+    [25,50,75,100].forEach(function(t){
+      if(pct >= t && !depthsFired[t]){
+        depthsFired[t] = true;
+        if(typeof fbq === 'function') fbq('trackCustom','ScrollDepthPremium',{depth:t});
+      }
+    });
+  }, {passive:true});
 
   // ===== UTM TRACKER =====
   (function() {
@@ -972,32 +1496,7 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
     } catch(e) {}
   })();
 
-  function openIgApp(e) {
-    e.preventDefault();
-    var isProfile = e.currentTarget.getAttribute('data-type') === 'profile';
-    var ua = navigator.userAgent || '';
-    var isIOS = /iPhone|iPad|iPod/i.test(ua);
-    var isAndroid = /Android/i.test(ua);
-
-    if (isProfile) {
-      if (isIOS || isAndroid) {
-        window.location.href = 'instagram://user?username=lea.inked';
-        setTimeout(function() {
-          if (!document.hidden) {
-            window.location.href = 'https://www.instagram.com/lea.inked/';
-          }
-        }, 1500);
-      } else {
-        window.open('https://www.instagram.com/lea.inked/', '_blank');
-      }
-    } else {
-      if (isIOS || isAndroid) {
-        window.location.href = 'https://ig.me/m/lea.inked';
-      } else {
-        window.open('https://ig.me/m/lea.inked', '_blank');
-      }
-    }
-  }
+})();
 </script>
 
 </body>
