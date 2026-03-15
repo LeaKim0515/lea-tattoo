@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://leakim.art/sitemap.xml
