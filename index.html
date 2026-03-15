@@ -1183,6 +1183,7 @@ if(window.location.search.indexOf('test=1') === -1){
     toast.classList.add('show');
     setTimeout(function(){ toast.classList.remove('show'); }, 3000);
     if(typeof fbq === 'function') fbq('trackCustom','CopyClickStandard');
+    if(typeof gtag === 'function') gtag('event', 'copy_click', {send_to: 'G-QZSP3DHNW6'});
   });
 
   // ===== PIXEL EVENTS =====
@@ -1253,6 +1254,7 @@ if(window.location.search.indexOf('test=1') === -1){
       if(!lineOpened){
         document.getElementById('lineFallback').classList.add('show');
         if(typeof fbq === 'function') fbq('trackCustom','LineFallbackShownStandard');
+        if(typeof gtag === 'function') gtag('event', 'line_fallback_shown', {send_to: 'G-QZSP3DHNW6'});
       }
     }, 3000);
   }
@@ -1267,6 +1269,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
   document.getElementById('emailBtn').addEventListener('click', function(){
     if(typeof fbq === 'function') fbq('trackCustom','EmailClickStandard');
+    if(typeof gtag === 'function') gtag('event', 'email_click', {send_to: 'G-QZSP3DHNW6'});
   });
 
   // ===== ARTIST MODAL =====
@@ -1275,6 +1278,7 @@ if(window.location.search.indexOf('test=1') === -1){
     am.classList.add('open');
     document.body.style.overflow = 'hidden';
     if(typeof fbq === 'function') fbq('trackCustom','ArtistViewStandard');
+    if(typeof gtag === 'function') gtag('event', 'artist_view', {send_to: 'G-QZSP3DHNW6'});
   }
   function closeAm(){
     am.classList.remove('open');
@@ -1291,6 +1295,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
   document.getElementById('heroCta').addEventListener('click', function(e){
     if(typeof fbq === 'function') fbq('trackCustom','HeroCTAClickStandard');
+    if(typeof gtag === 'function') gtag('event', 'hero_cta_click', {send_to: 'G-QZSP3DHNW6'});
     // scroll only - no LINE open
   });
 
@@ -1375,6 +1380,7 @@ if(window.location.search.indexOf('test=1') === -1){
       if(galleries[id]){
         openLb(galleries[id], 0);
         if(typeof fbq === 'function') fbq('trackCustom','GalleryOpenStandard',{gallery:id});
+        if(typeof gtag === 'function') gtag('event', 'gallery_open', {gallery_id: id, send_to: 'G-QZSP3DHNW6'});
       }
     });
   });
@@ -1383,6 +1389,7 @@ if(window.location.search.indexOf('test=1') === -1){
   document.getElementById('heroImg').addEventListener('click', function(){
     openLb(galleries['hero'], 0);
     if(typeof fbq === 'function') fbq('trackCustom','HeroImageOpenGalleryStandard');
+    if(typeof gtag === 'function') gtag('event', 'hero_image_gallery', {send_to: 'G-QZSP3DHNW6'});
   });
 
   // ===== REVIEW LIGHTBOX =====
@@ -1460,6 +1467,7 @@ if(window.location.search.indexOf('test=1') === -1){
   document.getElementById('reviewOpen').addEventListener('click', function(){
     rlOpen(0);
     if(typeof fbq === 'function') fbq('trackCustom','ReviewOpenStandard');
+    if(typeof gtag === 'function') gtag('event', 'review_open', {send_to: 'G-QZSP3DHNW6'});
   });
   document.getElementById('rlClose').addEventListener('click', function(){ rlClose(); });
   document.getElementById('rlBottomClose').addEventListener('click', function(){ rlClose(); });
@@ -1486,6 +1494,7 @@ if(window.location.search.indexOf('test=1') === -1){
       if(pct >= t && !depthsFired[t]){
         depthsFired[t] = true;
         if(typeof fbq === 'function') fbq('trackCustom','ScrollDepthStandard',{depth:t});
+        if(typeof gtag === 'function') gtag('event', 'scroll_depth', {depth: t, send_to: 'G-QZSP3DHNW6'});
       }
     });
   }, {passive:true});
