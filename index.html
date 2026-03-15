@@ -1490,6 +1490,31 @@ if(window.location.search.indexOf('test=1') === -1){
     });
   }, {passive:true});
 
+  // ===== UTM TRACKER =====
+  (function() {
+    try {
+      var u = window.location.href;
+      var s = new URLSearchParams(window.location.search);
+      var raw = u.indexOf('%3F') !== -1 || u.indexOf('%3f') !== -1;
+      if (raw && !s.get('utm_source')) {
+        var m = u.match(/[%3F?&]utm_source=([^&]*)/i);
+        if (m) s = new URLSearchParams(u.split(/[%3F?]/i).pop());
+      }
+      if (s.get('utm_source') || s.get('utm_campaign') || raw) {
+        fetch('https://lealinebot-production.up.railway.app/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            url: u, path: window.location.pathname,
+            utm_source: s.get('utm_source'), utm_medium: s.get('utm_medium'),
+            utm_campaign: s.get('utm_campaign'), utm_content: s.get('utm_content'),
+            utm_term: s.get('utm_term'), referrer: document.referrer
+          })
+        }).catch(function(){});
+      }
+    } catch(e) {}
+  })();
+
 })();
 </script>
 
