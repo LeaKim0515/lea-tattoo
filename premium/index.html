@@ -1130,6 +1130,7 @@ if(window.location.search.indexOf('test=1') === -1){
     var params = [];
     params.push('src=' + encodeURIComponent('premium_' + source));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
+    if(fbclid) params.push('fbclid=' + encodeURIComponent(fbclid));
     // Always route through Railway to track clicks
     return baseLineUrl + '?' + params.join('&');
   }
