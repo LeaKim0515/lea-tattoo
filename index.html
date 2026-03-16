@@ -1127,8 +1127,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
   // ===== LINE URL =====
   var msg = '花タトゥーの相談をしたいです。\n' + SCHEDULE_MONTH + 'の空き状況を教えてください。';
-  var liffBaseUrl = 'https://liff.line.me/2009486720-iptqzEwT';
-  var railwayBaseUrl = 'https://lealinebot-production.up.railway.app/r';
+  var baseLineUrl = 'https://lealinebot-production.up.railway.app/r';
   var directLineUrl = 'https://line.me/R/ti/p/@722xsnht';
 
   function buildLineUrl(source){
@@ -1136,9 +1135,7 @@ if(window.location.search.indexOf('test=1') === -1){
     params.push('src=' + encodeURIComponent('standard_' + source));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
     if(fbclid) params.push('fbclid=' + encodeURIComponent(fbclid));
-    // LIFF経由でuserId取得→oaMessageへ（LINE内ブラウザのみ）
-    // 外部ブラウザの場合はRailway /r にフォールバック
-    return liffBaseUrl + '?' + params.join('&');
+    return baseLineUrl + '?' + params.join('&');
   }
 
   // Set all LINE links (default source)
