@@ -4,8 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>lea — LINE</title>
+
+<!-- META PIXEL -->
 <script>
-(function(){
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1003353476194605');
+fbq('track', 'PageView');
+fbq('track', 'Lead', {
+  content_name: 'instagram_bio_line',
+  value: 120000,
+  currency: 'JPY'
+});
+</script>
+
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QZSP3DHNW6"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-QZSP3DHNW6');
+gtag('event', 'generate_lead', {
+  content_name: 'instagram_bio_line',
+  value: 120000,
+  currency: 'JPY',
+  send_to: 'G-QZSP3DHNW6',
+  transport_type: 'beacon'
+});
+</script>
+
+<script>
+// Pixel + GA4 fire 후 리다이렉트 (500ms 대기로 전송 보장)
+setTimeout(function(){
   var dest = 'https://lealinebot-production.up.railway.app/r';
   var params = [
     'src=instagram_bio',
@@ -14,7 +51,7 @@
     'utm_campaign=bio_link'
   ];
   window.location.replace(dest + '?' + params.join('&'));
-})();
+}, 500);
 </script>
 </head>
 <body></body>
