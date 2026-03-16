@@ -137,32 +137,8 @@ body {
       }).catch(function() {});
     } catch(e) {}
 
-    // 友だち追加済みかチェック
-    var isFriend = false;
-    try {
-      var friendship = await liff.getFriendship();
-      isFriend = friendship.friendFlag;
-    } catch(e) {
-      // getFriendship 失敗時はフレンド追加ページへ
-      isFriend = false;
-    }
-
-    if (isFriend) {
-      // 既に友だち → トーク画面へ誘導 or ウィンドウを閉じる
-      showResult(
-        '<p class="msg">ご相談はトーク画面からどうぞ</p>' +
-        '<a href="https://line.me/R/oaMessage/@722xsnht/" class="btn">トークを開く</a>'
-      );
-      // LIFF 内なら3秒後に自動で閉じる試行
-      if (liff.isInClient()) {
-        setTimeout(function() {
-          try { liff.closeWindow(); } catch(e) {}
-        }, 3000);
-      }
-    } else {
-      // 友だち未追加 → 友だち追加ページへリダイレクト
-      window.location.href = LINE_ADD_URL;
-    }
+    // oaMessage で相談開始（友だち追加済みでも未追加でも同じ）
+    window.location.href = 'https://line.me/R/oaMessage/@722xsnht/?' + encodeURIComponent('相談を始める');
   }
 
   main();
