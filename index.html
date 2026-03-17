@@ -1112,9 +1112,10 @@ if(window.location.search.indexOf('test=1') === -1){
   var utmData = {};
   utmKeys.forEach(function(k){ var v = urlParams.get(k); if(v) utmData[k] = v; });
 
+  var fbclid = urlParams.get('fbclid');
+
   // Auto-detect Meta ad traffic when UTM params are missing
   if(!utmData.utm_source){
-    var fbclid = urlParams.get('fbclid');
     var ref = document.referrer.toLowerCase();
     var isMeta = fbclid || ref.indexOf('facebook.com') !== -1 || ref.indexOf('instagram.com') !== -1 || ref.indexOf('fb.com') !== -1 || ref.indexOf('lm.facebook.com') !== -1;
     if(isMeta){
