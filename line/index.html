@@ -60,8 +60,8 @@ try {
   var stored = localStorage.getItem('lea_ad_visit');
   if (stored) {
     adVisit = JSON.parse(stored);
-    // 24시간 이내만 유효
-    if (Date.now() - adVisit.ts > 604800000) adVisit = null; // 7일
+    // 7일 이내만 유효 (Meta 어트리뷰션 윈도우)
+    if (Date.now() - adVisit.ts > 604800000) adVisit = null;
   }
 } catch(e){}
 
