@@ -19,11 +19,18 @@ fbq('init', '1003353476194605');
 fbq('track', 'PageView');
 
 // Lead 이중 카운팅 방지: 메인 LP에서 이미 Lead 발생한 경우 스킵
+// adVisit 미리 확인 (Pixel Lead content_name 분기용)
+var _adVisitForPixel = null;
+try {
+  var _s = localStorage.getItem('lea_ad_visit');
+  if (_s) { _adVisitForPixel = JSON.parse(_s); if (Date.now() - _adVisitForPixel.ts > 604800000) _adVisitForPixel = null; }
+} catch(e){}
+
 try {
   var alreadyLead = sessionStorage.getItem('lea_lead_fired');
   if (!alreadyLead) {
     fbq('track', 'Lead', {
-      content_name: 'instagram_bio_line',
+      content_name: _adVisitForPixel ? 'ad_indirect_profile_line' : 'instagram_bio_line',
       value: 120000,
       currency: 'JPY'
     });
@@ -31,7 +38,7 @@ try {
   }
 } catch(e) {
   fbq('track', 'Lead', {
-    content_name: 'instagram_bio_line',
+    content_name: _adVisitForPixel ? 'ad_indirect_profile_line' : 'instagram_bio_line',
     value: 120000,
     currency: 'JPY'
   });
@@ -54,7 +61,7 @@ try {
   if (stored) {
     adVisit = JSON.parse(stored);
     // 24시간 이내만 유효
-    if (Date.now() - adVisit.ts > 86400000) adVisit = null;
+    if (Date.now() - adVisit.ts > 604800000) adVisit = null; // 7일
   }
 } catch(e){}
 
