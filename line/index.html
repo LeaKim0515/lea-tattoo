@@ -47,7 +47,9 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-QZSP3DHNW6');
+gtag('config', 'G-QZSP3DHNW6', {
+  campaign: { source: 'instagram', medium: 'paid_profile', name: 'bio_link' }
+});
 
 // GA4도 이중 카운팅 방지
 try {
@@ -79,7 +81,7 @@ setTimeout(function(){
   var params = [
     'src=instagram_bio',
     'utm_source=instagram',
-    'utm_medium=organic',
+    'utm_medium=paid_profile',
     'utm_campaign=bio_link'
   ];
   window.location.replace(dest + '?' + params.join('&'));
