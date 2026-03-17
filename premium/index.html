@@ -1121,6 +1121,20 @@ if(window.location.search.indexOf('test=1') === -1){
     }
   }
 
+  // ===== 광고 방문 정보 저장 (IG 프로필 경유 전환 추적용) =====
+  if (utmData.utm_source) {
+    try {
+      localStorage.setItem('lea_ad_visit', JSON.stringify({
+        utm_source: utmData.utm_source,
+        utm_medium: utmData.utm_medium || null,
+        utm_campaign: utmData.utm_campaign || null,
+        utm_content: utmData.utm_content || null,
+        fbclid: fbclid || null,
+        ts: Date.now()
+      }));
+    } catch(e){}
+  }
+
   // ===== LINE URL =====
   var msg = '大型の花タトゥーの相談をしたいです。\n' + SCHEDULE_MONTH + 'の空き状況を教えてください。';
   var baseLineUrl = 'https://lealinebot-production.up.railway.app/r';
@@ -1131,6 +1145,7 @@ if(window.location.search.indexOf('test=1') === -1){
     params.push('src=' + encodeURIComponent('premium_' + source));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
     if(fbclid) params.push('fbclid=' + encodeURIComponent(fbclid));
+    params.push('conversion_path=direct_lp');
     return baseLineUrl + '?' + params.join('&');
   }
 

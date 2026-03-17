@@ -30,7 +30,6 @@ try {
     sessionStorage.setItem('lea_lead_fired', '1');
   }
 } catch(e) {
-  // sessionStorage 불가 시 그냥 발송
   fbq('track', 'Lead', {
     content_name: 'instagram_bio_line',
     value: 120000,
@@ -47,17 +46,42 @@ src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', 'G-QZSP3DHNW6', {
-  campaign: { source: 'instagram', medium: 'paid_profile', name: 'bio_link' }
-});
 
-// GA4도 이중 카운팅 방지
+// 광고 LP 방문 이력 확인 → GA4 캠페인 소스 동적 설정
+var adVisit = null;
+try {
+  var stored = localStorage.getItem('lea_ad_visit');
+  if (stored) {
+    adVisit = JSON.parse(stored);
+    // 24시간 이내만 유효
+    if (Date.now() - adVisit.ts > 86400000) adVisit = null;
+  }
+} catch(e){}
+
+if (adVisit) {
+  // 광고 LP 방문 후 IG 프로필 경유 → 간접 전환
+  gtag('config', 'G-QZSP3DHNW6', {
+    campaign: {
+      source: adVisit.utm_source || 'meta',
+      medium: 'paid_profile',
+      name: adVisit.utm_campaign || 'ad_indirect'
+    }
+  });
+} else {
+  gtag('config', 'G-QZSP3DHNW6', {
+    campaign: { source: 'instagram', medium: 'organic_profile', name: 'bio_link' }
+  });
+}
+
+// GA4 이중 카운팅 방지
 try {
   if (!sessionStorage.getItem('lea_lead_fired_ga')) {
     gtag('event', 'generate_lead', {
-      content_name: 'instagram_bio_line',
+      content_name: adVisit ? 'ad_indirect_profile_line' : 'instagram_bio_line',
       value: 120000,
       currency: 'JPY',
+      conversion_path: adVisit ? 'ad_to_profile' : 'direct_profile',
+      original_campaign: adVisit ? (adVisit.utm_campaign || '') : '',
       send_to: 'G-QZSP3DHNW6',
       transport_type: 'beacon'
     });
@@ -65,7 +89,7 @@ try {
   }
 } catch(e) {
   gtag('event', 'generate_lead', {
-    content_name: 'instagram_bio_line',
+    content_name: adVisit ? 'ad_indirect_profile_line' : 'instagram_bio_line',
     value: 120000,
     currency: 'JPY',
     send_to: 'G-QZSP3DHNW6',
@@ -78,12 +102,31 @@ try {
 // Pixel + GA4 fire 후 리다이렉트 (500ms 대기로 전송 보장)
 setTimeout(function(){
   var dest = 'https://lealinebot-production.up.railway.app/r';
-  var params = [
-    'src=instagram_bio',
-    'utm_source=instagram',
-    'utm_medium=paid_profile',
-    'utm_campaign=bio_link'
-  ];
+  var params;
+
+  if (adVisit) {
+    // 광고 → LP 방문 → IG 프로필 → LINE 클릭 경로
+    params = [
+      'src=ad_indirect_profile',
+      'utm_source=' + encodeURIComponent(adVisit.utm_source || 'meta'),
+      'utm_medium=paid_profile',
+      'utm_campaign=' + encodeURIComponent(adVisit.utm_campaign || 'ad_indirect'),
+      'conversion_path=ad_to_profile'
+    ];
+    if (adVisit.utm_content) params.push('utm_content=' + encodeURIComponent(adVisit.utm_content));
+    if (adVisit.fbclid) params.push('fbclid=' + encodeURIComponent(adVisit.fbclid));
+    // 사용 완료 → 삭제 (중복 태깅 방지)
+    try { localStorage.removeItem('lea_ad_visit'); } catch(e){}
+  } else {
+    // 순수 IG 프로필 경유 (광고 LP 방문 없음)
+    params = [
+      'src=instagram_bio',
+      'utm_source=instagram',
+      'utm_medium=organic_profile',
+      'utm_campaign=bio_link'
+    ];
+  }
+
   window.location.replace(dest + '?' + params.join('&'));
 }, 500);
 </script>
