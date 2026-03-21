@@ -818,9 +818,58 @@ if(window.location.search.indexOf('test=1') === -1){
     to{opacity:1;transform:translateY(0)}
   }
 
+  /* ===== SIZE CARDS ===== */
+  .size-cards { padding: 28px 0 0; max-width: 480px; margin: 0 auto; }
+  .size-cards-label { font-family: var(--jp); text-align: center; font-size: 12px; color: var(--muted); letter-spacing: .2em; padding: 0 24px 16px; }
+
+  .size-card {
+    position: relative; margin: 0 12px 20px;
+    background: var(--bg2); border: 1px solid var(--border);
+    overflow: hidden; transition: border-color .4s ease, box-shadow .4s ease;
+  }
+  .size-card[id] { scroll-margin-top: 16px; }
+
+  @keyframes card-glow {
+    0% { border-color: var(--accent); box-shadow: 0 0 20px rgba(191,169,138,.15); }
+    100% { border-color: var(--border); box-shadow: none; }
+  }
+  .size-card.is-active { animation: card-glow 2s ease forwards; }
+
+  .size-card-img { position: relative; aspect-ratio: 4/5; overflow: hidden; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .size-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .size-card-img:hover img { transform: scale(1.03); }
+
+  .size-card-badge {
+    position: absolute; top: 12px; left: 12px; padding: 4px 10px;
+    font-family: var(--ui); font-size: 10px; font-weight: 400;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--text); background: rgba(8,8,8,.7);
+    border: 1px solid rgba(255,255,255,.06); pointer-events: none; z-index: 2;
+  }
+
+  .size-card-body { padding: 16px 16px 18px; }
+  .size-card-price { font-family: var(--en); font-size: 28px; font-weight: 300; color: var(--accent); letter-spacing: .15em; line-height: 1; margin-bottom: 4px; }
+  .size-card-desc { font-family: var(--jp); font-size: 12px; color: var(--sub); letter-spacing: .04em; line-height: 1.6; margin-bottom: 14px; }
+
+  .size-card-cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; background: #06C755; color: #fff;
+    font-family: var(--jp); font-size: 13px; font-weight: 500;
+    letter-spacing: .08em; text-decoration: none; padding: 12px 16px;
+    border: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: opacity .2s ease;
+  }
+  .size-card-cta:hover { opacity: .9; }
+  .size-card-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  .size-card-sub { font-family: var(--jp); font-size: 10px; color: var(--muted); text-align: center; margin-top: 8px; letter-spacing: .03em; }
+
+  .size-card--medium { border-color: rgba(191,169,138,.15); }
+  .size-card--medium .size-card-badge { border-bottom: 2px solid var(--accent); }
+
   @media(min-width:768px){
     .hero-c,.trust-usp,.process,.credentials,.review,.artist,.line-section{max-width:560px}
-    .trust-grid{max-width:560px}
+    .size-cards{max-width:560px} .size-card{margin:0 0 24px}
     .sticky{display:none}
   }
 </style>
@@ -856,7 +905,7 @@ if(window.location.search.indexOf('test=1') === -1){
     <div class="price">
       <div class="price-top">
         <div class="price-num">¥60,000〜</div>
-        <div class="price-size">4月 — 残り3枠</div>
+        <div class="price-size">4月7日〜22日 · 大阪</div>
       </div>
       <div class="price-date">4月7日〜22日 · 大阪</div>
       <div class="price-justify">完全オーダーメイド · ワンポイントから対応 · アフターケア込み</div>
@@ -864,47 +913,58 @@ if(window.location.search.indexOf('test=1') === -1){
 
     <a href="#" class="cta" id="heroCta">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      作品を見る
+      作品とサイズを見る
     </a>
-    <a href="#" class="hero-line-cta" id="heroLineCta" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      LINEで空き状況を確認
-    </a>
-    <div class="scarcity">今月を逃すと次は数ヶ月先 · 相談無料</div>
   </div>
 </section>
 
-<!-- ===== TRUST ===== -->
-<section class="trust">
-  <div class="trust-label">— 作品の一部 —</div>
-  <div class="trust-grid">
-    <div class="trust-item" data-gallery="1">
-      <img src="126.jpg" alt="Freehand small floral tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥60,000〜</span></div>
+<!-- ===== SIZE CARDS ===== -->
+<section class="size-cards">
+  <div class="size-cards-label">— サイズ別メニュー —</div>
+
+  <div class="size-card" id="small">
+    <div class="size-card-img" data-gallery="1">
+      <div class="size-card-badge">SMALL</div>
+      <img src="126.jpg" alt="Small freehand floral tattoo" width="480" height="600" loading="lazy">
     </div>
-    <div class="trust-item" data-gallery="2">
-      <img src="125.jpg" alt="Freehand mid-size floral tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥90,000〜</span></div>
+    <div class="size-card-body">
+      <div class="size-card-price">¥60,000〜</div>
+      <div class="size-card-desc">ワンポイント〜手のひらサイズ · いつでも予約OK<br>LINE相談 → デザイン確認 → 施術</div>
+      <a href="#" class="size-card-cta" id="smallCta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+        このサイズで相談する
+      </a>
+      <div class="size-card-sub">相談無料 · 予約義務なし</div>
     </div>
   </div>
 
-  <div class="trust-usp" id="trustUsp">
-    <div class="trust-usp-text" style="font-size:12px;line-height:1.6">
-      5ヶ国 · 数百件以上の実績 · 月数名限定の完全オーダーメイド
+  <div class="size-card size-card--medium" id="medium">
+    <div class="size-card-img" data-gallery="2">
+      <div class="size-card-badge">MEDIUM</div>
+      <img src="125.jpg" alt="Medium freehand floral tattoo" width="480" height="600" loading="lazy">
+    </div>
+    <div class="size-card-body">
+      <div class="size-card-price">¥90,000〜</div>
+      <div class="size-card-desc">手のひら以上〜腕まわりサイズ · 花の繊細さが映えるサイズ<br>LINE相談 → デザイン確認 → 施術</div>
+      <a href="#" class="size-card-cta" id="mediumCta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+        このサイズで相談する
+      </a>
+      <div class="size-card-sub">相談無料 · 予約義務なし</div>
     </div>
   </div>
 </section>
 
-<div class="mid-cta-wrap">
-  <div style="text-align:center;margin-bottom:12px">
-    <div style="font-family:var(--ui);font-size:22px;font-weight:500;color:var(--text);letter-spacing:1px">¥60,000〜</div>
-    <div style="font-size:11px;color:var(--muted);margin-top:4px">ワンポイントから · サイズに合わせてお見積もり</div>
+<div class="credentials">
+  <div class="cred-item"><div class="cred-num">5</div><div class="cred-text">ヶ国で<br>施術経験</div></div>
+  <div class="cred-divider"></div>
+  <div class="cred-item"><div class="cred-num">100+</div><div class="cred-text">件以上の<br>施術実績</div></div>
+</div>
+
+<div class="trust-usp" id="trustUsp">
+  <div class="trust-usp-text" style="font-size:12px;line-height:1.6">
+    5ヶ国 · 数百件以上の実績 · 月数名限定の完全オーダーメイド
   </div>
-  <a href="#" class="mid-cta" id="midCta1" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-    気になる作品について聞く
-  </a>
-  <div class="mid-cta-sub">予約義務なし · 相談無料</div>
 </div>
 
 <!-- ===== REVIEW (moved up: portfolio → review → CTA flow) ===== -->
@@ -960,13 +1020,6 @@ if(window.location.search.indexOf('test=1') === -1){
     </div>
   </div>
   <div class="process-note">相談無料 · 予約義務なし · 24時間以内に返信</div>
-
-  <div class="mid-cta-wrap" style="padding-top:24px">
-    <a href="#" class="mid-cta" id="midCta2" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      まずはLINEで相談（予約義務なし）
-    </a>
-  </div>
 </section>
 
 <!-- ===== ARTIST ===== -->
@@ -1024,10 +1077,10 @@ if(window.location.search.indexOf('test=1') === -1){
 
 <!-- ===== STICKY CTA ===== -->
 <div class="sticky" id="sticky">
-  <div class="sticky-price">4月 残り3枠 · 相談無料</div>
+  <div class="sticky-price">相談無料 · 予約義務なし</div>
   <a href="#" class="sticky-btn" id="stickyBtn" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-    残り3枠 · LINEで確認
+    まずはLINEで相談
   </a>
 </div>
 
@@ -1046,10 +1099,6 @@ if(window.location.search.indexOf('test=1') === -1){
       <div class="rl-arrow" id="rlNext">›</div>
     </div>
     <div class="rl-progress" id="rlProgress"></div>
-    <a class="rl-cta" id="rlCta" href="#" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      LINEで相談する
-    </a>
     <div class="rl-bottom-close" id="rlBottomClose">閉じる</div>
   </div>
 </div>
@@ -1063,12 +1112,6 @@ if(window.location.search.indexOf('test=1') === -1){
   <div class="lb-main" id="lbMain"></div>
   <div class="lb-label">その他の作品</div>
   <div class="lb-thumbs" id="lbThumbs"></div>
-  <div class="lb-cta-wrap">
-    <a href="#" class="lb-line-btn" id="lbLineBtn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      LINEで相談する
-    </a>
-  </div>
   <div class="lb-bottom-close" id="lbBottomClose"><span>閉じる</span></div>
 </div>
 
@@ -1085,10 +1128,6 @@ if(window.location.search.indexOf('test=1') === -1){
       <div class="am-row"><span>経験</span><span>5ヶ国（US·UK·FR·KR·TW）<br>数百件以上の施術実績</span></div>
       <div class="am-row"><span>費用</span><span>¥60,000〜（ワンポイントから）</span></div>
     </div>
-    <a class="am-cta" id="amCta" href="#" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      LINEで相談する
-    </a>
   </div>
 </div>
 
@@ -1145,18 +1184,25 @@ if(window.location.search.indexOf('test=1') === -1){
   var baseLineUrl = 'https://lealinebot-production.up.railway.app/r';
   var directLineUrl = 'https://line.me/R/ti/p/@722xsnht';
 
-  function buildLineUrl(source){
+  function buildLineUrl(source, size){
     var params = [];
     params.push('src=' + encodeURIComponent('standard_' + source));
+    if(size) params.push('size=' + encodeURIComponent(size));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
     if(fbclid) params.push('fbclid=' + encodeURIComponent(fbclid));
     params.push('conversion_path=direct_lp');
     return baseLineUrl + '?' + params.join('&');
   }
 
-  // Set all LINE links (default source)
-  var lineLinks = ['lineBtn','stickyBtn','lbLineBtn','rlCta','amCta','midCta1','midCta2','heroLineCta'];
-  lineLinks.forEach(function(id){
+  // Size card CTA links
+  var smallCta = document.getElementById('smallCta');
+  if(smallCta) smallCta.href = buildLineUrl('smallCta', 'small');
+  var mediumCta = document.getElementById('mediumCta');
+  if(mediumCta) mediumCta.href = buildLineUrl('mediumCta', 'medium');
+
+  // General CTAs (no size param)
+  var generalLinks = ['lineBtn','stickyBtn'];
+  generalLinks.forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.href = buildLineUrl(id);
   });
@@ -1167,7 +1213,7 @@ if(window.location.search.indexOf('test=1') === -1){
     heroCta.href = '#';
     heroCta.addEventListener('click', function(e){
       e.preventDefault();
-      document.querySelector('.trust').scrollIntoView({behavior:'smooth'});
+      document.querySelector('.size-cards').scrollIntoView({behavior:'smooth'});
     });
   }
 
@@ -1177,7 +1223,7 @@ if(window.location.search.indexOf('test=1') === -1){
   var lineDateMain = document.querySelector('.line-date-main');
   if(lineDateMain) lineDateMain.textContent = '施術可能日: ' + SCHEDULE_DATE;
   var stickyPrice = document.querySelector('.sticky-price');
-  if(stickyPrice) stickyPrice.textContent = SCHEDULE_MONTH + ' 残り3枠 · 相談無料';
+  if(stickyPrice) stickyPrice.textContent = '相談無料 · 予約義務なし';
 
   // Email
   var emailSubject = encodeURIComponent('花タトゥー相談 - leakim.art');
@@ -1206,6 +1252,10 @@ if(window.location.search.indexOf('test=1') === -1){
   var viewContentFired = false;
   var leadFired = false;
 
+  // Landing size detection
+  var landingSize = location.hash === '#medium' ? 'medium' : 'small';
+  var landingValue = landingSize === 'medium' ? 90000 : 60000;
+
   // ViewContent: scroll 15% + 2s dwell
   var scrollReached = false;
   var dwellReached = false;
@@ -1218,16 +1268,16 @@ if(window.location.search.indexOf('test=1') === -1){
         fbq('track', 'ViewContent', {
           content_name: 'standard_lp',
           content_category: 'tattoo',
-          value: 60000,
+          value: landingValue,
           currency: 'JPY'
         });
         fbq('trackCustom', 'ViewContentStandard', {
           content_name: 'standard_lp',
-          value: 60000,
+          value: landingValue,
           currency: 'JPY'
         });
       }
-      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'standard_lp', value: 60000, currency: 'JPY', send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'standard_lp', value: landingValue, currency: 'JPY', send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
     }
   }
 
@@ -1240,18 +1290,15 @@ if(window.location.search.indexOf('test=1') === -1){
   setTimeout(function(){ dwellReached = true; checkViewContent(); }, 2000);
 
   // Lead: LINE click
-  function handleLineClick(source){
-    // Update href with correct source param
-    var srcMap = {mainCTA:'lineBtn',stickyCTA:'stickyBtn',lightboxCTA:'lbLineBtn',reviewCTA:'rlCta',artistCTA:'amCta',midCTA1:'midCta1',midCTA2:'midCta2',heroLineCTA:'heroLineCta'};
-    var clickedEl = document.getElementById(srcMap[source] || source);
-    if(clickedEl) clickedEl.href = buildLineUrl(source);
+  function handleLineClick(source, size){
+    var value = size === 'small' ? 60000 : size === 'medium' ? 90000 : 60000;
 
     if(!leadFired && typeof fbq === 'function'){
       leadFired = true;
       var leadData = {
-        content_name: 'standard_line_send',
+        content_name: 'standard_line_send_' + (size || 'general'),
         content_category: 'tattoo',
-        value: 60000,
+        value: value,
         currency: 'JPY'
       };
       if(utmData.utm_campaign) leadData.utm_campaign = utmData.utm_campaign;
@@ -1259,7 +1306,7 @@ if(window.location.search.indexOf('test=1') === -1){
       fbq('track', 'Lead', leadData);
       fbq('trackCustom', 'LeadStandard', leadData);
       fbq('trackCustom', 'LineOpenAttemptStandard', {source: source, utm_campaign: utmData.utm_campaign || ''});
-      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'standard_line_send', value: 60000, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'standard_line_send_' + (size || 'general'), value: value, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
       try { sessionStorage.setItem('lea_lead_fired', '1'); sessionStorage.setItem('lea_lead_fired_ga', '1'); } catch(e){}
     }
     // Detect LINE open failure (3s for friend-add URL)
@@ -1278,11 +1325,8 @@ if(window.location.search.indexOf('test=1') === -1){
 
   document.getElementById('lineBtn').addEventListener('click', function(){ handleLineClick('mainCTA'); });
   document.getElementById('stickyBtn').addEventListener('click', function(){ handleLineClick('stickyCTA'); });
-  document.getElementById('lbLineBtn').addEventListener('click', function(){ handleLineClick('lightboxCTA'); });
-  document.getElementById('rlCta').addEventListener('click', function(){ handleLineClick('reviewCTA'); });
-  document.getElementById('midCta1').addEventListener('click', function(){ handleLineClick('midCTA1'); });
-  document.getElementById('midCta2').addEventListener('click', function(){ handleLineClick('midCTA2'); });
-  document.getElementById('heroLineCta').addEventListener('click', function(){ handleLineClick('heroLineCTA'); });
+  if(smallCta) smallCta.addEventListener('click', function(){ handleLineClick('smallCta', 'small'); });
+  if(mediumCta) mediumCta.addEventListener('click', function(){ handleLineClick('mediumCta', 'medium'); });
 
   document.getElementById('emailBtn').addEventListener('click', function(){
     if(typeof fbq === 'function') fbq('trackCustom','EmailClickStandard');
@@ -1305,10 +1349,6 @@ if(window.location.search.indexOf('test=1') === -1){
   document.getElementById('artistPhoto').addEventListener('click', openAm);
   document.getElementById('amClose').addEventListener('click', closeAm);
   am.addEventListener('click', function(e){ if(e.target === am) closeAm(); });
-  document.getElementById('amCta').addEventListener('click', function(){
-    closeAm();
-    handleLineClick('artistCTA');
-  });
 
   document.getElementById('heroCta').addEventListener('click', function(e){
     if(typeof fbq === 'function') fbq('trackCustom','HeroCTAClickStandard');
@@ -1389,8 +1429,8 @@ if(window.location.search.indexOf('test=1') === -1){
   document.getElementById('lbBottomClose').addEventListener('click', function(){ closeLb(); });
   lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
 
-  // Gallery items
-  document.querySelectorAll('.trust-item').forEach(function(item){
+  // Gallery items (size cards)
+  document.querySelectorAll('.size-card-img').forEach(function(item){
     item.addEventListener('click', function(){
       var id = item.getAttribute('data-gallery');
       if(galleries[id]){
@@ -1501,6 +1541,26 @@ if(window.location.search.indexOf('test=1') === -1){
     if(lb.classList.contains('open')) closeLb(true);
     if(rlOverlay.classList.contains('open')) rlClose(true);
   });
+
+  // ===== ANCHOR HIGHLIGHT =====
+  function highlightCard(){
+    var h = location.hash;
+    if(!h) return;
+    var el = document.querySelector(h);
+    if(el && el.classList.contains('size-card')){
+      el.classList.add('is-active');
+      setTimeout(function(){ el.classList.remove('is-active'); }, 2000);
+    }
+  }
+  window.addEventListener('hashchange', highlightCard);
+  window.addEventListener('load', highlightCard);
+
+  // ===== ANCHOR LANDING TRACKING =====
+  if(location.hash === '#small' || location.hash === '#medium'){
+    var anchorSize = location.hash.replace('#','');
+    if(typeof gtag === 'function') gtag('event', 'anchor_landing', {size: anchorSize, send_to: 'G-QZSP3DHNW6'});
+    if(typeof fbq === 'function') fbq('trackCustom', 'AnchorLanding', {size: anchorSize});
+  }
 
   // ===== SCROLL DEPTH =====
   var depthsFired = {};
