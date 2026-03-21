@@ -855,11 +855,11 @@ if(window.location.search.indexOf('test=1') === -1){
 
     <div class="price">
       <div class="price-top">
-        <div class="price-num">¥650,000〜</div>
+        <div class="price-num">¥650,000〜<span style="font-size:13px;font-weight:400;opacity:.7">（分割可）</span></div>
         <div class="price-size">4月 — 残り1枠</div>
       </div>
       <div class="price-date">4月7日〜22日 · 大阪</div>
-      <div class="price-justify">複数回セッション · 体に沿って一本ずつ設計 · 完全予約制</div>
+      <div class="price-justify">分割払い可 · 複数回セッション · 体に沿って一本ずつ設計</div>
     </div>
 
     <a href="#" class="cta" id="heroCta">
@@ -879,12 +879,16 @@ if(window.location.search.indexOf('test=1') === -1){
   <div class="trust-label">— 作品の一部 —</div>
   <div class="trust-grid">
     <div class="trust-item" data-gallery="1">
-      <img src="../work-3.jpg" alt="Freehand full sleeve floral tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥650,000〜</span></div>
+      <img src="../125.jpg" alt="Freehand mid-size floral tattoo" width="480" height="640" loading="lazy">
+      <div class="trust-item-price"><span>¥90,000〜</span></div>
     </div>
     <div class="trust-item" data-gallery="2">
-      <img src="../105.jpg" alt="Freehand large floral tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥650,000〜</span></div>
+      <img src="../113.JPG" alt="Freehand floral tattoo" width="480" height="640" loading="lazy">
+      <div class="trust-item-price"><span>¥120,000〜</span></div>
+    </div>
+    <div class="trust-item" data-gallery="3">
+      <img src="../115.jpg" alt="Freehand large floral tattoo" width="480" height="640" loading="lazy">
+      <div class="trust-item-price"><span>¥250,000〜</span></div>
     </div>
   </div>
 
@@ -897,8 +901,8 @@ if(window.location.search.indexOf('test=1') === -1){
 
 <div class="mid-cta-wrap">
   <div style="text-align:center;margin-bottom:12px">
-    <div style="font-family:var(--ui);font-size:22px;font-weight:500;color:var(--text);letter-spacing:1px">¥650,000〜</div>
-    <div style="font-size:11px;color:var(--muted);margin-top:4px">半袖〜フルスリーブ規模 · ご相談の上お見積もり</div>
+    <div style="font-family:var(--ui);font-size:22px;font-weight:500;color:var(--text);letter-spacing:1px">¥90,000〜</div>
+    <div style="font-size:11px;color:var(--muted);margin-top:4px">中型〜大型 · 65万円以上はご相談ください</div>
   </div>
   <a href="#" class="mid-cta" id="midCta1" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
@@ -1008,7 +1012,7 @@ if(window.location.search.indexOf('test=1') === -1){
   </div>
 
   <div class="line-bottom">
-    <div class="line-bottom-text">施術費 ¥650,000〜 · 半袖〜フルスリーブ規模</div>
+    <div class="line-bottom-text">施術費 ¥650,000〜（分割可）· 半袖〜フルスリーブ規模</div>
   </div>
 </section>
 
@@ -1079,7 +1083,7 @@ if(window.location.search.indexOf('test=1') === -1){
       <div class="am-row"><span>作業</span><span>体に合わせてその場で<br>ラインを調整しながら描きます</span></div>
       <div class="am-row"><span>場所</span><span>大阪中心部（詳細は予約確定後にご案内）</span></div>
       <div class="am-row"><span>経験</span><span>5ヶ国（US·UK·FR·KR·TW）<br>数百件以上の施術実績</span></div>
-      <div class="am-row"><span>費用</span><span>¥650,000〜（半袖〜フルスリーブ規模）</span></div>
+      <div class="am-row"><span>費用</span><span>¥650,000〜（分割払い可 · 半袖〜フルスリーブ規模）</span></div>
     </div>
     <a class="am-cta" id="amCta" href="#" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
@@ -1214,16 +1218,16 @@ if(window.location.search.indexOf('test=1') === -1){
         fbq('track', 'ViewContent', {
           content_name: 'premium_lp',
           content_category: 'tattoo',
-          value: 650000,
+          value: 90000,
           currency: 'JPY'
         });
         fbq('trackCustom', 'ViewContentPremium', {
           content_name: 'premium_lp',
-          value: 650000,
+          value: 90000,
           currency: 'JPY'
         });
       }
-      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'premium_lp', value: 650000, currency: 'JPY', send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'premium_lp', value: 90000, currency: 'JPY', send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
     }
   }
 
@@ -1247,7 +1251,7 @@ if(window.location.search.indexOf('test=1') === -1){
       var leadData = {
         content_name: 'premium_line_send',
         content_category: 'tattoo',
-        value: 650000,
+        value: 90000,
         currency: 'JPY'
       };
       if(utmData.utm_campaign) leadData.utm_campaign = utmData.utm_campaign;
@@ -1255,7 +1259,7 @@ if(window.location.search.indexOf('test=1') === -1){
       fbq('track', 'Lead', leadData);
       fbq('trackCustom', 'LeadPremium', leadData);
       fbq('trackCustom', 'LineOpenAttemptPremium', {source: source, utm_campaign: utmData.utm_campaign || ''});
-      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: 650000, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: 90000, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
     }
     // Detect LINE open failure (3s for friend-add URL)
     var lineOpened = false;
@@ -1324,8 +1328,9 @@ if(window.location.search.indexOf('test=1') === -1){
 
   // ===== LIGHTBOX =====
   var galleries = {
-    '1': ['../work-3.jpg','../75.jpg','../76.jpg','../77.jpg'],
-    '2': ['../105.jpg','../106.jpg','../107.jpg','../108.jpg','../109.jpg'],
+    '1': ['../125.jpg','../124.JPG','../123.jpg'],
+    '2': ['../113.JPG','../124.JPG','../126.jpg'],
+    '3': ['../115.jpg','../116.jpg','../121.jpg'],
     'hero': ['../88.jpg','../98.JPG','../99.jpg','../100.jpg']
   };
 
