@@ -915,6 +915,10 @@ if(window.location.search.indexOf('test=1') === -1){
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       作品とサイズを見る
     </a>
+    <a href="#" class="hero-line-cta" id="heroLineCta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      LINEで作品写真をもっと見る
+    </a>
   </div>
 </section>
 
@@ -1201,7 +1205,7 @@ if(window.location.search.indexOf('test=1') === -1){
   if(mediumCta) mediumCta.href = buildLineUrl('mediumCta', 'medium');
 
   // General CTAs (no size param)
-  var generalLinks = ['lineBtn','stickyBtn'];
+  var generalLinks = ['lineBtn','stickyBtn','heroLineCta'];
   generalLinks.forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.href = buildLineUrl(id);
@@ -1325,6 +1329,8 @@ if(window.location.search.indexOf('test=1') === -1){
 
   document.getElementById('lineBtn').addEventListener('click', function(){ handleLineClick('mainCTA'); });
   document.getElementById('stickyBtn').addEventListener('click', function(){ handleLineClick('stickyCTA'); });
+  var heroLineEl = document.getElementById('heroLineCta');
+  if(heroLineEl) heroLineEl.addEventListener('click', function(){ handleLineClick('heroLineCTA'); });
   if(smallCta) smallCta.addEventListener('click', function(){ handleLineClick('smallCta', 'small'); });
   if(mediumCta) mediumCta.addEventListener('click', function(){ handleLineClick('mediumCta', 'medium'); });
 
