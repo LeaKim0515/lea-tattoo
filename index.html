@@ -1190,7 +1190,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
   function buildLineUrl(source, size){
     var params = [];
-    params.push('src=' + encodeURIComponent('standard_' + source));
+    params.push('source=' + encodeURIComponent('standard_' + source));
     if(size) params.push('size=' + encodeURIComponent(size));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
     if(fbclid) params.push('fbclid=' + encodeURIComponent(fbclid));

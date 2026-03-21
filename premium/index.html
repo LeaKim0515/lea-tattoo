@@ -1251,7 +1251,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
   function buildLineUrl(source){
     var params = [];
-    params.push('src=' + encodeURIComponent('premium_' + source));
+    params.push('source=' + encodeURIComponent('premium_' + source));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
     if(fbclid) params.push('fbclid=' + encodeURIComponent(fbclid));
     params.push('conversion_path=direct_lp');
