@@ -287,7 +287,8 @@ if(window.location.search.indexOf('test=1') === -1){
     letter-spacing:.2em;padding:0 24px 12px;
   }
   .trust-grid{
-    display:grid;grid-template-columns:1fr 1fr;
+    display:grid;
+    grid-template-columns:1fr;
     gap:2px;max-width:400px;margin:0 auto;
   }
   .trust-item{
@@ -309,6 +310,24 @@ if(window.location.search.indexOf('test=1') === -1){
     font-family:var(--en);font-size:11px;font-weight:300;
     letter-spacing:.12em;
     color:rgba(255,255,255,.8);
+  }
+  .trust-item.featured{
+    aspect-ratio:16/10;
+    grid-column:1/-1;
+    border-top:1px solid var(--accent);
+  }
+  .trust-item.featured .trust-item-price span{
+    color:var(--accent);font-size:13px;letter-spacing:.15em;
+  }
+  .trust-item-label{
+    position:absolute;top:12px;left:12px;
+    font-family:var(--en);font-size:10px;font-weight:300;
+    letter-spacing:.25em;color:rgba(255,255,255,.5);
+    text-transform:uppercase;pointer-events:none;
+  }
+  .trust-sub-grid{
+    display:grid;grid-template-columns:1fr 1fr;
+    gap:2px;max-width:400px;margin:0 auto;
   }
   .trust-item::after{
     content:'';position:absolute;
@@ -821,6 +840,7 @@ if(window.location.search.indexOf('test=1') === -1){
   @media(min-width:768px){
     .hero-c,.trust-usp,.process,.credentials,.review,.artist,.line-section{max-width:560px}
     .trust-grid{max-width:560px}
+    .trust-sub-grid{max-width:560px}
     .sticky{display:none}
   }
 </style>
@@ -878,17 +898,28 @@ if(window.location.search.indexOf('test=1') === -1){
 <section class="trust">
   <div class="trust-label">— 作品の一部 —</div>
   <div class="trust-grid">
-    <div class="trust-item" data-gallery="1">
+    <div class="trust-item featured" data-gallery="1">
+      <img src="../115.jpg" alt="Large freehand floral sleeve tattoo" width="960" height="600" loading="lazy">
+      <div class="trust-item-label">LARGE WORK</div>
+      <div class="trust-item-price"><span>¥250,000〜</span></div>
+    </div>
+  </div>
+  <div class="trust-sub-grid">
+    <div class="trust-item" data-gallery="2">
       <img src="../125.jpg" alt="Freehand mid-size floral tattoo" width="480" height="640" loading="lazy">
       <div class="trust-item-price"><span>¥90,000〜</span></div>
     </div>
-    <div class="trust-item" data-gallery="2">
-      <img src="../113.JPG" alt="Freehand floral tattoo" width="480" height="640" loading="lazy">
+    <div class="trust-item" data-gallery="3">
+      <img src="../121.jpg" alt="Freehand floral arm tattoo" width="480" height="640" loading="lazy">
+      <div class="trust-item-price"><span>¥90,000〜</span></div>
+    </div>
+    <div class="trust-item" data-gallery="4">
+      <img src="../120.jpg" alt="Freehand floral forearm tattoo" width="480" height="640" loading="lazy">
       <div class="trust-item-price"><span>¥120,000〜</span></div>
     </div>
-    <div class="trust-item" data-gallery="3">
-      <img src="../115.jpg" alt="Freehand large floral tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥250,000〜</span></div>
+    <div class="trust-item" data-gallery="5">
+      <img src="../113.JPG" alt="Freehand large floral body tattoo" width="480" height="640" loading="lazy">
+      <div class="trust-item-price"><span>¥120,000〜</span></div>
     </div>
   </div>
 
@@ -1328,9 +1359,11 @@ if(window.location.search.indexOf('test=1') === -1){
 
   // ===== LIGHTBOX =====
   var galleries = {
-    '1': ['../125.jpg','../124.JPG','../123.jpg'],
-    '2': ['../113.JPG','../124.JPG','../126.jpg'],
-    '3': ['../115.jpg','../116.jpg','../121.jpg'],
+    '1': ['../115.jpg','../116.jpg','../97.jpg'],
+    '2': ['../125.jpg','../124.JPG','../123.jpg'],
+    '3': ['../121.jpg','../122.jpg','../119.jpg'],
+    '4': ['../120.jpg','../118.jpg','../105.jpg'],
+    '5': ['../113.JPG','../126.jpg','../100.jpg'],
     'hero': ['../88.jpg','../98.JPG','../99.jpg','../100.jpg']
   };
 
