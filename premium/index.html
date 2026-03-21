@@ -279,62 +279,110 @@ if(window.location.search.indexOf('test=1') === -1){
     cursor:default;user-select:none;
   }
 
-  /* ===== TRUST / PORTFOLIO ===== */
-  .trust{padding:28px 0 0;position:relative}
-  .trust-label{
+  /* ===== PORTFOLIO TIERS ===== */
+  .tiers{padding:28px 0 0;position:relative}
+  .tiers-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
-    letter-spacing:.2em;padding:0 24px 12px;
+    letter-spacing:.2em;padding:0 24px 16px;
   }
-  .trust-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:2px;max-width:400px;margin:0 auto;
+
+  .tier-card{
+    max-width:480px;margin:0 auto 2px;
+    position:relative;
   }
-  .trust-item{
+  .tier-card + .tier-card{margin-top:24px}
+
+  .tier-tag{
+    display:flex;align-items:center;gap:8px;
+    padding:10px 20px;
+    background:var(--bg2);border-bottom:1px solid var(--border);
+  }
+  .tier-tag-label{
+    font-family:var(--en);font-size:10px;font-weight:300;
+    letter-spacing:.25em;color:var(--muted);
+    text-transform:uppercase;
+  }
+  .tier-tag-price{
+    font-family:var(--en);font-size:20px;font-weight:300;
+    color:var(--accent);letter-spacing:.1em;
+  }
+  .tier-tag-size{
+    font-family:var(--jp);font-size:11px;
+    color:var(--sub);letter-spacing:.03em;
+    margin-left:auto;
+  }
+
+  .tier-hero{
     aspect-ratio:3/4;overflow:hidden;background:var(--bg2);
     cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;
   }
-  .trust-item img{
+  .tier-hero img{
     width:100%;height:100%;object-fit:cover;
     transition:transform .5s ease;
   }
-  .trust-item:hover img{transform:scale(1.03)}
-  .trust-item-price{
-    position:absolute;bottom:0;left:0;right:0;
-    padding:6px 0;
-    background:linear-gradient(to top,rgba(0,0,0,.75) 60%,transparent);
-    text-align:center;pointer-events:none;
-  }
-  .trust-item-price span{
-    font-family:var(--en);font-size:11px;font-weight:300;
-    letter-spacing:.12em;
-    color:rgba(255,255,255,.8);
-  }
-  .trust-item.featured{
-    aspect-ratio:16/10;
-    grid-column:1/-1;
-    border-top:1px solid var(--accent);
-  }
-  .trust-item.featured .trust-item-price span{
-    color:var(--accent);font-size:13px;letter-spacing:.15em;
-  }
-  .trust-item-label{
-    position:absolute;top:12px;left:12px;
-    font-family:var(--en);font-size:10px;font-weight:300;
-    letter-spacing:.25em;color:rgba(255,255,255,.5);
-    text-transform:uppercase;pointer-events:none;
-  }
-  .trust-sub-grid{
+  .tier-hero:hover img{transform:scale(1.03)}
+
+  .tier-subs{
     display:grid;grid-template-columns:1fr 1fr;
-    gap:2px;max-width:400px;margin:0 auto;
+    gap:2px;
   }
-  .trust-item::after{
+  .tier-sub-item{
+    aspect-ratio:3/4;overflow:hidden;background:var(--bg2);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;
+  }
+  .tier-sub-item img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .tier-sub-item:hover img{transform:scale(1.03)}
+
+  .tier-sub-item::after,.tier-hero::after{
     content:'';position:absolute;
-    bottom:34px;right:6px;width:22px;height:22px;
+    bottom:8px;right:8px;width:22px;height:22px;
     background:rgba(0,0,0,.55);border-radius:50%;pointer-events:none;
     background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23c4bdb6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cpolyline points='9 21 3 21 3 15'/%3E%3Cline x1='21' y1='3' x2='14' y2='10'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
     background-repeat:no-repeat;background-position:center;background-size:12px;
+  }
+
+  .tier-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;padding:13px 20px;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:13px;font-weight:500;
+    letter-spacing:.08em;text-decoration:none;
+    -webkit-tap-highlight-color:transparent;
+    transition:opacity .2s ease;
+    margin-top:2px;
+  }
+  .tier-cta:hover{opacity:.9}
+  .tier-cta svg{width:16px;height:16px;flex-shrink:0}
+  .tier-cta-sub{
+    text-align:center;font-family:var(--jp);font-size:10px;
+    color:var(--muted);letter-spacing:.03em;
+    padding:6px 20px 0;
+  }
+
+  /* Featured tier (large) gets accent border */
+  .tier-card.tier-featured .tier-tag{
+    border-top:1px solid rgba(191,169,138,.3);
+    background:rgba(191,169,138,.04);
+  }
+  .tier-card.tier-featured .tier-tag-price{
+    font-size:24px;
+  }
+  .tier-card.tier-featured .tier-hero{
+    aspect-ratio:16/10;
+  }
+
+  .tiers-usp{
+    max-width:480px;margin:0 auto;
+    padding:18px 24px 0;text-align:center;
+    cursor:default;user-select:none;
+  }
+  .tiers-usp-text{
+    font-family:var(--jp);font-size:12px;font-weight:400;
+    color:var(--sub);line-height:1.6;letter-spacing:.03em;
   }
 
   .credentials{
@@ -355,16 +403,6 @@ if(window.location.search.indexOf('test=1') === -1){
     color:var(--muted);letter-spacing:.03em;line-height:1.4;
   }
   .cred-divider{width:1px;height:24px;background:var(--border);flex-shrink:0}
-
-  .trust-usp{
-    max-width:480px;margin:0 auto;
-    padding:18px 24px 0;text-align:center;
-    cursor:default;user-select:none;
-  }
-  .trust-usp-text{
-    font-family:var(--jp);font-size:13px;font-weight:400;
-    color:var(--sub);line-height:1.8;letter-spacing:.03em;
-  }
 
   /* ===== REVIEW ===== */
   .review{
@@ -838,9 +876,8 @@ if(window.location.search.indexOf('test=1') === -1){
   }
 
   @media(min-width:768px){
-    .hero-c,.trust-usp,.process,.credentials,.review,.artist,.line-section{max-width:560px}
-    .trust-grid{max-width:560px}
-    .trust-sub-grid{max-width:560px}
+    .hero-c,.tiers-usp,.process,.credentials,.review,.artist,.line-section{max-width:560px}
+    .tier-card{max-width:560px}
     .sticky{display:none}
   }
 </style>
@@ -894,53 +931,89 @@ if(window.location.search.indexOf('test=1') === -1){
   </div>
 </section>
 
-<!-- ===== TRUST ===== -->
-<section class="trust">
-  <div class="trust-label">— 作品の一部 —</div>
-  <div class="trust-grid">
-    <div class="trust-item featured" data-gallery="1">
-      <img src="../115.jpg" alt="Large freehand floral sleeve tattoo" width="960" height="600" loading="lazy">
-      <div class="trust-item-label">LARGE WORK</div>
-      <div class="trust-item-price"><span>¥250,000〜</span></div>
+<!-- ===== PORTFOLIO TIERS (price ascending) ===== -->
+<section class="tiers">
+  <div class="tiers-label">— 作品とメニュー —</div>
+
+  <!-- TIER 1: 9万〜 (Small/Arm) -->
+  <div class="tier-card" id="tier1">
+    <div class="tier-tag">
+      <span class="tier-tag-price">¥90,000〜</span>
+      <span class="tier-tag-size">腕一周・ワンポイント大</span>
     </div>
-  </div>
-  <div class="trust-sub-grid">
-    <div class="trust-item" data-gallery="2">
-      <img src="../125.jpg" alt="Freehand mid-size floral tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥90,000〜</span></div>
+    <div class="tier-hero" data-gallery="t1">
+      <img src="../125.jpg" alt="Freehand floral arm tattoo ¥90,000" width="480" height="640" loading="lazy">
     </div>
-    <div class="trust-item" data-gallery="3">
-      <img src="../121.jpg" alt="Freehand floral arm tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥90,000〜</span></div>
+    <div class="tier-subs">
+      <div class="tier-sub-item" data-gallery="t1">
+        <img src="../121.jpg" alt="Freehand floral arm tattoo" width="480" height="640" loading="lazy">
+      </div>
+      <div class="tier-sub-item" data-gallery="t1">
+        <img src="../123.jpg" alt="Freehand floral forearm tattoo" width="480" height="640" loading="lazy">
+      </div>
     </div>
-    <div class="trust-item" data-gallery="4">
-      <img src="../120.jpg" alt="Freehand floral forearm tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥120,000〜</span></div>
-    </div>
-    <div class="trust-item" data-gallery="5">
-      <img src="../113.JPG" alt="Freehand large floral body tattoo" width="480" height="640" loading="lazy">
-      <div class="trust-item-price"><span>¥120,000〜</span></div>
-    </div>
+    <a href="#" class="tier-cta" id="tierCta1" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      この価格帯で相談する
+    </a>
+    <div class="tier-cta-sub">相談無料 · 予約義務なし</div>
   </div>
 
-  <div class="trust-usp" id="trustUsp">
-    <div class="trust-usp-text" style="font-size:12px;line-height:1.6">
+  <!-- TIER 2: 12万〜 (Medium) -->
+  <div class="tier-card" id="tier2">
+    <div class="tier-tag">
+      <span class="tier-tag-price">¥120,000〜</span>
+      <span class="tier-tag-size">半袖〜肩・脇腹</span>
+    </div>
+    <div class="tier-hero" data-gallery="t2">
+      <img src="../120.jpg" alt="Freehand floral shoulder tattoo ¥120,000" width="480" height="640" loading="lazy">
+    </div>
+    <div class="tier-subs">
+      <div class="tier-sub-item" data-gallery="t2">
+        <img src="../113.JPG" alt="Freehand floral body tattoo" width="480" height="640" loading="lazy">
+      </div>
+      <div class="tier-sub-item" data-gallery="t2">
+        <img src="../118.jpg" alt="Freehand floral side tattoo" width="480" height="640" loading="lazy">
+      </div>
+    </div>
+    <a href="#" class="tier-cta" id="tierCta2" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      この価格帯で相談する
+    </a>
+    <div class="tier-cta-sub">相談無料 · 予約義務なし</div>
+  </div>
+
+  <!-- TIER 3: 25万〜 (Large / Featured) -->
+  <div class="tier-card tier-featured" id="tier3">
+    <div class="tier-tag">
+      <span class="tier-tag-label">LARGE WORK</span>
+      <span class="tier-tag-price">¥250,000〜</span>
+      <span class="tier-tag-size">長袖・背中・大型</span>
+    </div>
+    <div class="tier-hero" data-gallery="t3">
+      <img src="../115.jpg" alt="Large freehand floral sleeve tattoo ¥250,000" width="960" height="600" loading="lazy">
+    </div>
+    <div class="tier-subs">
+      <div class="tier-sub-item" data-gallery="t3">
+        <img src="../116.jpg" alt="Large freehand floral tattoo" width="480" height="640" loading="lazy">
+      </div>
+      <div class="tier-sub-item" data-gallery="t3">
+        <img src="../109.jpg" alt="Large freehand body tattoo" width="480" height="640" loading="lazy">
+      </div>
+    </div>
+    <a href="#" class="tier-cta" id="tierCta3" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      大型作品を相談する
+    </a>
+    <div class="tier-cta-sub">分割払い可 · まずはお気軽に</div>
+  </div>
+
+  <div class="tiers-usp">
+    <div class="tiers-usp-text">
       5ヶ国 · 数百件以上の実績 · 月1〜2名限定の完全オーダーメイド
     </div>
   </div>
 </section>
-
-<div class="mid-cta-wrap">
-  <div style="text-align:center;margin-bottom:12px">
-    <div style="font-family:var(--ui);font-size:22px;font-weight:500;color:var(--text);letter-spacing:1px">¥90,000〜</div>
-    <div style="font-size:11px;color:var(--muted);margin-top:4px">腕一周〜大型 · サイズに合わせてお見積もり</div>
-  </div>
-  <a href="#" class="mid-cta" id="midCta1" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-    LINEで相談する
-  </a>
-  <div class="mid-cta-sub">ご質問はお気軽にどうぞ。予約義務はありません</div>
-</div>
 
 
 <!-- ===== PROCESS ===== -->
@@ -1186,7 +1259,7 @@ if(window.location.search.indexOf('test=1') === -1){
   }
 
   // Set all LINE links (default source)
-  var lineLinks = ['lineBtn','stickyBtn','lbLineBtn','rlCta','amCta','midCta1','midCta2','heroLineCta'];
+  var lineLinks = ['lineBtn','stickyBtn','lbLineBtn','rlCta','amCta','midCta2','heroLineCta','tierCta1','tierCta2','tierCta3'];
   lineLinks.forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.href = buildLineUrl(id);
@@ -1198,7 +1271,7 @@ if(window.location.search.indexOf('test=1') === -1){
     heroCta.href = '#';
     heroCta.addEventListener('click', function(e){
       e.preventDefault();
-      document.querySelector('.trust').scrollIntoView({behavior:'smooth'});
+      document.querySelector('.tiers').scrollIntoView({behavior:'smooth'});
     });
   }
 
@@ -1273,7 +1346,7 @@ if(window.location.search.indexOf('test=1') === -1){
   // Lead: LINE click
   function handleLineClick(source){
     // Update href with correct source param
-    var srcMap = {mainCTA:'lineBtn',stickyCTA:'stickyBtn',lightboxCTA:'lbLineBtn',reviewCTA:'rlCta',artistCTA:'amCta',midCTA1:'midCta1',midCTA2:'midCta2',heroLineCTA:'heroLineCta'};
+    var srcMap = {mainCTA:'lineBtn',stickyCTA:'stickyBtn',lightboxCTA:'lbLineBtn',reviewCTA:'rlCta',artistCTA:'amCta',midCTA2:'midCta2',heroLineCTA:'heroLineCta',tierCTA1:'tierCta1',tierCTA2:'tierCta2',tierCTA3:'tierCta3'};
     var clickedEl = document.getElementById(srcMap[source] || source);
     if(clickedEl) clickedEl.href = buildLineUrl(source);
 
@@ -1310,9 +1383,11 @@ if(window.location.search.indexOf('test=1') === -1){
   document.getElementById('stickyBtn').addEventListener('click', function(){ handleLineClick('stickyCTA'); });
   document.getElementById('lbLineBtn').addEventListener('click', function(){ handleLineClick('lightboxCTA'); });
   document.getElementById('rlCta').addEventListener('click', function(){ handleLineClick('reviewCTA'); });
-  document.getElementById('midCta1').addEventListener('click', function(){ handleLineClick('midCTA1'); });
   document.getElementById('midCta2').addEventListener('click', function(){ handleLineClick('midCTA2'); });
   document.getElementById('heroLineCta').addEventListener('click', function(){ handleLineClick('heroLineCTA'); });
+  document.getElementById('tierCta1').addEventListener('click', function(){ handleLineClick('tierCTA1'); });
+  document.getElementById('tierCta2').addEventListener('click', function(){ handleLineClick('tierCTA2'); });
+  document.getElementById('tierCta3').addEventListener('click', function(){ handleLineClick('tierCTA3'); });
 
   document.getElementById('emailBtn').addEventListener('click', function(){
     if(typeof fbq === 'function') fbq('trackCustom','EmailClickPremium');
@@ -1359,11 +1434,9 @@ if(window.location.search.indexOf('test=1') === -1){
 
   // ===== LIGHTBOX =====
   var galleries = {
-    '1': ['../115.jpg','../116.jpg','../97.jpg'],
-    '2': ['../125.jpg','../124.JPG','../123.jpg'],
-    '3': ['../121.jpg','../122.jpg','../119.jpg'],
-    '4': ['../120.jpg','../118.jpg','../105.jpg'],
-    '5': ['../113.JPG','../126.jpg','../100.jpg'],
+    't1': ['../125.jpg','../121.jpg','../123.jpg','../124.JPG','../122.jpg','../119.jpg'],
+    't2': ['../120.jpg','../113.JPG','../118.jpg','../105.jpg','../126.jpg'],
+    't3': ['../115.jpg','../116.jpg','../109.jpg','../97.jpg','../108.jpg','../100.jpg'],
     'hero': ['../88.jpg','../98.JPG','../99.jpg','../100.jpg']
   };
 
@@ -1422,12 +1495,16 @@ if(window.location.search.indexOf('test=1') === -1){
   document.getElementById('lbBottomClose').addEventListener('click', function(){ closeLb(); });
   lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
 
-  // Gallery items
-  document.querySelectorAll('.trust-item').forEach(function(item){
+  // Gallery items (tier heroes + sub items)
+  document.querySelectorAll('.tier-hero[data-gallery], .tier-sub-item[data-gallery]').forEach(function(item){
     item.addEventListener('click', function(){
       var id = item.getAttribute('data-gallery');
       if(galleries[id]){
-        openLb(galleries[id], 0);
+        // Find the index of the clicked image in its gallery
+        var clickedSrc = item.querySelector('img').getAttribute('src');
+        var startIdx = 0;
+        galleries[id].forEach(function(src, i){ if(src === clickedSrc) startIdx = i; });
+        openLb(galleries[id], startIdx);
         if(typeof fbq === 'function') fbq('trackCustom','GalleryOpenPremium',{gallery:id});
         if(typeof gtag === 'function') gtag('event', 'gallery_open', {gallery_id: id, send_to: 'G-QZSP3DHNW6'});
       }
