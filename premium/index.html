@@ -294,7 +294,7 @@ if(window.location.search.indexOf('test=1') === -1){
   .tier-card + .tier-card{margin-top:24px}
 
   .tier-tag{
-    display:flex;align-items:center;gap:8px;
+    display:flex;align-items:baseline;gap:8px;
     padding:10px 20px;
     background:var(--bg2);border-bottom:1px solid var(--border);
   }
@@ -303,13 +303,13 @@ if(window.location.search.indexOf('test=1') === -1){
     letter-spacing:.25em;color:var(--muted);
     text-transform:uppercase;
   }
-  .tier-tag-price{
-    font-family:var(--en);font-size:20px;font-weight:300;
-    color:var(--accent);letter-spacing:.1em;
-  }
   .tier-tag-size{
-    font-family:var(--jp);font-size:11px;
-    color:var(--sub);letter-spacing:.03em;
+    font-family:var(--jp);font-size:13px;font-weight:400;
+    color:var(--text);letter-spacing:.04em;
+  }
+  .tier-tag-price{
+    font-family:var(--en);font-size:15px;font-weight:300;
+    color:var(--sub);letter-spacing:.08em;
     margin-left:auto;
   }
 
@@ -369,7 +369,7 @@ if(window.location.search.indexOf('test=1') === -1){
     background:rgba(191,169,138,.04);
   }
   .tier-card.tier-featured .tier-tag-price{
-    font-size:24px;
+    font-size:17px;color:var(--accent);
   }
   .tier-card.tier-featured .tier-hero{
     aspect-ratio:16/10;
@@ -938,11 +938,11 @@ if(window.location.search.indexOf('test=1') === -1){
   <!-- TIER 1: 9万〜 (Small/Arm) -->
   <div class="tier-card" id="tier1">
     <div class="tier-tag">
-      <span class="tier-tag-price">¥90,000〜</span>
       <span class="tier-tag-size">腕一周・ワンポイント大</span>
+      <span class="tier-tag-price">¥90,000〜</span>
     </div>
     <div class="tier-hero" data-gallery="t1">
-      <img src="../125.jpg" alt="Freehand floral arm tattoo ¥90,000" width="480" height="640" loading="lazy">
+      <img src="../125.jpg" alt="Freehand floral arm tattoo" width="480" height="640" loading="lazy">
     </div>
     <div class="tier-subs">
       <div class="tier-sub-item" data-gallery="t1">
@@ -954,19 +954,19 @@ if(window.location.search.indexOf('test=1') === -1){
     </div>
     <a href="#" class="tier-cta" id="tierCta1" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      この価格帯で相談する
+      LINEで作品写真をもっと見る
     </a>
-    <div class="tier-cta-sub">相談無料 · 予約義務なし</div>
+    <div class="tier-cta-sub">友だち追加ですぐに作品集が届きます · 予約義務なし</div>
   </div>
 
   <!-- TIER 2: 12万〜 (Medium) -->
   <div class="tier-card" id="tier2">
     <div class="tier-tag">
-      <span class="tier-tag-price">¥120,000〜</span>
       <span class="tier-tag-size">半袖〜肩・脇腹</span>
+      <span class="tier-tag-price">¥120,000〜</span>
     </div>
     <div class="tier-hero" data-gallery="t2">
-      <img src="../120.jpg" alt="Freehand floral shoulder tattoo ¥120,000" width="480" height="640" loading="lazy">
+      <img src="../120.jpg" alt="Freehand floral shoulder tattoo" width="480" height="640" loading="lazy">
     </div>
     <div class="tier-subs">
       <div class="tier-sub-item" data-gallery="t2">
@@ -978,20 +978,20 @@ if(window.location.search.indexOf('test=1') === -1){
     </div>
     <a href="#" class="tier-cta" id="tierCta2" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      この価格帯で相談する
+      LINEで作品写真をもっと見る
     </a>
-    <div class="tier-cta-sub">相談無料 · 予約義務なし</div>
+    <div class="tier-cta-sub">友だち追加ですぐに作品集が届きます · 予約義務なし</div>
   </div>
 
   <!-- TIER 3: 25万〜 (Large / Featured) -->
   <div class="tier-card tier-featured" id="tier3">
     <div class="tier-tag">
       <span class="tier-tag-label">LARGE WORK</span>
-      <span class="tier-tag-price">¥250,000〜</span>
       <span class="tier-tag-size">長袖・背中・大型</span>
+      <span class="tier-tag-price">¥250,000〜</span>
     </div>
     <div class="tier-hero" data-gallery="t3">
-      <img src="../115.jpg" alt="Large freehand floral sleeve tattoo ¥250,000" width="960" height="600" loading="lazy">
+      <img src="../115.jpg" alt="Large freehand floral sleeve tattoo" width="960" height="600" loading="lazy">
     </div>
     <div class="tier-subs">
       <div class="tier-sub-item" data-gallery="t3">
@@ -1003,9 +1003,9 @@ if(window.location.search.indexOf('test=1') === -1){
     </div>
     <a href="#" class="tier-cta" id="tierCta3" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      大型作品を相談する
+      LINEで大型作品の実例を見る
     </a>
-    <div class="tier-cta-sub">分割払い可 · まずはお気軽に</div>
+    <div class="tier-cta-sub">分割払い可 · 友だち追加で実例集をお届け</div>
   </div>
 
   <div class="tiers-usp">
