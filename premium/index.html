@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="facebook-domain-verification" content="65kum56b9ubmh7d8uks48kgboxpbwi" />
 <title>lea — 花タトゥー専門 · 大阪 | 大型作品</title>
-<meta name="description" content="Lea Kim — 大阪の花タトゥー専門。体のラインに合わせてその場で調整しながらデザイン。完全オーダーメイドの花タトゥー。9万円〜">
+<meta name="description" content="Lea Kim — 大阪の花タトゥー専門。体のラインに合わせてその場で調整しながらデザイン。完全オーダーメイドの花タトゥー。">
 
 <!-- OG -->
 <meta property="og:title" content="lea — 花タトゥー専門 · 大阪 | 大型作品">
-<meta property="og:description" content="体に合わせてその場で調整しながらデザインする、完全オーダーメイドの花タトゥー。9万円〜">
+<meta property="og:description" content="体に合わせてその場で調整しながらデザインする、花タトゥー専門。完全オーダーメイド。大阪 · Lea Kim">
 <meta property="og:image" content="https://leakim.art/tier3-1.jpg">
 <meta property="og:url" content="https://leakim.art/premium/">
 <meta property="og:type" content="website">
@@ -1230,6 +1230,24 @@ if(window.location.search.indexOf('test=1') === -1){
     if(heroImg) heroImg.src = heroPhotoMap[photoParam];
   }
 
+  // P19 판별: utm_campaign에 'p19' 포함 또는 photo5/photo6/photo11 유입
+  var p19Photos = {'photo5':true,'photo6':true,'photo11':true};
+  var isP19 = (utmData.utm_campaign && utmData.utm_campaign.toLowerCase().indexOf('p19') !== -1)
+    || (photoParam && p19Photos[photoParam]);
+
+  // P19 히어로 가격 + 카피 동적 교체
+  if(isP19){
+    var priceNum = document.querySelector('.price-num');
+    var priceSize = document.querySelector('.price-size');
+    var priceJustify = document.querySelector('.price-justify');
+    if(priceNum) priceNum.textContent = '¥120,000〜';
+    if(priceSize) priceSize.textContent = '半袖〜肩まで · 完全オーダーメイド';
+    if(priceJustify) priceJustify.textContent = '半袖〜肩まで · フリーハンド · 完全オーダーメイド';
+  }
+
+  // Pixel/GA4 event value (P19: 120000, P18: 90000)
+  var landingValue = isP19 ? 120000 : 90000;
+
   // Auto-detect Meta ad traffic when UTM params are missing
   if(!utmData.utm_source){
     var ref = document.referrer.toLowerCase();
@@ -1334,16 +1352,16 @@ if(window.location.search.indexOf('test=1') === -1){
         fbq('track', 'ViewContent', {
           content_name: 'premium_lp',
           content_category: 'tattoo',
-          value: 90000,
+          value: landingValue,
           currency: 'JPY'
         });
         fbq('trackCustom', 'ViewContentPremium', {
           content_name: 'premium_lp',
-          value: 90000,
+          value: landingValue,
           currency: 'JPY'
         });
       }
-      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'premium_lp', value: 90000, currency: 'JPY', send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      if(typeof gtag === 'function') gtag('event', 'view_content', {content_name: 'premium_lp', value: landingValue, currency: 'JPY', send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
     }
   }
 
@@ -1367,7 +1385,7 @@ if(window.location.search.indexOf('test=1') === -1){
       var leadData = {
         content_name: 'premium_line_send',
         content_category: 'tattoo',
-        value: 90000,
+        value: landingValue,
         currency: 'JPY'
       };
       if(utmData.utm_campaign) leadData.utm_campaign = utmData.utm_campaign;
@@ -1375,7 +1393,7 @@ if(window.location.search.indexOf('test=1') === -1){
       fbq('track', 'Lead', leadData);
       fbq('trackCustom', 'LeadPremium', leadData);
       fbq('trackCustom', 'LineOpenAttemptPremium', {source: source, utm_campaign: utmData.utm_campaign || ''});
-      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: 90000, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: landingValue, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
     }
     // Detect LINE open failure (3s for friend-add URL)
     var lineOpened = false;
