@@ -1218,6 +1218,18 @@ if(window.location.search.indexOf('test=1') === -1){
 
   var fbclid = urlParams.get('fbclid');
 
+  // UTM-based dynamic hero image
+  var photoParam = urlParams.get('photo') || urlParams.get('utm_content');
+  var heroPhotoMap = {
+    'photo5': '../tier2-1.jpg',
+    'photo6': '../tier2-3.jpg',
+    'photo11': '../ad-photo11.jpg'
+  };
+  if(photoParam && heroPhotoMap[photoParam]){
+    var heroImg = document.getElementById('heroImg');
+    if(heroImg) heroImg.src = heroPhotoMap[photoParam];
+  }
+
   // Auto-detect Meta ad traffic when UTM params are missing
   if(!utmData.utm_source){
     var ref = document.referrer.toLowerCase();
