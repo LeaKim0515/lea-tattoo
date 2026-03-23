@@ -1205,6 +1205,9 @@ if(window.location.search.indexOf('test=1') === -1){
   if(photoParam && heroPhotoMap[photoParam]){
     var heroImg = document.getElementById('heroImg');
     if(heroImg) heroImg.src = heroPhotoMap[photoParam];
+    // tier2 メインカード画像も同じ写真に合わせる
+    var tier2Main = document.querySelector('#tier2 .tier-hero img');
+    if(tier2Main) tier2Main.src = heroPhotoMap[photoParam];
   }
 
   // Pixel/GA4 event value (基本: 120000)
