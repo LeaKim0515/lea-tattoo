@@ -1202,12 +1202,18 @@ if(window.location.search.indexOf('test=1') === -1){
     'photo6': '../tier2-3.jpg',
     'photo11': '../ad-photo11.jpg'
   };
+  var allPhotos = ['../tier2-1.jpg', '../ad-photo11.jpg', '../tier2-3.jpg'];
   if(photoParam && heroPhotoMap[photoParam]){
+    var mainSrc = heroPhotoMap[photoParam];
     var heroImg = document.getElementById('heroImg');
-    if(heroImg) heroImg.src = heroPhotoMap[photoParam];
-    // tier2 メインカード画像も同じ写真に合わせる
+    if(heroImg) heroImg.src = mainSrc;
+    // tier2 メイン = hero と同じ、サブ = 残り2枚をローテーション
     var tier2Main = document.querySelector('#tier2 .tier-hero img');
-    if(tier2Main) tier2Main.src = heroPhotoMap[photoParam];
+    if(tier2Main) tier2Main.src = mainSrc;
+    var subs = allPhotos.filter(function(p){ return p !== mainSrc; });
+    var subImgs = document.querySelectorAll('#tier2 .tier-sub-item img');
+    if(subImgs[0] && subs[0]) subImgs[0].src = subs[0];
+    if(subImgs[1] && subs[1]) subImgs[1].src = subs[1];
   }
 
   // Pixel/GA4 event value (基本: 120000)
