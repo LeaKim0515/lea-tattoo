@@ -51,7 +51,7 @@ if(window.location.search.indexOf('test=1') === -1){
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-QZSP3DHNW6');
+  gtag('config', 'G-QZSP3DHNW6', { send_page_view: false });
 }
 </script>
 
@@ -1227,8 +1227,21 @@ if(window.location.search.indexOf('test=1') === -1){
       utmData.utm_source = 'meta';
       utmData.utm_medium = 'paid';
       utmData.utm_campaign = utmData.utm_campaign || 'auto_detected';
-      if(ref.indexOf('instagram') !== -1) utmData.utm_source = 'instagram';
     }
+  }
+
+  // GA4 소스 표준화 — referrer 파편화 방지 (pageview도 여기서 발생)
+  if(typeof gtag === 'function'){
+    var ga4Config = {};
+    if(utmData.utm_source){
+      ga4Config.campaign = {
+        source: utmData.utm_source,
+        medium: utmData.utm_medium || '(none)',
+        name: utmData.utm_campaign || '(not set)'
+      };
+      if(utmData.utm_content) ga4Config.campaign.content = utmData.utm_content;
+    }
+    gtag('config', 'G-QZSP3DHNW6', ga4Config);
   }
 
   // ===== 광고 방문 정보 저장 (IG 프로필 경유 전환 추적용) =====
