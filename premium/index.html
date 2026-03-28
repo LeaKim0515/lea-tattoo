@@ -5,16 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="facebook-domain-verification" content="65kum56b9ubmh7d8uks48kgboxpbwi" />
 <title>lea — 花タトゥー専門 · 大阪 | 大型作品</title>
-<meta name="description" content="Lea Kim — 大阪の花タトゥー専門。体のラインに合わせてその場で調整しながらデザイン。完全オーダーメイドの花タトゥー。">
+<meta name="description" content="Lea Kim — 大阪の花タトゥー専門。体のラインに合わせてその場で調整しながらデザイン。完全オーダーメイドの花タトゥー。12万円〜">
 
 <!-- OG -->
 <meta property="og:title" content="lea — 花タトゥー専門 · 大阪 | 大型作品">
-<meta property="og:description" content="体に合わせてその場で調整しながらデザインする、花タトゥー専門。完全オーダーメイド。大阪 · Lea Kim">
-<meta property="og:image" content="https://leakim.art/tier3-1.jpg">
+<meta property="og:description" content="体に合わせてその場で調整しながらデザインする、完全オーダーメイドの花タトゥー。12万円〜">
+<meta property="og:image" content="https://leakim.art/premium/p21-hero.jpg">
 <meta property="og:url" content="https://leakim.art/premium/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <link rel="canonical" href="https://leakim.art/premium/">
+<link rel="alternate" hreflang="ja" href="https://leakim.art/premium/">
 
 <!-- FONTS -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -169,25 +170,6 @@ if(window.location.search.indexOf('test=1') === -1){
     color:var(--text);letter-spacing:.5px;opacity:.7;
   }
 
-  /* USP pill */
-  .usp{
-    display:inline-flex;align-items:center;gap:6px;
-    padding:5px 12px;
-    border:1px solid rgba(255,255,255,.08);
-    background:rgba(8,8,8,.7);
-    margin-bottom:14px;
-    opacity:0;animation:fu .7s ease .15s forwards;
-    text-shadow:var(--shadow);
-  }
-  .usp-dot{
-    width:6px;height:6px;border-radius:50%;
-    background:var(--accent);flex-shrink:0;
-  }
-  .usp-text{
-    font-family:var(--jp);font-size:12px;
-    color:var(--text);letter-spacing:.04em;opacity:.7;
-  }
-
   .hero-h{
     font-family:var(--jp);
     font-size:clamp(24px,7vw,36px);
@@ -202,52 +184,11 @@ if(window.location.search.indexOf('test=1') === -1){
   .hero-h-en{
     font-family:var(--jp);font-size:15px;font-weight:400;
     color:var(--sub);letter-spacing:.06em;
-    margin-bottom:10px;line-height:1.6;
+    margin-bottom:14px;line-height:1.6;
     opacity:0;animation:fu .7s ease .25s forwards;
     text-shadow:var(--shadow);
     cursor:default;user-select:none;
   }
-
-  /* Hero price */
-  .price{
-    padding:10px 16px;
-    background:rgba(8,8,8,.75);
-    border:1px solid var(--border);
-    margin-bottom:12px;
-    opacity:0;animation:fu .7s ease .65s forwards;
-    cursor:default;user-select:none;
-  }
-  .price-top{
-    display:flex;align-items:baseline;gap:10px;
-  }
-  .price-num{
-    font-family:var(--en);font-size:34px;
-    font-weight:300;color:var(--accent);letter-spacing:.18em;
-  }
-  .price-size{
-    font-family:var(--jp);font-size:12px;
-    color:var(--sub);letter-spacing:.05em;font-weight:400;
-  }
-  .price-date{font-size:11px;color:var(--muted);margin-top:4px}
-  .price-justify{
-    font-family:var(--jp);font-size:10px;
-    color:var(--info);letter-spacing:.04em;margin-top:6px;
-  }
-
-  /* Hero LINE CTA */
-  .hero-line-cta{
-    display:flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;
-    background:#06C755;color:#fff;
-    font-family:var(--jp);font-size:14px;font-weight:500;
-    letter-spacing:.08em;text-decoration:none;
-    padding:13px 24px;margin-top:8px;
-    transition:opacity .2s ease;
-    opacity:0;animation:fu .7s ease .35s forwards;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .hero-line-cta:hover{opacity:.9}
-  .hero-line-cta svg{width:18px;height:18px;flex-shrink:0}
 
   /* CTA */
   .cta{
@@ -279,116 +220,81 @@ if(window.location.search.indexOf('test=1') === -1){
     cursor:default;user-select:none;
   }
 
-  /* ===== PORTFOLIO TIERS ===== */
-  .tiers{padding:28px 0 0;position:relative}
-  .tiers-label{
+  /* ===== WORKS SHOWCASE ===== */
+  .works{padding:32px 0 0;max-width:480px;margin:0 auto}
+  .works-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
-    letter-spacing:.2em;padding:0 24px 16px;
+    letter-spacing:.2em;padding:0 24px 12px;
   }
-
-  .tier-card{
-    max-width:480px;margin:0 auto 2px;
-    position:relative;
+  .works-label--lg{
+    font-size:18px;
+    color:var(--text);
+    letter-spacing:.06em;
+    font-weight:400;
+    padding-bottom:6px;
   }
-  .tier-card + .tier-card{margin-top:24px}
-
-  .tier-tag{
-    display:flex;align-items:baseline;gap:8px;
-    padding:10px 20px;
-    background:var(--bg2);border-bottom:1px solid var(--border);
+  .works-label-sub{
+    display:block;
+    font-size:11px;
+    color:var(--muted);
+    letter-spacing:.04em;
+    font-weight:300;
+    margin-top:4px;
   }
-  .tier-tag-label{
-    font-family:var(--en);font-size:10px;font-weight:300;
-    letter-spacing:.25em;color:var(--muted);
-    text-transform:uppercase;
+  .works-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:3px;
+    padding:0 12px;
   }
-  .tier-tag-size{
-    font-family:var(--jp);font-size:13px;font-weight:400;
-    color:var(--text);letter-spacing:.04em;
-  }
-  .tier-tag-price{
-    font-family:var(--en);font-size:15px;font-weight:300;
-    color:var(--sub);letter-spacing:.08em;
-    margin-left:auto;
-  }
-
-  .tier-hero{
-    aspect-ratio:3/4;overflow:hidden;background:var(--bg2);
-    cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;
-  }
-  .tier-hero img{
-    width:100%;height:100%;object-fit:cover;
-    transition:transform .5s ease;
-  }
-  .tier-hero:hover img{transform:scale(1.03)}
-
-  .tier-subs{
-    display:grid;grid-template-columns:1fr 1fr;
-    gap:2px;
-  }
-  .tier-sub-item{
-    aspect-ratio:3/4;overflow:hidden;background:var(--bg2);
-    cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;
-  }
-  .tier-sub-item img{
-    width:100%;height:100%;object-fit:cover;
-    transition:transform .5s ease;
-  }
-  .tier-sub-item:hover img{transform:scale(1.03)}
-
-  .tier-sub-item::after,.tier-hero::after{
-    content:'';position:absolute;
-    bottom:8px;right:8px;width:22px;height:22px;
-    background:rgba(0,0,0,.55);border-radius:50%;pointer-events:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23c4bdb6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cpolyline points='9 21 3 21 3 15'/%3E%3Cline x1='21' y1='3' x2='14' y2='10'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:center;background-size:12px;
-  }
-
-  .tier-cta{
-    display:flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;padding:13px 20px;
-    background:#06C755;color:#fff;
-    font-family:var(--jp);font-size:13px;font-weight:500;
-    letter-spacing:.08em;text-decoration:none;
-    -webkit-tap-highlight-color:transparent;
-    transition:opacity .2s ease;
-    margin-top:2px;
-  }
-  .tier-cta:hover{opacity:.9}
-  .tier-cta svg{width:16px;height:16px;flex-shrink:0}
-  .tier-cta-sub{
-    text-align:center;font-family:var(--jp);font-size:10px;
-    color:var(--muted);letter-spacing:.03em;
-    padding:6px 20px 0;
-  }
-
-  /* Featured tier (large) gets accent border */
-  .tier-card.tier-featured .tier-tag{
-    border-top:1px solid rgba(191,169,138,.3);
-    background:rgba(191,169,138,.04);
-  }
-  .tier-card.tier-featured .tier-tag-price{
-    font-size:17px;color:var(--accent);
-  }
-  .tier-card.tier-featured .tier-hero{
+  .works-item{
     aspect-ratio:3/4;
+    overflow:hidden;
+    cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .works-item img{
+    width:100%;height:100%;
+    object-fit:cover;
+    transition:transform .5s ease;
+  }
+  .works-item:hover img{transform:scale(1.03)}
+  .works-item:last-child:nth-child(odd){grid-column:span 2;aspect-ratio:16/9}
+  .works-note{
+    text-align:center;
+    font-family:var(--jp);
+    font-size:12px;
+    color:var(--sub);
+    padding:16px 24px 0;
+    letter-spacing:.03em;
   }
 
-  .tiers-usp{
+  /* ===== ARTIST SECTION ===== */
+  .artist{
     max-width:480px;margin:0 auto;
-    padding:18px 24px 0;text-align:center;
-    cursor:default;user-select:none;
+    padding:32px 24px 0;
+    text-align:center;
   }
-  .tiers-usp-text{
-    font-family:var(--jp);font-size:12px;font-weight:400;
-    color:var(--sub);line-height:1.6;letter-spacing:.03em;
+  .artist-photo{
+    width:80px;height:80px;border-radius:50%;
+    object-fit:cover;margin:0 auto 16px;display:block;
+    border:2px solid var(--border);
+  }
+  .artist-name{
+    font-family:var(--ui);font-size:18px;
+    color:var(--text);letter-spacing:2px;margin-bottom:4px;
+  }
+  .artist-sub{
+    font-family:var(--ui);font-size:11px;
+    color:var(--muted);letter-spacing:1px;margin-bottom:12px;
   }
 
   .credentials{
     max-width:480px;margin:0 auto;
-    padding:18px 24px 0;
+    padding:0 24px;
     display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
+    margin-bottom:16px;
   }
   .cred-item{
     display:flex;align-items:center;gap:6px;
@@ -404,51 +310,74 @@ if(window.location.search.indexOf('test=1') === -1){
   }
   .cred-divider{width:1px;height:24px;background:var(--border);flex-shrink:0}
 
+  .artist-desc{
+    font-family:var(--jp);font-size:13px;font-weight:400;
+    color:var(--sub);line-height:1.8;letter-spacing:.03em;
+    cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,124,.15);
+    transition:opacity .15s ease;
+  }
+  .artist-desc:active{opacity:.7}
+  .artist-more{
+    font-family:var(--jp);font-size:10px;
+    color:var(--accent);letter-spacing:.03em;opacity:.7;
+    margin-top:8px;
+  }
+
   /* ===== REVIEW ===== */
   .review{
     max-width:480px;margin:0 auto;
-    padding:28px 24px 0;
+    padding:32px 24px 0;
+    border-top:1px solid var(--border);
   }
   .review-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
     letter-spacing:.2em;margin-bottom:16px;
   }
-  .review-card{
-    position:relative;padding:20px 20px 16px;
-    border:1px solid var(--border);background:var(--bg2);
-    cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,124,.15);
+
+  .reviews-stack{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+  .review-card-v2{
+    padding:18px 18px 14px;
+    border:1px solid var(--border);
+    background:var(--bg2);
+    position:relative;
+    cursor:pointer;
+    -webkit-tap-highlight-color:rgba(201,168,124,.15);
     transition:opacity .15s ease;
   }
-  .review-card:active{opacity:.7}
-  .review-see-more{
-    position:absolute;bottom:12px;right:16px;
-    font-family:var(--jp);font-size:10px;
-    color:var(--accent);letter-spacing:.03em;opacity:.7;
-  }
-  .review-quote{
-    font-family:var(--en);font-size:48px;font-weight:300;
+  .review-card-v2:active{opacity:.7}
+  .review-card-v2 .review-quote{
+    font-family:var(--en);font-size:40px;font-weight:300;
     color:var(--accent);line-height:1;opacity:.3;
-    position:absolute;top:8px;left:16px;
+    position:absolute;top:6px;left:14px;
   }
-  .review-text{
+  .review-card-v2 .review-text{
     font-family:var(--jp);font-size:13px;font-weight:400;
-    color:var(--sub);line-height:2;letter-spacing:.03em;padding-top:12px;
+    color:var(--sub);line-height:2;letter-spacing:.03em;padding-top:10px;
   }
-  .review-sub{
-    font-family:var(--jp);font-size:11px;color:var(--muted);
-    line-height:1.8;letter-spacing:.02em;margin-top:10px;
-    padding-top:10px;border-top:1px solid var(--border);
+  .review-card-v2 .review-author{
+    display:flex;align-items:center;gap:10px;margin-top:12px;
   }
-  .review-author{display:flex;align-items:center;gap:10px;margin-top:14px}
-  .review-avatar{
-    width:32px;height:32px;border-radius:50%;
+  .review-card-v2 .review-avatar{
+    width:28px;height:28px;border-radius:50%;
     background:var(--border);flex-shrink:0;
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--en);font-size:13px;font-weight:300;color:var(--muted);
+    font-family:var(--en);font-size:12px;font-weight:300;color:var(--muted);
   }
-  .review-name{font-family:var(--jp);font-size:11px;color:var(--sub);letter-spacing:.03em}
-  .review-via{font-family:var(--ui);font-size:9px;color:var(--muted);letter-spacing:.3px;margin-top:1px}
+  .review-card-v2 .review-name{font-family:var(--jp);font-size:11px;color:var(--sub);letter-spacing:.03em}
+  .review-card-v2 .review-via{font-family:var(--ui);font-size:9px;color:var(--muted);letter-spacing:.3px;margin-top:1px}
+  .review-more{
+    text-align:center;margin-top:12px;
+    font-family:var(--jp);font-size:11px;
+    color:var(--accent);letter-spacing:.03em;
+    cursor:pointer;padding:8px;opacity:.7;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .review-more:active{opacity:1}
 
   /* Review Lightbox */
   .rl-overlay{
@@ -516,46 +445,93 @@ if(window.location.search.indexOf('test=1') === -1){
   }
   .rl-bottom-close:active{color:var(--text)}
 
-  /* ===== ARTIST SECTION ===== */
-  .artist{
+  /* ===== MID-PAGE CTA ===== */
+  .mid-cta-wrap{padding:24px 24px 0;text-align:center;max-width:480px;margin:0 auto}
+  .mid-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:14px;font-weight:500;
+    letter-spacing:.1em;text-decoration:none;
+    padding:14px 20px;border:none;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition:opacity .2s ease;
+  }
+  .mid-cta:hover{opacity:.9}
+  .mid-cta svg{width:16px;height:16px;flex-shrink:0}
+  .mid-cta-sub{
+    font-family:var(--jp);font-size:10px;
+    color:var(--muted);margin-top:8px;
+    letter-spacing:.3px;
+  }
+
+  /* ===== PRICING TABLE ===== */
+  .pricing{
+    padding:36px 0 0;
     max-width:480px;margin:0 auto;
-    padding:32px 24px 0;
-    text-align:center;
+    background:rgba(255,255,255,.015);
+    border-top:1px solid rgba(191,169,138,.08);
   }
-  .artist-photo{
-    width:80px;height:80px;border-radius:50%;
-    object-fit:cover;margin:0 auto 16px;display:block;
-    border:2px solid var(--border);
+  .pricing-label{
+    font-family:var(--jp);text-align:center;
+    font-size:12px;color:var(--muted);
+    letter-spacing:.2em;padding:0 24px 20px;
   }
-  .artist-name{
-    font-family:var(--ui);font-size:18px;
-    color:var(--text);letter-spacing:2px;margin-bottom:4px;
+  .pricing-table{
+    margin:0 24px;
   }
-  .artist-sub{
-    font-family:var(--ui);font-size:11px;
-    color:var(--muted);letter-spacing:1px;margin-bottom:20px;
-  }
-  .artist-info{
-    text-align:left;padding:16px 0;
-    border-top:1px solid var(--border);
+  .pricing-row{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    padding:16px 0;
     border-bottom:1px solid var(--border);
   }
-  .artist-row{
-    display:flex;gap:10px;
-    font-family:var(--jp);font-size:12px;
-    color:var(--sub);line-height:1.7;margin-bottom:6px;
+  .pricing-row:first-child{
+    border-top:1px solid var(--border);
   }
-  .artist-row:last-child{margin-bottom:0}
-  .artist-row span:first-child{
-    color:var(--muted);flex-shrink:0;
-    font-family:var(--ui);font-size:10px;
-    letter-spacing:.5px;min-width:48px;padding-top:2px;
+  .pricing-row-size{
+    font-family:var(--jp);
+    font-size:13px;
+    font-weight:400;
+    color:var(--text);
+    letter-spacing:.03em;
+    flex-shrink:0;
+  }
+  .pricing-row-cm{
+    font-family:var(--ui);
+    font-size:10px;
+    color:var(--muted);
+    letter-spacing:.03em;
+    margin-left:4px;
+  }
+  .pricing-row-price{
+    font-family:var(--en);
+    font-size:20px;
+    font-weight:300;
+    color:var(--accent);
+    letter-spacing:.05em;
+    margin-left:auto;
+    padding-left:12px;
+    flex-shrink:0;
+    white-space:nowrap;
+  }
+  .pricing-note{
+    font-family:var(--jp);
+    font-size:10px;
+    color:var(--muted);
+    text-align:center;
+    padding:14px 24px 0;
+    letter-spacing:.03em;
+  }
+  .pricing-cta-wrap{
+    padding:20px 24px 0;
   }
 
   /* ===== PROCESS ===== */
   .process{
     max-width:480px;margin:0 auto;
-    padding:32px 24px 0;
+    padding:40px 24px 0;
   }
   .process-label{
     font-family:var(--jp);text-align:center;
@@ -760,27 +736,6 @@ if(window.location.search.indexOf('test=1') === -1){
   .am-cta svg{width:14px;height:14px;flex-shrink:0}
 
   /* ===== FOOTER ===== */
-  /* ===== MID-PAGE CTA ===== */
-  .mid-cta-wrap{
-    padding:20px 24px;text-align:center;
-  }
-  .mid-cta{
-    display:flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;max-width:480px;margin:0 auto;
-    background:#06C755;color:#fff;
-    font-family:var(--jp);font-size:14px;font-weight:500;
-    letter-spacing:.1em;text-decoration:none;
-    padding:14px 20px;border:none;cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
-    transition:opacity .2s ease;
-  }
-  .mid-cta:hover{opacity:.9}
-  .mid-cta svg{width:16px;height:16px;flex-shrink:0}
-  .mid-cta-sub{
-    font-family:var(--jp);font-size:10px;
-    color:var(--muted);margin-top:8px;
-    letter-spacing:.3px;
-  }
   footer{
     padding:20px 24px;text-align:center;
     border-top:1px solid var(--border);margin-top:0;
@@ -876,8 +831,7 @@ if(window.location.search.indexOf('test=1') === -1){
   }
 
   @media(min-width:768px){
-    .hero-c,.tiers-usp,.process,.credentials,.review,.artist,.line-section{max-width:560px}
-    .tier-card{max-width:560px}
+    .hero-c,.process,.credentials,.review,.artist,.line-section,.works,.mid-cta-wrap,.pricing{max-width:560px}
     .sticky{display:none}
   }
 </style>
@@ -885,10 +839,10 @@ if(window.location.search.indexOf('test=1') === -1){
 
 <body>
 
-<!-- ===== HERO ===== -->
+<!-- ===== 1. HERO ===== -->
 <section class="hero">
   <div class="hero-bg">
-    <img id="heroImg" src="../tier2-1.jpg" alt="Freehand floral tattoo by Lea Kim, Osaka" width="720" height="960" loading="eager" fetchpriority="high">
+    <img id="heroImg" src="p21-hero.jpg" alt="Freehand floral tattoo by Lea Kim, Osaka" width="720" height="960" loading="eager" fetchpriority="high">
     <div class="hero-grad"></div>
   </div>
 
@@ -902,98 +856,117 @@ if(window.location.search.indexOf('test=1') === -1){
       </div>
     </div>
 
-    <div class="usp">
-      <div class="usp-dot"></div>
-      <div class="usp-text">腕一周から大型まで。体に沿ってフリーハンドで設計します</div>
-    </div>
+    <h1 class="hero-h">あなただけの<em>花</em>を、肌に咲かせる</h1>
+    <p class="hero-h-en">体のラインに合わせて、その場でデザインするフリーハンドタトゥー</p>
 
-    <h1 class="hero-h">体を<em>纏う花</em></h1>
-    <p class="hero-h-en">大型の花タトゥーを、あなたの体に合わせて</p>
-
-    <div class="price">
-      <div class="price-top">
-        <div class="price-num">¥120,000〜</div>
-        <div class="price-size">ハーフスリーブ〜大型作品まで</div>
-      </div>
-      <div class="price-date">4月7日〜22日 · 大阪</div>
-      <div class="price-justify">ハーフスリーブ〜大型作品まで · フリーハンド · 完全オーダーメイド</div>
-    </div>
-
-    <a href="#" class="cta" id="heroCta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-      作品を見る
-    </a>
-    <a href="#" class="hero-line-cta" id="heroLineCta" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      あなたの理想をLINEで伝える
-    </a>
-    <div class="scarcity">今月を逃すと次は数ヶ月先 · 相談無料</div>
+    <div class="scarcity">¥120,000〜 · 相談無料 · 予約義務なし</div>
   </div>
 </section>
 
-<!-- ===== PORTFOLIO TIERS (price ascending) ===== -->
-<section class="tiers">
-  <div class="tiers-label">— 作品とメニュー —</div>
+<!-- ===== 2. WORKS SHOWCASE ===== -->
+<section class="works" id="worksSection">
+  <div class="works-label works-label--lg">¥120,000〜 の作品<span class="works-label-sub">手のひら×2 · ~28cm</span></div>
+  <div class="works-grid">
+    <div class="works-item" data-img-idx="0"><img src="p21-hero.jpg" alt="Premium floral tattoo 1" width="480" height="640" loading="lazy"></div>
+    <div class="works-item" data-img-idx="1"><img src="p21-work-1.jpg" alt="Premium floral tattoo 2" width="480" height="640" loading="lazy"></div>
+    <div class="works-item" data-img-idx="2"><img src="p21-work-2.jpg" alt="Premium floral tattoo 3" width="480" height="640" loading="lazy"></div>
+  </div>
+  <div class="works-note">すべてフリーハンド。腕〜大型サイズ</div>
+</section>
 
-  <!-- TIER 2: 12万〜 (Medium / Featured) -->
-  <div class="tier-card tier-featured" id="tier2">
-    <div class="tier-tag">
-      <span class="tier-tag-label">HALF SLEEVE UP</span>
-      <span class="tier-tag-size">半袖〜肩・脇腹</span>
-      <span class="tier-tag-price">¥120,000〜</span>
-    </div>
-    <div class="tier-hero" data-gallery="t2">
-      <img src="../tier2-1.jpg" alt="Freehand floral shoulder tattoo" width="480" height="640" loading="lazy">
-    </div>
-    <div class="tier-subs">
-      <div class="tier-sub-item" data-gallery="t2">
-        <img src="../ad-photo11.jpg" alt="Freehand floral body tattoo" width="480" height="640" loading="lazy">
-      </div>
-      <div class="tier-sub-item" data-gallery="t2">
-        <img src="../tier2-3.jpg" alt="Freehand floral side tattoo" width="480" height="640" loading="lazy">
-      </div>
-    </div>
-    <a href="#" class="tier-cta" id="tierCta2" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      このスタイルで相談する
-    </a>
-    <div class="tier-cta-sub">相談無料 · 予約義務なし</div>
+<!-- ===== 3. ARTIST + CREDENTIALS ===== -->
+<section class="artist" id="artistSection">
+  <img class="artist-photo" id="artistPhoto" src="79.jpg" alt="Lea Kim" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
+  <div class="artist-name">LEA KIM</div>
+  <div class="artist-sub">花タトゥー専門 · 大阪</div>
+
+  <div class="credentials">
+    <div class="cred-item"><div class="cred-num">5</div><div class="cred-text">ヶ国で<br>施術経験</div></div>
+    <div class="cred-divider"></div>
+    <div class="cred-item"><div class="cred-num">100+</div><div class="cred-text">件以上の<br>施術実績</div></div>
   </div>
 
-  <!-- TIER 3: 25万〜 (Large) -->
-  <div class="tier-card" id="tier3">
-    <div class="tier-tag">
-      <span class="tier-tag-label">LARGE WORK</span>
-      <span class="tier-tag-size">長袖・背中・大型</span>
-      <span class="tier-tag-price">¥250,000〜</span>
-    </div>
-    <div class="tier-hero" data-gallery="t3">
-      <img src="../tier3-1.jpg" alt="Large freehand floral sleeve tattoo" width="960" height="600" loading="lazy">
-    </div>
-    <div class="tier-subs">
-      <div class="tier-sub-item" data-gallery="t3">
-        <img src="../tier3-2.jpg" alt="Large freehand floral tattoo" width="480" height="640" loading="lazy">
-      </div>
-      <div class="tier-sub-item" data-gallery="t3">
-        <img src="../tier3-3.jpg" alt="Large freehand body tattoo" width="480" height="640" loading="lazy">
-      </div>
-    </div>
-    <a href="#" class="tier-cta" id="tierCta3" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      大型作品の制作プランを聞く
-    </a>
-    <div class="tier-cta-sub">相談無料 · 予約義務なし</div>
-  </div>
+  <div class="artist-desc" id="artistDesc">体に合わせてその場でラインを調整しながら描きます</div>
+  <div class="artist-more">詳しく見る ▸</div>
+</section>
 
-  <div class="tiers-usp">
-    <div class="tiers-usp-text">
-      5ヶ国 · 数百件以上の実績 · 月1〜2名限定の完全オーダーメイド
+<!-- ===== 4. PRICING TABLE ===== -->
+<section class="pricing" id="pricingSection">
+  <div class="pricing-label">— サイズ別料金 —</div>
+  <div class="pricing-table">
+    <div class="pricing-row">
+      <div class="pricing-row-size">手のひら×2<span class="pricing-row-cm">（~28cm）</span></div>
+      <div class="pricing-row-price">¥120,000〜</div>
     </div>
+    <div class="pricing-row">
+      <div class="pricing-row-size">スリーブ / 腕</div>
+      <div class="pricing-row-price">¥250,000〜¥400,000</div>
+    </div>
+    <div class="pricing-row">
+      <div class="pricing-row-size">スリーブ / 脚</div>
+      <div class="pricing-row-price">¥500,000〜¥650,000</div>
+    </div>
+  </div>
+  <div class="pricing-note">※ デザインの複雑さにより変動します</div>
+  <div class="pricing-cta-wrap">
+    <a href="#" class="mid-cta" id="pricingLineBtn" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      タトゥーの相談はLINEから
+    </a>
   </div>
 </section>
 
+<!-- ===== 5. REVIEWS — 3 cards ===== -->
+<section class="review">
+  <div class="review-label">— お客様の声 —</div>
+  <div class="reviews-stack">
+    <div class="review-card-v2">
+      <div class="review-quote">"</div>
+      <div class="review-text">繊細で美しく優しさもあり、その中に力強さもある雰囲気が作品に表れていると彫って頂いたタトゥーを見て思います。</div>
+      <div class="review-author">
+        <div class="review-avatar">C</div>
+        <div>
+          <div class="review-name">東京在住 Cさん</div>
+          <div class="review-via">Instagram DM より</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card-v2">
+      <div class="review-quote">"</div>
+      <div class="review-text">とても素晴らしい物をありがとうございました。脇腹に入れる勇気が出た際にはまたよろしくお願いいたします！</div>
+      <div class="review-author">
+        <div class="review-avatar">T</div>
+        <div>
+          <div class="review-name">東京在住 Tさん</div>
+          <div class="review-via">Instagram DM より</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card-v2">
+      <div class="review-quote">"</div>
+      <div class="review-text">最高に可愛いくて美しく完成がとても楽しみです！またよろしくお願いします。</div>
+      <div class="review-author">
+        <div class="review-avatar">K</div>
+        <div>
+          <div class="review-name">大阪在住 Kさん</div>
+          <div class="review-via">Instagram DM より</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="review-more" id="reviewMore">他2件を見る ▸</div>
+</section>
 
-<!-- ===== PROCESS ===== -->
+<!-- ===== 6. MID-PAGE LINE CTA ===== -->
+<div class="mid-cta-wrap">
+  <a href="#" class="mid-cta" id="midLineBtn" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+    タトゥーの相談はLINEから
+  </a>
+  <div class="mid-cta-sub">相談無料 · 予約義務なし</div>
+</div>
+
+<!-- ===== 7. PROCESS ===== -->
 <section class="process">
   <div class="process-label">— ご予約の流れ —</div>
   <div class="process-steps">
@@ -1001,7 +974,7 @@ if(window.location.search.indexOf('test=1') === -1){
       <div class="process-num">1</div>
       <div class="process-jp">相談</div>
       <div class="process-en">Consult</div>
-      <div class="process-sub">LINEでご相談</div>
+      <div class="process-sub">LINEで気軽に</div>
     </div>
     <div class="process-arrow">▸</div>
     <div class="process-step">
@@ -1019,67 +992,26 @@ if(window.location.search.indexOf('test=1') === -1){
     </div>
   </div>
   <div class="process-note">相談無料 · 予約義務なし · 24時間以内に返信</div>
-
-  <div class="mid-cta-wrap" style="padding-top:24px">
-    <a href="#" class="mid-cta" id="midCta2" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      施術イメージを送って制作プランをもらう
-    </a>
-  </div>
 </section>
 
-<!-- ===== REVIEW ===== -->
-<section class="review">
-  <div class="review-label">— お客様の声 —</div>
-  <div class="review-card" id="reviewOpen">
-    <div class="review-quote">"</div>
-    <div class="review-text">
-      繊細で美しく優しさもあり、<br>
-      その中に力強さもある雰囲気が<br>
-      作品に表れていると<br>
-      彫って頂いたタトゥーを見て思います。
-    </div>
-    <div class="review-sub">
-      自分にとってとても大切なタトゥーを<br>
-      担当して頂けて嬉しく思っています。
-    </div>
-    <div class="review-author">
-      <div class="review-avatar">C</div>
-      <div>
-        <div class="review-name">東京在住 Cさん</div>
-        <div class="review-via">Instagram DM より</div>
-      </div>
-    </div>
-    <div class="review-see-more">他4件 ▸</div>
-  </div>
-</section>
-
-<!-- ===== ARTIST ===== -->
-<section class="artist" id="artistSection">
-  <img class="artist-photo" id="artistPhoto" src="../79.jpg" alt="Lea Kim" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
-  <div class="artist-name">LEA KIM</div>
-  <div class="artist-sub">花タトゥー専門 · 大阪</div>
-  <div class="artist-info">
-    <div class="artist-row"><span>作業</span><span>体に合わせてその場で<br>ラインを調整しながら描きます</span></div>
-    <div class="artist-row"><span>場所</span><span>大阪中心部（詳細は予約確定後にご案内）</span></div>
-  </div>
-</section>
-
-
-<!-- ===== LINE CTA ===== -->
+<!-- ===== 8. LINE CTA SECTION ===== -->
 <section class="line-section" id="lineSection">
-  <div class="line-title">施術イメージを送って制作プランをもらう</div>
-  <div class="line-title-sub">まずはご相談ください</div>
+  <div class="line-title">LINEで気軽にご相談ください</div>
+  <div class="line-title-sub">デザイン相談 · お見積もり · 空き確認</div>
   <div class="line-date">
     <span class="line-date-main">施術可能日: 4月7日〜22日</span><br>
     ご都合に合わせて調整します
   </div>
 
-  <div class="line-reassure"><span>✓</span> 24時間以内に返信いたします</div>
+  <div class="line-benefits" style="text-align:left;max-width:280px;margin:0 auto 16px;font-size:13px;color:var(--sub);line-height:2">
+    <div>✓ 空き状況はLINEでお問い合わせ</div>
+    <div>✓ 希望に合わせた参考デザインを送付</div>
+    <div>✓ 正確なお見積もりをご案内</div>
+  </div>
 
   <a href="#" class="line-btn" id="lineBtn" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-    施術イメージを送って制作プランをもらう
+    LINEで気軽にご相談ください
   </a>
 
   <div class="line-expect">※ 友だち追加後、お気軽にメッセージください</div>
@@ -1093,12 +1025,13 @@ if(window.location.search.indexOf('test=1') === -1){
   </div>
 
   <div class="line-bottom">
-    <div class="line-bottom-text">施術費 ¥120,000〜 · 大型作品はご相談ください</div>
+    <div class="line-bottom-text">施術費 ¥120,000〜 · 腕〜大型サイズ</div>
   </div>
 </section>
 
 <div class="copy-toast" id="copyToast">コピーしました</div>
 
+<!-- ===== 9. FOOTER ===== -->
 <footer>
   <div class="foot">lea · Osaka, Japan</div>
 </footer>
@@ -1108,7 +1041,7 @@ if(window.location.search.indexOf('test=1') === -1){
   <div class="sticky-price">相談無料 · 予約義務なし</div>
   <a href="#" class="sticky-btn" id="stickyBtn" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-    LINEで相談する
+    まずはLINEで相談
   </a>
 </div>
 
@@ -1127,10 +1060,6 @@ if(window.location.search.indexOf('test=1') === -1){
       <div class="rl-arrow" id="rlNext">›</div>
     </div>
     <div class="rl-progress" id="rlProgress"></div>
-    <a class="rl-cta" id="rlCta" href="#" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      LINEで相談する
-    </a>
     <div class="rl-bottom-close" id="rlBottomClose">閉じる</div>
   </div>
 </div>
@@ -1144,12 +1073,6 @@ if(window.location.search.indexOf('test=1') === -1){
   <div class="lb-main" id="lbMain"></div>
   <div class="lb-label">その他の作品</div>
   <div class="lb-thumbs" id="lbThumbs"></div>
-  <div class="lb-cta-wrap">
-    <a href="#" class="lb-line-btn" id="lbLineBtn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      LINEで相談する
-    </a>
-  </div>
   <div class="lb-bottom-close" id="lbBottomClose"><span>閉じる</span></div>
 </div>
 
@@ -1157,19 +1080,15 @@ if(window.location.search.indexOf('test=1') === -1){
 <div class="am" id="am">
   <div class="am-card">
     <button class="am-close" id="amClose" aria-label="Close">&times;</button>
-    <img class="am-photo" src="../79.jpg" alt="Lea Kim">
+    <img class="am-photo" src="79.jpg" alt="Lea Kim">
     <div class="am-name">LEA KIM</div>
     <div class="am-sub">花タトゥー専門 · 大阪</div>
     <div class="am-info">
       <div class="am-row"><span>作業</span><span>体に合わせてその場で<br>ラインを調整しながら描きます</span></div>
       <div class="am-row"><span>場所</span><span>大阪中心部（詳細は予約確定後にご案内）</span></div>
       <div class="am-row"><span>経験</span><span>5ヶ国（US·UK·FR·KR·TW）<br>数百件以上の施術実績</span></div>
-      <div class="am-row"><span>費用</span><span>¥120,000〜（大型はご相談）</span></div>
+      <div class="am-row"><span>費用</span><span>¥120,000〜（腕〜大型サイズ）</span></div>
     </div>
-    <a class="am-cta" id="amCta" href="#" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      LINEで相談する
-    </a>
   </div>
 </div>
 
@@ -1183,7 +1102,6 @@ if(window.location.search.indexOf('test=1') === -1){
   var SCHEDULE_CITY = '大阪';
 
   // ===== UTM PARAMS =====
-  // Fix: Meta ads sometimes double-encode '?' as '%3F' in URL params
   var rawSearch = window.location.search;
   if(rawSearch.indexOf('%3F') !== -1 || rawSearch.indexOf('%3f') !== -1){
     rawSearch = rawSearch.replace(/%3F/gi, '&');
@@ -1194,50 +1112,6 @@ if(window.location.search.indexOf('test=1') === -1){
   utmKeys.forEach(function(k){ var v = urlParams.get(k); if(v) utmData[k] = v; });
 
   var fbclid = urlParams.get('fbclid');
-
-  // ===== A9: Deferred Deep Link — fbclid 보존 (IG 프로필 경유 복원) =====
-  try {
-    if (fbclid) {
-      localStorage.setItem('lea_fbclid', fbclid);
-      localStorage.setItem('lea_fbclid_ts', String(Date.now()));
-    } else {
-      var storedFbclid = localStorage.getItem('lea_fbclid');
-      var storedTs = localStorage.getItem('lea_fbclid_ts');
-      if (storedFbclid && storedTs) {
-        var ageMs = Date.now() - Number(storedTs);
-        if (ageMs < 90 * 24 * 60 * 60 * 1000) {
-          fbclid = storedFbclid;
-        } else {
-          localStorage.removeItem('lea_fbclid');
-          localStorage.removeItem('lea_fbclid_ts');
-        }
-      }
-    }
-  } catch(e){}
-
-  // UTM-based dynamic hero image
-  var photoParam = urlParams.get('photo') || urlParams.get('utm_content');
-  var heroPhotoMap = {
-    'photo5': '../tier2-1.jpg',
-    'photo6': '../tier2-3.jpg',
-    'photo11': '../ad-photo11.jpg'
-  };
-  var allPhotos = ['../tier2-1.jpg', '../ad-photo11.jpg', '../tier2-3.jpg'];
-  if(photoParam && heroPhotoMap[photoParam]){
-    var mainSrc = heroPhotoMap[photoParam];
-    var heroImg = document.getElementById('heroImg');
-    if(heroImg) heroImg.src = mainSrc;
-    // tier2 メイン = hero と同じ、サブ = 残り2枚をローテーション
-    var tier2Main = document.querySelector('#tier2 .tier-hero img');
-    if(tier2Main) tier2Main.src = mainSrc;
-    var subs = allPhotos.filter(function(p){ return p !== mainSrc; });
-    var subImgs = document.querySelectorAll('#tier2 .tier-sub-item img');
-    if(subImgs[0] && subs[0]) subImgs[0].src = subs[0];
-    if(subImgs[1] && subs[1]) subImgs[1].src = subs[1];
-  }
-
-  // Pixel/GA4 event value (基本: 120000)
-  var landingValue = 120000;
 
   // Auto-detect Meta ad traffic when UTM params are missing
   if(!utmData.utm_source){
@@ -1250,7 +1124,7 @@ if(window.location.search.indexOf('test=1') === -1){
     }
   }
 
-  // GA4 소스 표준화 — referrer 파편화 방지 (pageview도 여기서 발생)
+  // GA4 소스 표준화
   if(typeof gtag === 'function'){
     var ga4Config = {};
     if(utmData.utm_source){
@@ -1264,7 +1138,7 @@ if(window.location.search.indexOf('test=1') === -1){
     gtag('config', 'G-QZSP3DHNW6', ga4Config);
   }
 
-  // ===== 광고 방문 정보 저장 (IG 프로필 경유 전환 추적용) =====
+  // ===== 광고 방문 정보 저장 =====
   if (utmData.utm_source) {
     try {
       localStorage.setItem('lea_ad_visit', JSON.stringify({
@@ -1279,39 +1153,38 @@ if(window.location.search.indexOf('test=1') === -1){
   }
 
   // ===== LINE URL =====
-  var msg = '大型の花タトゥーの相談をしたいです。\n' + SCHEDULE_MONTH + 'の空き状況を教えてください。';
+  var msg = '花タトゥーの相談をしたいです。\n' + SCHEDULE_MONTH + 'の空き状況を教えてください。';
   var baseLineUrl = 'https://lealinebot-production.up.railway.app/r';
   var directLineUrl = 'https://line.me/R/ti/p/@722xsnht';
 
-  function buildLineUrl(source){
+  function buildLineUrl(source, size){
     var params = [];
     params.push('source=' + encodeURIComponent('premium_' + source));
+    if(size) params.push('size=' + encodeURIComponent(size));
     utmKeys.forEach(function(k){ if(utmData[k]) params.push(k + '=' + encodeURIComponent(utmData[k])); });
     if(fbclid) params.push('fbclid=' + encodeURIComponent(fbclid));
-    params.push('conversion_path=direct_lp');
+    params.push('conversion_path=direct_premium_lp');
     return baseLineUrl + '?' + params.join('&');
   }
 
-  // Set all LINE links (default source)
-  var lineLinks = ['lineBtn','stickyBtn','lbLineBtn','rlCta','amCta','midCta2','heroLineCta','tierCta2','tierCta3'];
-  lineLinks.forEach(function(id){
+  // General CTAs (no size param)
+  var generalLinks = ['lineBtn','stickyBtn','midLineBtn','pricingLineBtn'];
+  generalLinks.forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.href = buildLineUrl(id);
   });
 
-  // Hero CTA scrolls to portfolio
+  // Hero CTA scrolls to works section
   var heroCta = document.getElementById('heroCta');
   if(heroCta){
     heroCta.href = '#';
     heroCta.addEventListener('click', function(e){
       e.preventDefault();
-      document.querySelector('.tiers').scrollIntoView({behavior:'smooth'});
+      document.querySelector('.works').scrollIntoView({behavior:'smooth'});
     });
   }
 
   // 날짜 동적 반영
-  var priceDate = document.querySelector('.price-date');
-  if(priceDate) priceDate.textContent = SCHEDULE_DATE + ' · ' + SCHEDULE_CITY;
   var lineDateMain = document.querySelector('.line-date-main');
   if(lineDateMain) lineDateMain.textContent = '施術可能日: ' + SCHEDULE_DATE;
   var stickyPrice = document.querySelector('.sticky-price');
@@ -1336,13 +1209,18 @@ if(window.location.search.indexOf('test=1') === -1){
     var toast = document.getElementById('copyToast');
     toast.classList.add('show');
     setTimeout(function(){ toast.classList.remove('show'); }, 3000);
-    if(typeof fbq === 'function') fbq('trackCustom','CopyClickPremium');
+    if(typeof fbq === 'function') fbq('trackCustom','CopyClickStandard');
     if(typeof gtag === 'function') gtag('event', 'copy_click', {send_to: 'G-QZSP3DHNW6'});
   });
 
   // ===== PIXEL EVENTS =====
   var viewContentFired = false;
   var leadFired = false;
+  try { if(sessionStorage.getItem('lea_lead_fired')) leadFired = true; } catch(e){}
+
+  // Landing size detection
+  var landingSize = 'large';
+  var landingValue = 120000;
 
   // ViewContent: scroll 15% + 2s dwell
   var scrollReached = false;
@@ -1378,18 +1256,16 @@ if(window.location.search.indexOf('test=1') === -1){
   setTimeout(function(){ dwellReached = true; checkViewContent(); }, 2000);
 
   // Lead: LINE click
-  function handleLineClick(source){
-    // Update href with correct source param
-    var srcMap = {mainCTA:'lineBtn',stickyCTA:'stickyBtn',lightboxCTA:'lbLineBtn',reviewCTA:'rlCta',artistCTA:'amCta',midCTA2:'midCta2',heroLineCTA:'heroLineCta',tierCTA2:'tierCta2',tierCTA3:'tierCta3'};
-    var clickedEl = document.getElementById(srcMap[source] || source);
-    if(clickedEl) clickedEl.href = buildLineUrl(source);
+  function handleLineClick(source, size){
+    var sizeValues = {small:60000, medium:90000, large:120000, half_sleeve:250000, sleeve:450000, full_back:650000};
+    var value = sizeValues[size] || 120000;
 
     if(!leadFired && typeof fbq === 'function'){
       leadFired = true;
       var leadData = {
-        content_name: 'premium_line_send',
+        content_name: 'premium_line_send_' + (size || 'general'),
         content_category: 'tattoo',
-        value: landingValue,
+        value: value,
         currency: 'JPY'
       };
       if(utmData.utm_campaign) leadData.utm_campaign = utmData.utm_campaign;
@@ -1397,9 +1273,10 @@ if(window.location.search.indexOf('test=1') === -1){
       fbq('track', 'Lead', leadData);
       fbq('trackCustom', 'LeadPremium', leadData);
       fbq('trackCustom', 'LineOpenAttemptPremium', {source: source, utm_campaign: utmData.utm_campaign || ''});
-      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send', value: landingValue, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'premium_line_send_' + (size || 'general'), value: value, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
+      try { sessionStorage.setItem('lea_lead_fired', '1'); sessionStorage.setItem('lea_lead_fired_ga', '1'); } catch(e){}
     }
-    // Detect LINE open failure (3s for friend-add URL)
+    // Detect LINE open failure
     var lineOpened = false;
     function onHidden(){ if(document.hidden) lineOpened = true; }
     document.addEventListener('visibilitychange', onHidden);
@@ -1407,23 +1284,24 @@ if(window.location.search.indexOf('test=1') === -1){
       document.removeEventListener('visibilitychange', onHidden);
       if(!lineOpened){
         document.getElementById('lineFallback').classList.add('show');
-        if(typeof fbq === 'function') fbq('trackCustom','LineFallbackShownPremium');
-        if(typeof gtag === 'function') gtag('event', 'line_fallback', {send_to: 'G-QZSP3DHNW6'});
+        if(typeof fbq === 'function') fbq('trackCustom','LineFallbackShownStandard');
+        if(typeof gtag === 'function') gtag('event', 'line_fallback_shown', {send_to: 'G-QZSP3DHNW6'});
       }
     }, 3000);
   }
 
   document.getElementById('lineBtn').addEventListener('click', function(){ handleLineClick('mainCTA'); });
   document.getElementById('stickyBtn').addEventListener('click', function(){ handleLineClick('stickyCTA'); });
-  document.getElementById('lbLineBtn').addEventListener('click', function(){ handleLineClick('lightboxCTA'); });
-  document.getElementById('rlCta').addEventListener('click', function(){ handleLineClick('reviewCTA'); });
-  document.getElementById('midCta2').addEventListener('click', function(){ handleLineClick('midCTA2'); });
-  document.getElementById('heroLineCta').addEventListener('click', function(){ handleLineClick('heroLineCTA'); });
-  document.getElementById('tierCta2').addEventListener('click', function(){ handleLineClick('tierCTA2'); });
-  document.getElementById('tierCta3').addEventListener('click', function(){ handleLineClick('tierCTA3'); });
+
+  // midLineBtn
+  var midLineBtn = document.getElementById('midLineBtn');
+  if(midLineBtn) midLineBtn.addEventListener('click', function(){ handleLineClick('midLineCTA'); });
+
+  var pricingLineBtn = document.getElementById('pricingLineBtn');
+  if(pricingLineBtn) pricingLineBtn.addEventListener('click', function(){ handleLineClick('pricingLineCTA'); });
 
   document.getElementById('emailBtn').addEventListener('click', function(){
-    if(typeof fbq === 'function') fbq('trackCustom','EmailClickPremium');
+    if(typeof fbq === 'function') fbq('trackCustom','EmailClickStandard');
     if(typeof gtag === 'function') gtag('event', 'email_click', {send_to: 'G-QZSP3DHNW6'});
   });
 
@@ -1432,7 +1310,7 @@ if(window.location.search.indexOf('test=1') === -1){
   function openAm(){
     am.classList.add('open');
     document.body.style.overflow = 'hidden';
-    if(typeof fbq === 'function') fbq('trackCustom','ArtistViewPremium');
+    if(typeof fbq === 'function') fbq('trackCustom','ArtistViewStandard');
     if(typeof gtag === 'function') gtag('event', 'artist_view', {send_to: 'G-QZSP3DHNW6'});
   }
   function closeAm(){
@@ -1441,35 +1319,31 @@ if(window.location.search.indexOf('test=1') === -1){
   }
   document.getElementById('brandArea').addEventListener('click', openAm);
   document.getElementById('artistPhoto').addEventListener('click', openAm);
+  document.getElementById('artistDesc').addEventListener('click', openAm);
   document.getElementById('amClose').addEventListener('click', closeAm);
   am.addEventListener('click', function(e){ if(e.target === am) closeAm(); });
-  document.getElementById('amCta').addEventListener('click', function(){
-    closeAm();
-    handleLineClick('artistCTA');
-  });
 
-  document.getElementById('heroCta').addEventListener('click', function(e){
-    if(typeof fbq === 'function') fbq('trackCustom','HeroCTAClickPremium');
+  var heroCtaEl = document.getElementById('heroCta');
+  if(heroCtaEl) heroCtaEl.addEventListener('click', function(e){
+    if(typeof fbq === 'function') fbq('trackCustom','HeroCTAClickStandard');
     if(typeof gtag === 'function') gtag('event', 'hero_cta_click', {send_to: 'G-QZSP3DHNW6'});
-    // scroll only - no LINE open
   });
 
   // ===== STICKY CTA =====
   var sticky = document.getElementById('sticky');
-  var heroCta = document.getElementById('heroCta');
   var stickyObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(!entry.isIntersecting) sticky.classList.add('show');
       else sticky.classList.remove('show');
     });
   }, {threshold:0});
-  stickyObserver.observe(heroCta);
+  var heroSection = document.querySelector('.hero');
+  if(heroSection) stickyObserver.observe(heroSection);
 
   // ===== LIGHTBOX =====
   var galleries = {
-    't2': ['../tier2-1.jpg','../ad-photo11.jpg','../tier2-3.jpg'],
-    't3': ['../tier3-1.jpg','../tier3-2.jpg','../tier3-3.jpg'],
-    'hero': ['../tier2-1.jpg','../ad-photo11.jpg','../tier2-3.jpg']
+    'works': ['p21-hero.jpg','p21-work-1.jpg','p21-work-2.jpg'],
+    'hero': ['p21-hero.jpg','p21-work-1.jpg','p21-work-2.jpg']
   };
 
   var lb = document.getElementById('lb');
@@ -1527,17 +1401,13 @@ if(window.location.search.indexOf('test=1') === -1){
   document.getElementById('lbBottomClose').addEventListener('click', function(){ closeLb(); });
   lb.addEventListener('click', function(e){ if(e.target === lb) closeLb(); });
 
-  // Gallery items (tier heroes + sub items)
-  document.querySelectorAll('.tier-hero[data-gallery], .tier-sub-item[data-gallery]').forEach(function(item){
+  // Gallery items (size cards)
+  document.querySelectorAll('.size-card-img').forEach(function(item){
     item.addEventListener('click', function(){
       var id = item.getAttribute('data-gallery');
       if(galleries[id]){
-        // Find the index of the clicked image in its gallery
-        var clickedSrc = item.querySelector('img').getAttribute('src');
-        var startIdx = 0;
-        galleries[id].forEach(function(src, i){ if(src === clickedSrc) startIdx = i; });
-        openLb(galleries[id], startIdx);
-        if(typeof fbq === 'function') fbq('trackCustom','GalleryOpenPremium',{gallery:id});
+        openLb(galleries[id], 0);
+        if(typeof fbq === 'function') fbq('trackCustom','GalleryOpenStandard',{gallery:id});
         if(typeof gtag === 'function') gtag('event', 'gallery_open', {gallery_id: id, send_to: 'G-QZSP3DHNW6'});
       }
     });
@@ -1546,8 +1416,19 @@ if(window.location.search.indexOf('test=1') === -1){
   // Hero image → gallery
   document.getElementById('heroImg').addEventListener('click', function(){
     openLb(galleries['hero'], 0);
-    if(typeof fbq === 'function') fbq('trackCustom','HeroImageOpenGalleryPremium');
+    if(typeof fbq === 'function') fbq('trackCustom','HeroImageOpenGalleryStandard');
     if(typeof gtag === 'function') gtag('event', 'hero_image_gallery', {send_to: 'G-QZSP3DHNW6'});
+  });
+
+  // Works gallery items
+  document.querySelectorAll('.works-item').forEach(function(item){
+    item.addEventListener('click', function(){
+      var idx = parseInt(item.getAttribute('data-img-idx'));
+      var allImgs = galleries['works'];
+      openLb(allImgs, idx);
+      if(typeof fbq === 'function') fbq('trackCustom','WorksGalleryOpenStandard',{index:idx});
+      if(typeof gtag === 'function') gtag('event', 'works_gallery_open', {index: idx, send_to: 'G-QZSP3DHNW6'});
+    });
   });
 
   // ===== REVIEW LIGHTBOX =====
@@ -1622,11 +1503,20 @@ if(window.location.search.indexOf('test=1') === -1){
     if(!skipHistory && history.state && history.state.lb === 'review') history.back();
   }
 
-  document.getElementById('reviewOpen').addEventListener('click', function(){
-    rlOpen(0);
-    if(typeof fbq === 'function') fbq('trackCustom','ReviewOpenPremium');
-    if(typeof gtag === 'function') gtag('event', 'review_open', {send_to: 'G-QZSP3DHNW6'});
+  // Review card clicks → open review lightbox at corresponding index
+  document.querySelectorAll('.review-card-v2').forEach(function(card, i){
+    card.addEventListener('click', function(){
+      rlOpen(i);
+      if(typeof fbq === 'function') fbq('trackCustom','ReviewOpenStandard');
+      if(typeof gtag === 'function') gtag('event', 'review_open', {review_index: i, send_to: 'G-QZSP3DHNW6'});
+    });
   });
+
+  // "他2件を見る" click
+  document.getElementById('reviewMore').addEventListener('click', function(){
+    rlOpen(3);
+  });
+
   document.getElementById('rlClose').addEventListener('click', function(){ rlClose(); });
   document.getElementById('rlBottomClose').addEventListener('click', function(){ rlClose(); });
   rlOverlay.addEventListener('click', function(e){ if(e.target === rlOverlay) rlClose(); });
@@ -1644,6 +1534,26 @@ if(window.location.search.indexOf('test=1') === -1){
     if(rlOverlay.classList.contains('open')) rlClose(true);
   });
 
+  // ===== ANCHOR HIGHLIGHT =====
+  function highlightCard(){
+    var h = location.hash;
+    if(!h) return;
+    var el = document.querySelector(h);
+    if(el && el.classList.contains('size-card')){
+      el.classList.add('is-active');
+      setTimeout(function(){ el.classList.remove('is-active'); }, 2000);
+    }
+  }
+  window.addEventListener('hashchange', highlightCard);
+  window.addEventListener('load', highlightCard);
+
+  // ===== ANCHOR LANDING TRACKING =====
+  if(location.hash === '#small' || location.hash === '#medium'){
+    var anchorSize = location.hash.replace('#','');
+    if(typeof gtag === 'function') gtag('event', 'anchor_landing', {size: anchorSize, send_to: 'G-QZSP3DHNW6'});
+    if(typeof fbq === 'function') fbq('trackCustom', 'AnchorLanding', {size: anchorSize});
+  }
+
   // ===== SCROLL DEPTH =====
   var depthsFired = {};
   window.addEventListener('scroll', function(){
@@ -1651,7 +1561,7 @@ if(window.location.search.indexOf('test=1') === -1){
     [25,50,75,100].forEach(function(t){
       if(pct >= t && !depthsFired[t]){
         depthsFired[t] = true;
-        if(typeof fbq === 'function') fbq('trackCustom','ScrollDepthPremium',{depth:t});
+        if(typeof fbq === 'function') fbq('trackCustom','ScrollDepthStandard',{depth:t});
         if(typeof gtag === 'function') gtag('event', 'scroll_depth', {depth: t, send_to: 'G-QZSP3DHNW6'});
       }
     });
@@ -1705,16 +1615,22 @@ if(window.location.search.indexOf('test=1') === -1){
     flushTimer = setTimeout(flush, 2000);
   }
 
+  // 1) Pageview
   pushEvent('pageview', { referrer: document.referrer, url: location.href });
 
+  // 2) Scroll depth (10,25,50,75,100)
   var scrollFired = {};
   window.addEventListener('scroll', function() {
     var pct = Math.round(((window.scrollY + window.innerHeight) / document.documentElement.scrollHeight) * 100);
     [10,25,50,75,100].forEach(function(t) {
-      if (pct >= t && !scrollFired[t]) { scrollFired[t] = true; pushEvent('scroll_depth', { depth: t }); }
+      if (pct >= t && !scrollFired[t]) {
+        scrollFired[t] = true;
+        pushEvent('scroll_depth', { depth: t });
+      }
     });
   }, { passive: true });
 
+  // 3) Rage click
   var clickLog = [];
   document.addEventListener('click', function(e) {
     var now = Date.now();
@@ -1723,9 +1639,13 @@ if(window.location.search.indexOf('test=1') === -1){
     var nearby = clickLog.filter(function(c) {
       return Math.abs(c.x - e.clientX) < 30 && Math.abs(c.y - e.clientY) < 30;
     });
-    if (nearby.length >= 3) { pushEvent('rage_click', { x: e.clientX, y: e.clientY, target: e.target.tagName }); clickLog = []; }
+    if (nearby.length >= 3) {
+      pushEvent('rage_click', { x: e.clientX, y: e.clientY, target: e.target.tagName });
+      clickLog = [];
+    }
   });
 
+  // 4) Dead click
   function getSelector(el) {
     if (el.id) return '#' + el.id;
     var parts = [];
@@ -1752,7 +1672,8 @@ if(window.location.search.indexOf('test=1') === -1){
   document.addEventListener('click', function(e) {
     var tag = e.target.tagName.toLowerCase();
     var interactive = ['a','button','input','select','textarea','label'];
-    if (interactive.indexOf(tag) === -1 && !e.target.closest('a,button,[role="button"],[onclick]')) {
+    var isInteractive = interactive.indexOf(tag) !== -1 || e.target.closest('a,button,[role="button"],[onclick]');
+    if (!isInteractive) {
       var ph = document.documentElement.scrollHeight || 1;
       pushEvent('dead_click', {
         x: e.clientX, y: e.clientY,
@@ -1765,16 +1686,21 @@ if(window.location.search.indexOf('test=1') === -1){
     }
   });
 
+  // 5) Quick exit
   var entryTime = Date.now();
   window.addEventListener('beforeunload', function() {
-    if (Date.now() - entryTime < 5000) pushEvent('quick_exit', { duration: Date.now() - entryTime });
+    if (Date.now() - entryTime < 5000) {
+      pushEvent('quick_exit', { duration: Date.now() - entryTime });
+    }
     flush();
   });
 
+  // 6) JS error
   window.addEventListener('error', function(e) {
     pushEvent('js_error', { message: e.message, source: e.filename, line: e.lineno });
   });
 
+  // 7) Heartbeat (30s, max 10min)
   var heartbeats = 0;
   var hbInterval = setInterval(function() {
     heartbeats++;
