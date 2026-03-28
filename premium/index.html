@@ -1195,6 +1195,26 @@ if(window.location.search.indexOf('test=1') === -1){
 
   var fbclid = urlParams.get('fbclid');
 
+  // ===== A9: Deferred Deep Link — fbclid 보존 (IG 프로필 경유 복원) =====
+  try {
+    if (fbclid) {
+      localStorage.setItem('lea_fbclid', fbclid);
+      localStorage.setItem('lea_fbclid_ts', String(Date.now()));
+    } else {
+      var storedFbclid = localStorage.getItem('lea_fbclid');
+      var storedTs = localStorage.getItem('lea_fbclid_ts');
+      if (storedFbclid && storedTs) {
+        var ageMs = Date.now() - Number(storedTs);
+        if (ageMs < 90 * 24 * 60 * 60 * 1000) {
+          fbclid = storedFbclid;
+        } else {
+          localStorage.removeItem('lea_fbclid');
+          localStorage.removeItem('lea_fbclid_ts');
+        }
+      }
+    }
+  } catch(e){}
+
   // UTM-based dynamic hero image
   var photoParam = urlParams.get('photo') || urlParams.get('utm_content');
   var heroPhotoMap = {
