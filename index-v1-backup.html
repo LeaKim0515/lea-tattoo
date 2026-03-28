@@ -171,6 +171,25 @@ if(window.location.search.indexOf('test=1') === -1){
     color:var(--text);letter-spacing:.5px;opacity:.7;
   }
 
+  /* USP pill */
+  .usp{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:5px 12px;
+    border:1px solid rgba(255,255,255,.08);
+    background:rgba(8,8,8,.7);
+    margin-bottom:14px;
+    opacity:0;animation:fu .7s ease .15s forwards;
+    text-shadow:var(--shadow);
+  }
+  .usp-dot{
+    width:6px;height:6px;border-radius:50%;
+    background:var(--accent);flex-shrink:0;
+  }
+  .usp-text{
+    font-family:var(--jp);font-size:12px;
+    color:var(--text);letter-spacing:.04em;opacity:.7;
+  }
+
   .hero-h{
     font-family:var(--jp);
     font-size:clamp(24px,7vw,36px);
@@ -185,11 +204,52 @@ if(window.location.search.indexOf('test=1') === -1){
   .hero-h-en{
     font-family:var(--jp);font-size:15px;font-weight:400;
     color:var(--sub);letter-spacing:.06em;
-    margin-bottom:14px;line-height:1.6;
+    margin-bottom:10px;line-height:1.6;
     opacity:0;animation:fu .7s ease .25s forwards;
     text-shadow:var(--shadow);
     cursor:default;user-select:none;
   }
+
+  /* Hero price */
+  .price{
+    padding:10px 16px;
+    background:rgba(8,8,8,.75);
+    border:1px solid var(--border);
+    margin-bottom:12px;
+    opacity:0;animation:fu .7s ease .65s forwards;
+    cursor:default;user-select:none;
+  }
+  .price-top{
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .price-num{
+    font-family:var(--en);font-size:34px;
+    font-weight:300;color:var(--accent);letter-spacing:.18em;
+  }
+  .price-size{
+    font-family:var(--jp);font-size:12px;
+    color:var(--sub);letter-spacing:.05em;font-weight:400;
+  }
+  .price-date{font-size:11px;color:var(--muted);margin-top:4px}
+  .price-justify{
+    font-family:var(--jp);font-size:10px;
+    color:var(--info);letter-spacing:.04em;margin-top:6px;
+  }
+
+  /* Hero LINE CTA */
+  .hero-line-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:14px;font-weight:500;
+    letter-spacing:.08em;text-decoration:none;
+    padding:13px 24px;margin-top:8px;
+    transition:opacity .2s ease;
+    opacity:0;animation:fu .7s ease .35s forwards;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .hero-line-cta:hover{opacity:.9}
+  .hero-line-cta svg{width:18px;height:18px;flex-shrink:0}
 
   /* CTA */
   .cta{
@@ -221,81 +281,49 @@ if(window.location.search.indexOf('test=1') === -1){
     cursor:default;user-select:none;
   }
 
-  /* ===== WORKS SHOWCASE ===== */
-  .works{padding:32px 0 0;max-width:480px;margin:0 auto}
-  .works-label{
+  /* ===== TRUST / PORTFOLIO ===== */
+  .trust{padding:28px 0 0;position:relative}
+  .trust-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
     letter-spacing:.2em;padding:0 24px 12px;
   }
-  .works-label--lg{
-    font-size:18px;
-    color:var(--text);
-    letter-spacing:.06em;
-    font-weight:400;
-    padding-bottom:6px;
+  .trust-grid{
+    display:grid;grid-template-columns:1fr 1fr 1fr;
+    gap:2px;max-width:480px;margin:0 auto;
   }
-  .works-label-sub{
-    display:block;
-    font-size:11px;
-    color:var(--muted);
-    letter-spacing:.04em;
-    font-weight:300;
-    margin-top:4px;
+  .trust-item{
+    aspect-ratio:3/4;overflow:hidden;background:var(--bg2);
+    cursor:pointer;-webkit-tap-highlight-color:transparent;position:relative;
   }
-  .works-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:3px;
-    padding:0 12px;
-  }
-  .works-item{
-    aspect-ratio:3/4;
-    overflow:hidden;
-    cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .works-item img{
-    width:100%;height:100%;
-    object-fit:cover;
+  .trust-item img{
+    width:100%;height:100%;object-fit:cover;
     transition:transform .5s ease;
   }
-  .works-item:hover img{transform:scale(1.03)}
-  .works-item:last-child:nth-child(odd){grid-column:span 2;aspect-ratio:16/9}
-  .works-note{
-    text-align:center;
-    font-family:var(--jp);
-    font-size:12px;
-    color:var(--sub);
-    padding:16px 24px 0;
-    letter-spacing:.03em;
+  .trust-item:hover img{transform:scale(1.03)}
+  .trust-item-price{
+    position:absolute;bottom:0;left:0;right:0;
+    padding:6px 0;
+    background:linear-gradient(to top,rgba(0,0,0,.75) 60%,transparent);
+    text-align:center;pointer-events:none;
   }
-
-  /* ===== ARTIST SECTION ===== */
-  .artist{
-    max-width:480px;margin:0 auto;
-    padding:32px 24px 0;
-    text-align:center;
+  .trust-item-price span{
+    font-family:var(--en);font-size:11px;font-weight:300;
+    letter-spacing:.12em;
+    color:rgba(255,255,255,.8);
   }
-  .artist-photo{
-    width:80px;height:80px;border-radius:50%;
-    object-fit:cover;margin:0 auto 16px;display:block;
-    border:2px solid var(--border);
-  }
-  .artist-name{
-    font-family:var(--ui);font-size:18px;
-    color:var(--text);letter-spacing:2px;margin-bottom:4px;
-  }
-  .artist-sub{
-    font-family:var(--ui);font-size:11px;
-    color:var(--muted);letter-spacing:1px;margin-bottom:12px;
+  .trust-item::after{
+    content:'';position:absolute;
+    bottom:34px;right:6px;width:22px;height:22px;
+    background:rgba(0,0,0,.55);border-radius:50%;pointer-events:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23c4bdb6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='15 3 21 3 21 9'/%3E%3Cpolyline points='9 21 3 21 3 15'/%3E%3Cline x1='21' y1='3' x2='14' y2='10'/%3E%3Cline x1='3' y1='21' x2='10' y2='14'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:center;background-size:12px;
   }
 
   .credentials{
     max-width:480px;margin:0 auto;
-    padding:0 24px;
+    padding:18px 24px 0;
     display:flex;justify-content:center;gap:20px;flex-wrap:wrap;
-    margin-bottom:16px;
   }
   .cred-item{
     display:flex;align-items:center;gap:6px;
@@ -311,74 +339,61 @@ if(window.location.search.indexOf('test=1') === -1){
   }
   .cred-divider{width:1px;height:24px;background:var(--border);flex-shrink:0}
 
-  .artist-desc{
+  .trust-usp{
+    max-width:480px;margin:0 auto;
+    padding:18px 24px 0;text-align:center;
+    cursor:default;user-select:none;
+  }
+  .trust-usp-text{
     font-family:var(--jp);font-size:13px;font-weight:400;
     color:var(--sub);line-height:1.8;letter-spacing:.03em;
-    cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,124,.15);
-    transition:opacity .15s ease;
-  }
-  .artist-desc:active{opacity:.7}
-  .artist-more{
-    font-family:var(--jp);font-size:10px;
-    color:var(--accent);letter-spacing:.03em;opacity:.7;
-    margin-top:8px;
   }
 
   /* ===== REVIEW ===== */
   .review{
     max-width:480px;margin:0 auto;
-    padding:32px 24px 0;
-    border-top:1px solid var(--border);
+    padding:28px 24px 0;
   }
   .review-label{
     font-family:var(--jp);text-align:center;
     font-size:12px;color:var(--muted);
     letter-spacing:.2em;margin-bottom:16px;
   }
-
-  .reviews-stack{
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-  }
-  .review-card-v2{
-    padding:18px 18px 14px;
-    border:1px solid var(--border);
-    background:var(--bg2);
-    position:relative;
-    cursor:pointer;
-    -webkit-tap-highlight-color:rgba(201,168,124,.15);
+  .review-card{
+    position:relative;padding:20px 20px 16px;
+    border:1px solid var(--border);background:var(--bg2);
+    cursor:pointer;-webkit-tap-highlight-color:rgba(201,168,124,.15);
     transition:opacity .15s ease;
   }
-  .review-card-v2:active{opacity:.7}
-  .review-card-v2 .review-quote{
-    font-family:var(--en);font-size:40px;font-weight:300;
+  .review-card:active{opacity:.7}
+  .review-see-more{
+    position:absolute;bottom:12px;right:16px;
+    font-family:var(--jp);font-size:10px;
+    color:var(--accent);letter-spacing:.03em;opacity:.7;
+  }
+  .review-quote{
+    font-family:var(--en);font-size:48px;font-weight:300;
     color:var(--accent);line-height:1;opacity:.3;
-    position:absolute;top:6px;left:14px;
+    position:absolute;top:8px;left:16px;
   }
-  .review-card-v2 .review-text{
+  .review-text{
     font-family:var(--jp);font-size:13px;font-weight:400;
-    color:var(--sub);line-height:2;letter-spacing:.03em;padding-top:10px;
+    color:var(--sub);line-height:2;letter-spacing:.03em;padding-top:12px;
   }
-  .review-card-v2 .review-author{
-    display:flex;align-items:center;gap:10px;margin-top:12px;
+  .review-sub{
+    font-family:var(--jp);font-size:11px;color:var(--muted);
+    line-height:1.8;letter-spacing:.02em;margin-top:10px;
+    padding-top:10px;border-top:1px solid var(--border);
   }
-  .review-card-v2 .review-avatar{
-    width:28px;height:28px;border-radius:50%;
+  .review-author{display:flex;align-items:center;gap:10px;margin-top:14px}
+  .review-avatar{
+    width:32px;height:32px;border-radius:50%;
     background:var(--border);flex-shrink:0;
     display:flex;align-items:center;justify-content:center;
-    font-family:var(--en);font-size:12px;font-weight:300;color:var(--muted);
+    font-family:var(--en);font-size:13px;font-weight:300;color:var(--muted);
   }
-  .review-card-v2 .review-name{font-family:var(--jp);font-size:11px;color:var(--sub);letter-spacing:.03em}
-  .review-card-v2 .review-via{font-family:var(--ui);font-size:9px;color:var(--muted);letter-spacing:.3px;margin-top:1px}
-  .review-more{
-    text-align:center;margin-top:12px;
-    font-family:var(--jp);font-size:11px;
-    color:var(--accent);letter-spacing:.03em;
-    cursor:pointer;padding:8px;opacity:.7;
-    -webkit-tap-highlight-color:transparent;
-  }
-  .review-more:active{opacity:1}
+  .review-name{font-family:var(--jp);font-size:11px;color:var(--sub);letter-spacing:.03em}
+  .review-via{font-family:var(--ui);font-size:9px;color:var(--muted);letter-spacing:.3px;margin-top:1px}
 
   /* Review Lightbox */
   .rl-overlay{
@@ -446,93 +461,46 @@ if(window.location.search.indexOf('test=1') === -1){
   }
   .rl-bottom-close:active{color:var(--text)}
 
-  /* ===== MID-PAGE CTA ===== */
-  .mid-cta-wrap{padding:24px 24px 0;text-align:center;max-width:480px;margin:0 auto}
-  .mid-cta{
-    display:flex;align-items:center;justify-content:center;gap:8px;
-    width:100%;
-    background:#06C755;color:#fff;
-    font-family:var(--jp);font-size:14px;font-weight:500;
-    letter-spacing:.1em;text-decoration:none;
-    padding:14px 20px;border:none;cursor:pointer;
-    -webkit-tap-highlight-color:transparent;
-    transition:opacity .2s ease;
-  }
-  .mid-cta:hover{opacity:.9}
-  .mid-cta svg{width:16px;height:16px;flex-shrink:0}
-  .mid-cta-sub{
-    font-family:var(--jp);font-size:10px;
-    color:var(--muted);margin-top:8px;
-    letter-spacing:.3px;
-  }
-
-  /* ===== PRICING TABLE ===== */
-  .pricing{
-    padding:36px 0 0;
+  /* ===== ARTIST SECTION ===== */
+  .artist{
     max-width:480px;margin:0 auto;
-    background:rgba(255,255,255,.015);
-    border-top:1px solid rgba(191,169,138,.08);
+    padding:32px 24px 0;
+    text-align:center;
   }
-  .pricing-label{
-    font-family:var(--jp);text-align:center;
-    font-size:12px;color:var(--muted);
-    letter-spacing:.2em;padding:0 24px 20px;
+  .artist-photo{
+    width:80px;height:80px;border-radius:50%;
+    object-fit:cover;margin:0 auto 16px;display:block;
+    border:2px solid var(--border);
   }
-  .pricing-table{
-    margin:0 24px;
+  .artist-name{
+    font-family:var(--ui);font-size:18px;
+    color:var(--text);letter-spacing:2px;margin-bottom:4px;
   }
-  .pricing-row{
-    display:flex;
-    align-items:baseline;
-    justify-content:space-between;
-    padding:16px 0;
+  .artist-sub{
+    font-family:var(--ui);font-size:11px;
+    color:var(--muted);letter-spacing:1px;margin-bottom:20px;
+  }
+  .artist-info{
+    text-align:left;padding:16px 0;
+    border-top:1px solid var(--border);
     border-bottom:1px solid var(--border);
   }
-  .pricing-row:first-child{
-    border-top:1px solid var(--border);
+  .artist-row{
+    display:flex;gap:10px;
+    font-family:var(--jp);font-size:12px;
+    color:var(--sub);line-height:1.7;margin-bottom:6px;
   }
-  .pricing-row-size{
-    font-family:var(--jp);
-    font-size:13px;
-    font-weight:400;
-    color:var(--text);
-    letter-spacing:.03em;
-    flex-shrink:0;
-  }
-  .pricing-row-cm{
-    font-family:var(--ui);
-    font-size:10px;
-    color:var(--muted);
-    letter-spacing:.03em;
-    margin-left:4px;
-  }
-  .pricing-row-price{
-    font-family:var(--en);
-    font-size:20px;
-    font-weight:300;
-    color:var(--accent);
-    letter-spacing:.05em;
-    margin-left:auto;
-    padding-left:12px;
-    flex-shrink:0;
-    white-space:nowrap;
-  }
-  .pricing-note{
-    font-family:var(--jp);
-    font-size:10px;
-    color:var(--muted);
-    text-align:center;
-    padding:14px 24px 0;
-    letter-spacing:.03em;
-  }
-  .pricing-cta-wrap{
-    padding:20px 24px 0;
+  .artist-row:last-child{margin-bottom:0}
+  .artist-row span:first-child{
+    color:var(--muted);flex-shrink:0;
+    font-family:var(--ui);font-size:10px;
+    letter-spacing:.5px;min-width:48px;padding-top:2px;
   }
 
   /* ===== PROCESS ===== */
   .process{
     max-width:480px;margin:0 auto;
-    padding:40px 24px 0;
+    padding:32px 24px 0;
   }
   .process-label{
     font-family:var(--jp);text-align:center;
@@ -737,6 +705,27 @@ if(window.location.search.indexOf('test=1') === -1){
   .am-cta svg{width:14px;height:14px;flex-shrink:0}
 
   /* ===== FOOTER ===== */
+  /* ===== MID-PAGE CTA ===== */
+  .mid-cta-wrap{
+    padding:20px 24px;text-align:center;
+  }
+  .mid-cta{
+    display:flex;align-items:center;justify-content:center;gap:8px;
+    width:100%;max-width:480px;margin:0 auto;
+    background:#06C755;color:#fff;
+    font-family:var(--jp);font-size:14px;font-weight:500;
+    letter-spacing:.1em;text-decoration:none;
+    padding:14px 20px;border:none;cursor:pointer;
+    -webkit-tap-highlight-color:transparent;
+    transition:opacity .2s ease;
+  }
+  .mid-cta:hover{opacity:.9}
+  .mid-cta svg{width:16px;height:16px;flex-shrink:0}
+  .mid-cta-sub{
+    font-family:var(--jp);font-size:10px;
+    color:var(--muted);margin-top:8px;
+    letter-spacing:.3px;
+  }
   footer{
     padding:20px 24px;text-align:center;
     border-top:1px solid var(--border);margin-top:0;
@@ -831,8 +820,58 @@ if(window.location.search.indexOf('test=1') === -1){
     to{opacity:1;transform:translateY(0)}
   }
 
+  /* ===== SIZE CARDS ===== */
+  .size-cards { padding: 28px 0 0; max-width: 480px; margin: 0 auto; }
+  .size-cards-label { font-family: var(--jp); text-align: center; font-size: 12px; color: var(--muted); letter-spacing: .2em; padding: 0 24px 16px; }
+
+  .size-card {
+    position: relative; margin: 0 12px 20px;
+    background: var(--bg2); border: 1px solid var(--border);
+    overflow: hidden; transition: border-color .4s ease, box-shadow .4s ease;
+  }
+  .size-card[id] { scroll-margin-top: 16px; }
+
+  @keyframes card-glow {
+    0% { border-color: var(--accent); box-shadow: 0 0 20px rgba(191,169,138,.15); }
+    100% { border-color: var(--border); box-shadow: none; }
+  }
+  .size-card.is-active { animation: card-glow 2s ease forwards; }
+
+  .size-card-img { position: relative; aspect-ratio: 4/5; overflow: hidden; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .size-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+  .size-card-img:hover img { transform: scale(1.03); }
+
+  .size-card-badge {
+    position: absolute; top: 12px; left: 12px; padding: 4px 10px;
+    font-family: var(--ui); font-size: 10px; font-weight: 400;
+    letter-spacing: .15em; text-transform: uppercase;
+    color: var(--text); background: rgba(8,8,8,.7);
+    border: 1px solid rgba(255,255,255,.06); pointer-events: none; z-index: 2;
+  }
+
+  .size-card-body { padding: 16px 16px 18px; }
+  .size-card-price { font-family: var(--en); font-size: 28px; font-weight: 300; color: var(--accent); letter-spacing: .15em; line-height: 1; margin-bottom: 4px; }
+  .size-card-desc { font-family: var(--jp); font-size: 12px; color: var(--sub); letter-spacing: .04em; line-height: 1.6; margin-bottom: 14px; }
+
+  .size-card-cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    width: 100%; background: #06C755; color: #fff;
+    font-family: var(--jp); font-size: 13px; font-weight: 500;
+    letter-spacing: .08em; text-decoration: none; padding: 12px 16px;
+    border: none; cursor: pointer; -webkit-tap-highlight-color: transparent;
+    transition: opacity .2s ease;
+  }
+  .size-card-cta:hover { opacity: .9; }
+  .size-card-cta svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+  .size-card-sub { font-family: var(--jp); font-size: 10px; color: var(--muted); text-align: center; margin-top: 8px; letter-spacing: .03em; }
+
+  .size-card--medium { border-color: rgba(191,169,138,.15); }
+  .size-card--medium .size-card-badge { border-bottom: 2px solid var(--accent); }
+
   @media(min-width:768px){
-    .hero-c,.process,.credentials,.review,.artist,.line-section,.works,.mid-cta-wrap,.pricing{max-width:560px}
+    .hero-c,.trust-usp,.process,.credentials,.review,.artist,.line-section{max-width:560px}
+    .size-cards{max-width:560px} .size-card{margin:0 0 24px}
     .sticky{display:none}
   }
 </style>
@@ -840,7 +879,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
 <body>
 
-<!-- ===== 1. HERO ===== -->
+<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero-bg">
     <img id="heroImg" src="small-1.jpg" alt="Freehand floral tattoo by Lea Kim, Osaka" width="720" height="960" loading="eager" fetchpriority="high">
@@ -857,125 +896,111 @@ if(window.location.search.indexOf('test=1') === -1){
       </div>
     </div>
 
-    <h1 class="hero-h">あなただけの<em>花</em>を、肌に咲かせる</h1>
-    <p class="hero-h-en">体のラインに合わせて、その場でデザインするフリーハンドタトゥー</p>
-
-    <div class="scarcity">¥60,000〜 · 相談無料 · 予約義務なし</div>
-  </div>
-</section>
-
-<!-- ===== 2. WORKS SHOWCASE ===== -->
-<section class="works" id="worksSection">
-  <div class="works-label works-label--lg">¥60,000〜 の作品<span class="works-label-sub">カードサイズ · ~8cm</span></div>
-  <div class="works-grid">
-    <div class="works-item" data-img-idx="0"><img src="small-1.jpg" alt="Small floral tattoo 1" width="480" height="640" loading="lazy"></div>
-    <div class="works-item" data-img-idx="1"><img src="small-2.jpg" alt="Small floral tattoo 2" width="480" height="640" loading="lazy"></div>
-    <div class="works-item" data-img-idx="2"><img src="small-3.jpg" alt="Small floral tattoo 3" width="480" height="640" loading="lazy"></div>
-  </div>
-  <div class="works-note">すべてフリーハンド。ワンポイント〜手のひらサイズ</div>
-</section>
-
-<!-- ===== 3. ARTIST + CREDENTIALS ===== -->
-<section class="artist" id="artistSection">
-  <img class="artist-photo" id="artistPhoto" src="79.jpg" alt="Lea Kim" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
-  <div class="artist-name">LEA KIM</div>
-  <div class="artist-sub">花タトゥー専門 · 大阪</div>
-
-  <div class="credentials">
-    <div class="cred-item"><div class="cred-num">5</div><div class="cred-text">ヶ国で<br>施術経験</div></div>
-    <div class="cred-divider"></div>
-    <div class="cred-item"><div class="cred-num">100+</div><div class="cred-text">件以上の<br>施術実績</div></div>
-  </div>
-
-  <div class="artist-desc" id="artistDesc">体に合わせてその場でラインを調整しながら描きます</div>
-  <div class="artist-more">詳しく見る ▸</div>
-</section>
-
-<!-- ===== 4. PRICING TABLE ===== -->
-<section class="pricing" id="pricingSection">
-  <div class="pricing-label">— サイズ別料金 —</div>
-  <div class="pricing-table">
-    <div class="pricing-row">
-      <div class="pricing-row-size">カードサイズ<span class="pricing-row-cm">（~8cm）</span></div>
-      <div class="pricing-row-price">¥60,000〜</div>
+    <div class="usp">
+      <div class="usp-dot"></div>
+      <div class="usp-text">体のラインに合わせて、その場で調整しながら描きます</div>
     </div>
-    <div class="pricing-row">
-      <div class="pricing-row-size">手のひら<span class="pricing-row-cm">（~13cm）</span></div>
-      <div class="pricing-row-price">¥90,000〜</div>
+
+    <h1 class="hero-h">あなただけの<em>花タトゥー</em></h1>
+    <p class="hero-h-en">体の流れに合わせて設計します</p>
+
+    <div class="price">
+      <div class="price-top">
+        <div class="price-num">¥60,000〜</div>
+        <div class="price-size">完全オーダーメイド · 税込</div>
+      </div>
+      <div class="price-date">4月7日〜22日 · 大阪</div>
+      <div class="price-justify">完全オーダーメイド · ワンポイントから対応 · アフターケア込み</div>
     </div>
-    <div class="pricing-row">
-      <div class="pricing-row-size">手のひら×2<span class="pricing-row-cm">（~28cm）</span></div>
-      <div class="pricing-row-price">¥120,000〜</div>
-    </div>
-    <div class="pricing-row">
-      <div class="pricing-row-size">スリーブ / 腕</div>
-      <div class="pricing-row-price">¥250,000〜¥400,000</div>
-    </div>
-    <div class="pricing-row">
-      <div class="pricing-row-size">スリーブ / 脚</div>
-      <div class="pricing-row-price">¥500,000〜¥650,000</div>
-    </div>
-  </div>
-  <div class="pricing-note">※ デザインの複雑さにより変動します</div>
-  <div class="pricing-cta-wrap">
-    <a href="#" class="mid-cta" id="pricingLineBtn" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-      タトゥーの相談はLINEから
+
+    <a href="#" class="cta" id="heroCta">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      作品とサイズを見る
+    </a>
+    <a href="#" class="hero-line-cta" id="heroLineCta" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+      デザインの相談をLINEで始める
     </a>
   </div>
 </section>
 
-<!-- ===== 5. REVIEWS — 3 cards ===== -->
-<section class="review">
-  <div class="review-label">— お客様の声 —</div>
-  <div class="reviews-stack">
-    <div class="review-card-v2">
-      <div class="review-quote">"</div>
-      <div class="review-text">繊細で美しく優しさもあり、その中に力強さもある雰囲気が作品に表れていると彫って頂いたタトゥーを見て思います。</div>
-      <div class="review-author">
-        <div class="review-avatar">C</div>
-        <div>
-          <div class="review-name">東京在住 Cさん</div>
-          <div class="review-via">Instagram DM より</div>
-        </div>
-      </div>
+<!-- ===== SIZE CARDS ===== -->
+<section class="size-cards">
+  <div class="size-cards-label">— サイズ別メニュー —</div>
+
+  <div class="size-card" id="small">
+    <div class="size-card-img" data-gallery="1">
+      <div class="size-card-badge">SMALL</div>
+      <img src="small-1.jpg" alt="Small freehand floral tattoo" width="480" height="600" loading="lazy">
     </div>
-    <div class="review-card-v2">
-      <div class="review-quote">"</div>
-      <div class="review-text">とても素晴らしい物をありがとうございました。脇腹に入れる勇気が出た際にはまたよろしくお願いいたします！</div>
-      <div class="review-author">
-        <div class="review-avatar">T</div>
-        <div>
-          <div class="review-name">東京在住 Tさん</div>
-          <div class="review-via">Instagram DM より</div>
-        </div>
-      </div>
-    </div>
-    <div class="review-card-v2">
-      <div class="review-quote">"</div>
-      <div class="review-text">最高に可愛いくて美しく完成がとても楽しみです！またよろしくお願いします。</div>
-      <div class="review-author">
-        <div class="review-avatar">K</div>
-        <div>
-          <div class="review-name">大阪在住 Kさん</div>
-          <div class="review-via">Instagram DM より</div>
-        </div>
-      </div>
+    <div class="size-card-body">
+      <div class="size-card-price">¥60,000〜</div>
+      <div class="size-card-desc">ワンポイント〜手のひらサイズ · いつでも予約OK<br>LINE相談 → デザイン確認 → 施術</div>
+      <a href="#" class="size-card-cta" id="smallCta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+        イメージ写真を送って無料カウンセリング
+      </a>
+      <div class="size-card-sub">相談無料 · 予約義務なし</div>
     </div>
   </div>
-  <div class="review-more" id="reviewMore">他2件を見る ▸</div>
+
+  <div class="size-card size-card--medium" id="medium">
+    <div class="size-card-img" data-gallery="2">
+      <div class="size-card-badge">MEDIUM</div>
+      <img src="medium-1.jpg" alt="Medium freehand floral tattoo" width="480" height="600" loading="lazy">
+    </div>
+    <div class="size-card-body">
+      <div class="size-card-price">¥90,000〜</div>
+      <div class="size-card-desc">手のひら以上〜腕まわりサイズ · 花の繊細さが映えるサイズ<br>LINE相談 → デザイン確認 → 施術</div>
+      <a href="#" class="size-card-cta" id="mediumCta" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
+        イメージ写真を送って無料カウンセリング
+      </a>
+      <div class="size-card-sub">相談無料 · 予約義務なし</div>
+    </div>
+  </div>
 </section>
 
-<!-- ===== 6. MID-PAGE LINE CTA ===== -->
-<div class="mid-cta-wrap">
-  <a href="#" class="mid-cta" id="midLineBtn" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-    タトゥーの相談はLINEから
-  </a>
-  <div class="mid-cta-sub">相談無料 · 予約義務なし</div>
+<div class="credentials">
+  <div class="cred-item"><div class="cred-num">5</div><div class="cred-text">ヶ国で<br>施術経験</div></div>
+  <div class="cred-divider"></div>
+  <div class="cred-item"><div class="cred-num">100+</div><div class="cred-text">件以上の<br>施術実績</div></div>
 </div>
 
-<!-- ===== 7. PROCESS ===== -->
+<div class="trust-usp" id="trustUsp">
+  <div class="trust-usp-text" style="font-size:12px;line-height:1.6">
+    5ヶ国 · 数百件以上の実績 · 月数名限定の完全オーダーメイド
+  </div>
+</div>
+
+<!-- ===== REVIEW (moved up: portfolio → review → CTA flow) ===== -->
+<section class="review">
+  <div class="review-label">— お客様の声 —</div>
+  <div class="review-card" id="reviewOpen">
+    <div class="review-quote">"</div>
+    <div class="review-text">
+      繊細で美しく優しさもあり、<br>
+      その中に力強さもある雰囲気が<br>
+      作品に表れていると<br>
+      彫って頂いたタトゥーを見て思います。
+    </div>
+    <div class="review-sub">
+      自分にとってとても大切なタトゥーを<br>
+      担当して頂けて嬉しく思っています。
+    </div>
+    <div class="review-author">
+      <div class="review-avatar">C</div>
+      <div>
+        <div class="review-name">東京在住 Cさん</div>
+        <div class="review-via">Instagram DM より</div>
+      </div>
+    </div>
+    <div class="review-see-more">他4件 ▸</div>
+  </div>
+</section>
+
+
+<!-- ===== PROCESS ===== -->
 <section class="process">
   <div class="process-label">— ご予約の流れ —</div>
   <div class="process-steps">
@@ -1003,10 +1028,22 @@ if(window.location.search.indexOf('test=1') === -1){
   <div class="process-note">相談無料 · 予約義務なし · 24時間以内に返信</div>
 </section>
 
-<!-- ===== 8. LINE CTA SECTION ===== -->
+<!-- ===== ARTIST ===== -->
+<section class="artist" id="artistSection">
+  <img class="artist-photo" id="artistPhoto" src="79.jpg" alt="Lea Kim" style="cursor:pointer;-webkit-tap-highlight-color:transparent">
+  <div class="artist-name">LEA KIM</div>
+  <div class="artist-sub">花タトゥー専門 · 大阪</div>
+  <div class="artist-info">
+    <div class="artist-row"><span>作業</span><span>体に合わせてその場で<br>ラインを調整しながら描きます</span></div>
+    <div class="artist-row"><span>場所</span><span>大阪中心部（詳細は予約確定後にご案内）</span></div>
+  </div>
+</section>
+
+
+<!-- ===== LINE CTA ===== -->
 <section class="line-section" id="lineSection">
-  <div class="line-title">LINEで気軽にご相談ください</div>
-  <div class="line-title-sub">デザイン相談 · お見積もり · 空き確認</div>
+  <div class="line-title">イメージ写真を送って無料カウンセリング</div>
+  <div class="line-title-sub">LINEで気軽にご相談ください</div>
   <div class="line-date">
     <span class="line-date-main">施術可能日: 4月7日〜22日</span><br>
     ご都合に合わせて調整します
@@ -1020,7 +1057,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
   <a href="#" class="line-btn" id="lineBtn" target="_blank" rel="noopener">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.82 2 10.4c0 2.61 1.33 4.93 3.4 6.52.12.09.2.25.18.41l-.26 1.56c-.04.24.21.42.43.32l1.75-.82c.13-.06.28-.07.41-.03.73.2 1.51.31 2.33.34h.01c.25 0 .5.01.75.01 5.52 0 10-3.82 10-8.41C22 5.82 17.52 2 12 2z"/></svg>
-    LINEで気軽にご相談ください
+    イメージ写真を送って無料カウンセリング
   </a>
 
   <div class="line-expect">※ 友だち追加後、お気軽にメッセージください</div>
@@ -1040,7 +1077,6 @@ if(window.location.search.indexOf('test=1') === -1){
 
 <div class="copy-toast" id="copyToast">コピーしました</div>
 
-<!-- ===== 9. FOOTER ===== -->
 <footer>
   <div class="foot">lea · Osaka, Japan</div>
 </footer>
@@ -1111,6 +1147,7 @@ if(window.location.search.indexOf('test=1') === -1){
   var SCHEDULE_CITY = '大阪';
 
   // ===== UTM PARAMS =====
+  // Fix: Meta ads sometimes double-encode '?' as '%3F' in URL params
   var rawSearch = window.location.search;
   if(rawSearch.indexOf('%3F') !== -1 || rawSearch.indexOf('%3f') !== -1){
     rawSearch = rawSearch.replace(/%3F/gi, '&');
@@ -1133,7 +1170,7 @@ if(window.location.search.indexOf('test=1') === -1){
     }
   }
 
-  // GA4 소스 표준화
+  // GA4 소스 표준화 — referrer 파편화 방지 (pageview도 여기서 발생)
   if(typeof gtag === 'function'){
     var ga4Config = {};
     if(utmData.utm_source){
@@ -1147,7 +1184,7 @@ if(window.location.search.indexOf('test=1') === -1){
     gtag('config', 'G-QZSP3DHNW6', ga4Config);
   }
 
-  // ===== 광고 방문 정보 저장 =====
+  // ===== 광고 방문 정보 저장 (IG 프로필 경유 전환 추적용) =====
   if (utmData.utm_source) {
     try {
       localStorage.setItem('lea_ad_visit', JSON.stringify({
@@ -1176,24 +1213,32 @@ if(window.location.search.indexOf('test=1') === -1){
     return baseLineUrl + '?' + params.join('&');
   }
 
+  // Size card CTA links
+  var smallCta = document.getElementById('smallCta');
+  if(smallCta) smallCta.href = buildLineUrl('smallCta', 'small');
+  var mediumCta = document.getElementById('mediumCta');
+  if(mediumCta) mediumCta.href = buildLineUrl('mediumCta', 'medium');
+
   // General CTAs (no size param)
-  var generalLinks = ['lineBtn','stickyBtn','midLineBtn','pricingLineBtn'];
+  var generalLinks = ['lineBtn','stickyBtn','heroLineCta'];
   generalLinks.forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.href = buildLineUrl(id);
   });
 
-  // Hero CTA scrolls to works section
+  // Hero CTA scrolls to portfolio
   var heroCta = document.getElementById('heroCta');
   if(heroCta){
     heroCta.href = '#';
     heroCta.addEventListener('click', function(e){
       e.preventDefault();
-      document.querySelector('.works').scrollIntoView({behavior:'smooth'});
+      document.querySelector('.size-cards').scrollIntoView({behavior:'smooth'});
     });
   }
 
   // 날짜 동적 반영
+  var priceDate = document.querySelector('.price-date');
+  if(priceDate) priceDate.textContent = SCHEDULE_DATE + ' · ' + SCHEDULE_CITY;
   var lineDateMain = document.querySelector('.line-date-main');
   if(lineDateMain) lineDateMain.textContent = '施術可能日: ' + SCHEDULE_DATE;
   var stickyPrice = document.querySelector('.sticky-price');
@@ -1225,7 +1270,6 @@ if(window.location.search.indexOf('test=1') === -1){
   // ===== PIXEL EVENTS =====
   var viewContentFired = false;
   var leadFired = false;
-  try { if(sessionStorage.getItem('lea_lead_fired')) leadFired = true; } catch(e){}
 
   // Landing size detection
   var landingSize = location.hash === '#medium' ? 'medium' : 'small';
@@ -1266,8 +1310,7 @@ if(window.location.search.indexOf('test=1') === -1){
 
   // Lead: LINE click
   function handleLineClick(source, size){
-    var sizeValues = {small:60000, medium:90000, large:120000, half_sleeve:250000, sleeve:450000, full_back:650000};
-    var value = sizeValues[size] || 60000;
+    var value = size === 'small' ? 60000 : size === 'medium' ? 90000 : 60000;
 
     if(!leadFired && typeof fbq === 'function'){
       leadFired = true;
@@ -1285,7 +1328,7 @@ if(window.location.search.indexOf('test=1') === -1){
       if(typeof gtag === 'function') gtag('event', 'generate_lead', {content_name: 'standard_line_send_' + (size || 'general'), value: value, currency: 'JPY', event_source: source, send_to: 'G-QZSP3DHNW6', transport_type: 'beacon'});
       try { sessionStorage.setItem('lea_lead_fired', '1'); sessionStorage.setItem('lea_lead_fired_ga', '1'); } catch(e){}
     }
-    // Detect LINE open failure
+    // Detect LINE open failure (3s for friend-add URL)
     var lineOpened = false;
     function onHidden(){ if(document.hidden) lineOpened = true; }
     document.addEventListener('visibilitychange', onHidden);
@@ -1301,13 +1344,10 @@ if(window.location.search.indexOf('test=1') === -1){
 
   document.getElementById('lineBtn').addEventListener('click', function(){ handleLineClick('mainCTA'); });
   document.getElementById('stickyBtn').addEventListener('click', function(){ handleLineClick('stickyCTA'); });
-
-  // midLineBtn
-  var midLineBtn = document.getElementById('midLineBtn');
-  if(midLineBtn) midLineBtn.addEventListener('click', function(){ handleLineClick('midLineCTA'); });
-
-  var pricingLineBtn = document.getElementById('pricingLineBtn');
-  if(pricingLineBtn) pricingLineBtn.addEventListener('click', function(){ handleLineClick('pricingLineCTA'); });
+  var heroLineEl = document.getElementById('heroLineCta');
+  if(heroLineEl) heroLineEl.addEventListener('click', function(){ handleLineClick('heroLineCTA'); });
+  if(smallCta) smallCta.addEventListener('click', function(){ handleLineClick('smallCta', 'small'); });
+  if(mediumCta) mediumCta.addEventListener('click', function(){ handleLineClick('mediumCta', 'medium'); });
 
   document.getElementById('emailBtn').addEventListener('click', function(){
     if(typeof fbq === 'function') fbq('trackCustom','EmailClickStandard');
@@ -1328,36 +1368,31 @@ if(window.location.search.indexOf('test=1') === -1){
   }
   document.getElementById('brandArea').addEventListener('click', openAm);
   document.getElementById('artistPhoto').addEventListener('click', openAm);
-  document.getElementById('artistDesc').addEventListener('click', openAm);
   document.getElementById('amClose').addEventListener('click', closeAm);
   am.addEventListener('click', function(e){ if(e.target === am) closeAm(); });
 
-  var heroCtaEl = document.getElementById('heroCta');
-  if(heroCtaEl) heroCtaEl.addEventListener('click', function(e){
+  document.getElementById('heroCta').addEventListener('click', function(e){
     if(typeof fbq === 'function') fbq('trackCustom','HeroCTAClickStandard');
     if(typeof gtag === 'function') gtag('event', 'hero_cta_click', {send_to: 'G-QZSP3DHNW6'});
+    // scroll only - no LINE open
   });
 
   // ===== STICKY CTA =====
   var sticky = document.getElementById('sticky');
+  var heroCta = document.getElementById('heroCta');
   var stickyObserver = new IntersectionObserver(function(entries){
     entries.forEach(function(entry){
       if(!entry.isIntersecting) sticky.classList.add('show');
       else sticky.classList.remove('show');
     });
   }, {threshold:0});
-  var heroSection = document.querySelector('.hero');
-  if(heroSection) stickyObserver.observe(heroSection);
+  stickyObserver.observe(heroCta);
 
   // ===== LIGHTBOX =====
   var galleries = {
-    'works': ['small-1.jpg','small-2.jpg','small-3.jpg'],
-    'hero': ['small-1.jpg','small-2.jpg','small-3.jpg'],
-    'small': ['small-1.jpg','small-2.jpg'],
-    'medium': ['medium-1.jpg','medium-2.jpg'],
-    'large': ['tier1-1.jpg','tier1-2.jpg'],
-    'half_sleeve': ['tier2-1.jpg','tier2-2.jpg'],
-    'sleeve': ['tier3-1.jpg','tier3-2.jpg']
+    '1': ['small-1.jpg','small-2.jpg','small-3.jpg'],
+    '2': ['medium-1.jpg','medium-2.jpg','medium-3.jpg'],
+    'hero': ['small-1.jpg','small-2.jpg','medium-1.jpg']
   };
 
   var lb = document.getElementById('lb');
@@ -1434,17 +1469,6 @@ if(window.location.search.indexOf('test=1') === -1){
     if(typeof gtag === 'function') gtag('event', 'hero_image_gallery', {send_to: 'G-QZSP3DHNW6'});
   });
 
-  // Works gallery items
-  document.querySelectorAll('.works-item').forEach(function(item){
-    item.addEventListener('click', function(){
-      var idx = parseInt(item.getAttribute('data-img-idx'));
-      var allImgs = galleries['works'];
-      openLb(allImgs, idx);
-      if(typeof fbq === 'function') fbq('trackCustom','WorksGalleryOpenStandard',{index:idx});
-      if(typeof gtag === 'function') gtag('event', 'works_gallery_open', {index: idx, send_to: 'G-QZSP3DHNW6'});
-    });
-  });
-
   // ===== REVIEW LIGHTBOX =====
   var reviews = [
     {
@@ -1517,20 +1541,11 @@ if(window.location.search.indexOf('test=1') === -1){
     if(!skipHistory && history.state && history.state.lb === 'review') history.back();
   }
 
-  // Review card clicks → open review lightbox at corresponding index
-  document.querySelectorAll('.review-card-v2').forEach(function(card, i){
-    card.addEventListener('click', function(){
-      rlOpen(i);
-      if(typeof fbq === 'function') fbq('trackCustom','ReviewOpenStandard');
-      if(typeof gtag === 'function') gtag('event', 'review_open', {review_index: i, send_to: 'G-QZSP3DHNW6'});
-    });
+  document.getElementById('reviewOpen').addEventListener('click', function(){
+    rlOpen(0);
+    if(typeof fbq === 'function') fbq('trackCustom','ReviewOpenStandard');
+    if(typeof gtag === 'function') gtag('event', 'review_open', {send_to: 'G-QZSP3DHNW6'});
   });
-
-  // "他2件を見る" click
-  document.getElementById('reviewMore').addEventListener('click', function(){
-    rlOpen(3);
-  });
-
   document.getElementById('rlClose').addEventListener('click', function(){ rlClose(); });
   document.getElementById('rlBottomClose').addEventListener('click', function(){ rlClose(); });
   rlOverlay.addEventListener('click', function(e){ if(e.target === rlOverlay) rlClose(); });
@@ -1644,12 +1659,14 @@ if(window.location.search.indexOf('test=1') === -1){
     });
   }, { passive: true });
 
-  // 3) Rage click
+  // 3) Rage click (같은 위치 3회 이상 빠른 클릭)
   var clickLog = [];
   document.addEventListener('click', function(e) {
     var now = Date.now();
     clickLog.push({ x: e.clientX, y: e.clientY, t: now });
+    // 최근 2초만 유지
     clickLog = clickLog.filter(function(c) { return now - c.t < 2000; });
+    // 반경 30px 이내 3회 이상
     var nearby = clickLog.filter(function(c) {
       return Math.abs(c.x - e.clientX) < 30 && Math.abs(c.y - e.clientY) < 30;
     });
@@ -1659,7 +1676,7 @@ if(window.location.search.indexOf('test=1') === -1){
     }
   });
 
-  // 4) Dead click
+  // 4) Dead click (클릭했는데 인터랙티브 요소가 아닌 곳) + 위치 상세
   function getSelector(el) {
     if (el.id) return '#' + el.id;
     var parts = [];
@@ -1700,7 +1717,7 @@ if(window.location.search.indexOf('test=1') === -1){
     }
   });
 
-  // 5) Quick exit
+  // 5) Quick exit (5초 이내 이탈)
   var entryTime = Date.now();
   window.addEventListener('beforeunload', function() {
     if (Date.now() - entryTime < 5000) {
@@ -1709,12 +1726,12 @@ if(window.location.search.indexOf('test=1') === -1){
     flush();
   });
 
-  // 6) JS error
+  // 6) JS error 감지
   window.addEventListener('error', function(e) {
     pushEvent('js_error', { message: e.message, source: e.filename, line: e.lineno });
   });
 
-  // 7) Heartbeat (30s, max 10min)
+  // 7) 세션 체류 시간 (30초마다 heartbeat, 최대 10분)
   var heartbeats = 0;
   var hbInterval = setInterval(function() {
     heartbeats++;
@@ -1722,6 +1739,7 @@ if(window.location.search.indexOf('test=1') === -1){
     if (heartbeats >= 20) clearInterval(hbInterval);
   }, 30000);
 
+  // 페이지 떠날 때 남은 이벤트 전송
   document.addEventListener('visibilitychange', function() {
     if (document.visibilityState === 'hidden') flush();
   });

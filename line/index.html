@@ -18,30 +18,37 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1003353476194605');
 fbq('track', 'PageView');
 
-// Lead 이중 카운팅 방지: 메인 LP에서 이미 Lead 발생한 경우 스킵
-// adVisit 미리 확인 (Pixel Lead content_name 분기용)
+// adVisit 미리 확인 (Pixel Lead content_name 분기용 + fbclid 복원용)
 var _adVisitForPixel = null;
 try {
   var _s = localStorage.getItem('lea_ad_visit');
   if (_s) { _adVisitForPixel = JSON.parse(_s); if (Date.now() - _adVisitForPixel.ts > 604800000) _adVisitForPixel = null; }
 } catch(e){}
 
-try {
-  var alreadyLead = sessionStorage.getItem('lea_lead_fired');
-  if (!alreadyLead) {
-    fbq('track', 'Lead', {
-      content_name: _adVisitForPixel ? 'ad_indirect_profile_line' : 'instagram_bio_line',
-      value: 120000,
-      currency: 'JPY'
-    });
-    sessionStorage.setItem('lea_lead_fired', '1');
-  }
-} catch(e) {
-  fbq('track', 'Lead', {
-    content_name: _adVisitForPixel ? 'ad_indirect_profile_line' : 'instagram_bio_line',
-    value: 120000,
-    currency: 'JPY'
-  });
+// URL에 UTM 파라미터가 있는지 확인
+var _urlHasUtm = (function(){
+  try {
+    var s = window.location.search;
+    return s.indexOf('utm_') !== -1 || s.indexOf('fbclid') !== -1;
+  } catch(e){ return false; }
+})();
+
+// 결함1 수정: 광고 경유(lea_ad_visit 존재 또는 URL UTM 존재)일 때만 Lead 발화
+// 순수 오가닉(IG bio 직접 유입)은 Lead 발화하지 않음 → Meta 학습 오염 방지
+// 결함3 수정: catch 블록에서도 sessionStorage 체크 적용
+var _isAdTraffic = _adVisitForPixel || _urlHasUtm;
+if (_isAdTraffic) {
+  try {
+    var alreadyLead = sessionStorage.getItem('lea_lead_fired');
+    if (!alreadyLead) {
+      fbq('track', 'Lead', {
+        content_name: 'ad_indirect_profile_line',
+        value: 120000,
+        currency: 'JPY'
+      });
+      sessionStorage.setItem('lea_lead_fired', '1');
+    }
+  } catch(e){}
 }
 </script>
 <noscript><img height="1" width="1" style="display:none"
@@ -80,28 +87,22 @@ if (adVisit) {
   });
 }
 
-// GA4 이중 카운팅 방지
-try {
-  if (!sessionStorage.getItem('lea_lead_fired_ga')) {
-    gtag('event', 'generate_lead', {
-      content_name: adVisit ? 'ad_indirect_profile_line' : 'instagram_bio_line',
-      value: 120000,
-      currency: 'JPY',
-      conversion_path: adVisit ? 'ad_to_profile' : 'direct_profile',
-      original_campaign: adVisit ? (adVisit.utm_campaign || '') : '',
-      send_to: 'G-QZSP3DHNW6',
-      transport_type: 'beacon'
-    });
-    sessionStorage.setItem('lea_lead_fired_ga', '1');
-  }
-} catch(e) {
-  gtag('event', 'generate_lead', {
-    content_name: adVisit ? 'ad_indirect_profile_line' : 'instagram_bio_line',
-    value: 120000,
-    currency: 'JPY',
-    send_to: 'G-QZSP3DHNW6',
-    transport_type: 'beacon'
-  });
+// GA4 generate_lead: 광고 경유일 때만 발화 (Pixel Lead와 동일 조건)
+if (_isAdTraffic) {
+  try {
+    if (!sessionStorage.getItem('lea_lead_fired_ga')) {
+      gtag('event', 'generate_lead', {
+        content_name: 'ad_indirect_profile_line',
+        value: 120000,
+        currency: 'JPY',
+        conversion_path: adVisit ? 'ad_to_profile' : 'direct_profile',
+        original_campaign: adVisit ? (adVisit.utm_campaign || '') : '',
+        send_to: 'G-QZSP3DHNW6',
+        transport_type: 'beacon'
+      });
+      sessionStorage.setItem('lea_lead_fired_ga', '1');
+    }
+  } catch(e){}
 }
 </script>
 
@@ -119,6 +120,16 @@ body{background:#0d1117;color:#e6edf3;font-family:-apple-system,BlinkMacSystemFo
 </style>
 
 <script>
+// 결함2 수정: URL에 fbclid가 없으면 localStorage에서 복원
+var _urlFbclid = (function(){
+  try {
+    var s = window.location.search;
+    var m = s.match(/[?&]fbclid=([^&]*)/);
+    return m ? decodeURIComponent(m[1]) : null;
+  } catch(e){ return null; }
+})();
+var _restoredFbclid = _urlFbclid || (adVisit && adVisit.fbclid ? adVisit.fbclid : null);
+
 // 리다이렉트 URL 생성 (Pixel + GA4 fire 후 사용)
 var _redirectUrl = (function(){
   var dest = 'https://lealinebot-production.up.railway.app/r';
@@ -133,7 +144,7 @@ var _redirectUrl = (function(){
       'conversion_path=ad_to_profile'
     ];
     if (adVisit.utm_content) params.push('utm_content=' + encodeURIComponent(adVisit.utm_content));
-    if (adVisit.fbclid) params.push('fbclid=' + encodeURIComponent(adVisit.fbclid));
+    if (_restoredFbclid) params.push('fbclid=' + encodeURIComponent(_restoredFbclid));
     try { localStorage.removeItem('lea_ad_visit'); } catch(e){}
   } else {
     params = [
@@ -142,6 +153,8 @@ var _redirectUrl = (function(){
       'utm_medium=organic_profile',
       'utm_campaign=bio_link'
     ];
+    // 오가닉이라도 fbclid가 URL에 있으면 전달 (드문 케이스지만 누락 방지)
+    if (_urlFbclid) params.push('fbclid=' + encodeURIComponent(_urlFbclid));
   }
 
   return dest + '?' + params.join('&');
