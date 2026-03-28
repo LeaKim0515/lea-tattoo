@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/r"
+  to = "https://lealinebot-production.up.railway.app/r"
+  status = 302
+  force = true
