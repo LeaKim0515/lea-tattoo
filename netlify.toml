@@ -1,4 +1,10 @@
 [[redirects]]
+  from = "/bio"
+  to = "https://lealinebot-production.up.railway.app/r?source=ig&medium=bio&campaign=ig_bio&content=link_in_bio&conversion_path=ig_bio"
+  status = 302
+  force = true
+
+[[redirects]]
   from = "/r"
   to = "https://lealinebot-production.up.railway.app/r"
   status = 302
