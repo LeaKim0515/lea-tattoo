@@ -37,13 +37,19 @@ var _urlHasUtm = (function(){
 // 순수 오가닉(IG bio 직접 유입)은 Lead 발화하지 않음 → Meta 학습 오염 방지
 // 결함3 수정: catch 블록에서도 sessionStorage 체크 적용
 var _isAdTraffic = _adVisitForPixel || _urlHasUtm;
+
+// Lead value 분기: premium 캠페인이면 12만엔, 그 외(일반/오가닉)은 6만엔
+var _isPremiumCampaign = _adVisitForPixel && _adVisitForPixel.utm_campaign && _adVisitForPixel.utm_campaign.indexOf('premium') !== -1;
+var _leadValue = _isPremiumCampaign ? 120000 : 60000;
+var _leadContentName = _isPremiumCampaign ? 'premium_line' : 'ad_indirect_profile_line';
+
 if (_isAdTraffic) {
   try {
     var alreadyLead = sessionStorage.getItem('lea_lead_fired');
     if (!alreadyLead) {
       fbq('track', 'Lead', {
-        content_name: 'ad_indirect_profile_line',
-        value: 120000,
+        content_name: _leadContentName,
+        value: _leadValue,
         currency: 'JPY'
       });
       sessionStorage.setItem('lea_lead_fired', '1');
@@ -92,8 +98,8 @@ if (_isAdTraffic) {
   try {
     if (!sessionStorage.getItem('lea_lead_fired_ga')) {
       gtag('event', 'generate_lead', {
-        content_name: 'ad_indirect_profile_line',
-        value: 120000,
+        content_name: _leadContentName,
+        value: _leadValue,
         currency: 'JPY',
         conversion_path: adVisit ? 'ad_to_profile' : 'direct_profile',
         original_campaign: adVisit ? (adVisit.utm_campaign || '') : '',
