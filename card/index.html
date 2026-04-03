@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LEA KIM — Tattoo Artist, Osaka</title>
+<meta name="description" content="LEA KIM — 花タトゥー専門アーティスト・大阪。フリーハンドで体のラインに合わせたオーダーメイドタトゥー。">
+
+<meta property="og:title" content="LEA KIM — Tattoo Artist, Osaka">
+<meta property="og:description" content="花タトゥー専門アーティスト・大阪。フリーハンドで体のラインに合わせたオーダーメイドタトゥー。">
+<meta property="og:image" content="https://leakim.art/card/profile.jpg">
+<meta property="og:url" content="https://leakim.art/card/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<link rel="canonical" href="https://leakim.art/card/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Outfit:wght@300;400;500&display=swap">
+
+<style>
+:root {
+  --bg: #080808;
+  --bg2: #0e0e0e;
+  --text: #e8e0d4;
+  --sub: #b0a89e;
+  --sub2: #9a9290;
+  --muted: #6a6058;
+  --muted2: #504a44;
+  --accent: #bfa98a;
+  --accent-h: #d4c0a6;
+  --accent-dim: rgba(191,169,138,.12);
+  --border: #1c1a18;
+  --border-h: rgba(191,169,138,.2);
+  --jp: 'Shippori Mincho', 'Yu Mincho', serif;
+  --en: 'Cormorant Garamond', serif;
+  --ui: 'Outfit', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--ui);
+  font-weight: 300;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes fi { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+/* ===== CARD ===== */
+.card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 12px 48px rgba(0,0,0,.5), 0 1px 0 rgba(191,169,138,.04) inset;
+  opacity: 0;
+  animation: fi .7s cubic-bezier(.16,1,.3,1) .1s forwards;
+  position: relative;
+}
+
+/* ===== HERO ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 65%;
+  background: linear-gradient(to top, var(--bg2) 0%, rgba(14,14,14,.85) 40%, transparent 100%);
+}
+
+/* Language toggle */
+.lang-toggle {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(191,169,138,.12);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.lang-btn {
+  font-family: var(--ui);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: none;
+  background: transparent;
+  color: var(--sub2);
+  cursor: pointer;
+  transition: background .2s, color .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-btn.active {
+  background: rgba(191,169,138,.15);
+  color: var(--accent);
+}
+
+.hero-id {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  z-index: 2;
+  padding: 0 28px 24px;
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.hero-logo {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(0,0,0,.4);
+  padding: 5px;
+  border: 1px solid rgba(191,169,138,.15);
+  backdrop-filter: blur(8px);
+}
+
+.hero-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: brightness(0.85) sepia(1) hue-rotate(-10deg) saturate(0.6);
+}
+
+.hero-text { flex: 1; }
+
+.hero-name {
+  font-family: var(--en);
+  font-size: 26px;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 4px;
+  color: var(--accent);
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6);
+}
+
+.hero-role {
+  font-family: var(--jp);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  letter-spacing: .06em;
+  margin-top: 4px;
+  text-shadow: 0 1px 6px rgba(0,0,0,.5);
+  transition: opacity .2s;
+}
+
+.hero-loc {
+  font-family: var(--ui);
+  font-size: 11px;
+  color: var(--sub2);
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+  text-transform: uppercase;
+}
+
+/* ===== STATS ===== */
+.stats {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  animation: fi .5s ease .4s forwards;
+}
+
+.stat {
+  flex: 1;
+  text-align: center;
+  padding: 20px 8px;
+}
+
+.stat + .stat { border-left: 1px solid var(--border); }
+
+.stat-num {
+  font-family: var(--en);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.stat-num span { font-size: 16px; }
+
+.stat-label {
+  font-family: var(--jp);
+  font-size: 11px;
+  color: var(--sub2);
+  line-height: 1.4;
+  transition: opacity .2s;
+}
+
+/* ===== ABOUT ===== */
+.about {
+  padding: 28px 28px 24px;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  animation: fi .5s ease .5s forwards;
+}
+
+.sec-title {
+  font-family: var(--ui);
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.bio {
+  font-family: var(--jp);
+  font-size: 14px;
+  color: var(--sub);
+  line-height: 1.95;
+  transition: opacity .2s;
+}
+
+/* ===== REVIEWS CAROUSEL ===== */
+.reviews {
+  padding: 28px 0 20px;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  animation: fi .5s ease .55s forwards;
+}
+
+.reviews .sec-title {
+  padding: 0 28px;
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform .35s cubic-bezier(.25,.46,.45,.94);
+}
+
+.carousel-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  padding: 0 28px;
+}
+
+.review-card {
+  background: rgba(191,169,138,.04);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.review-body {
+  display: flex;
+  gap: 10px;
+}
+
+.review-q {
+  font-family: var(--en);
+  font-size: 32px;
+  color: var(--accent);
+  line-height: 1;
+  opacity: .3;
+  flex-shrink: 0;
+  margin-top: -4px;
+}
+
+.review-content { flex: 1; }
+
+.review-text {
+  font-family: var(--jp);
+  font-size: 13px;
+  color: var(--sub);
+  line-height: 1.95;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.review-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--ui);
+  font-size: 10px;
+  font-weight: 400;
+  color: var(--sub2);
+}
+
+.review-meta {
+  font-family: var(--ui);
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .3px;
+  line-height: 1.4;
+}
+
+.review-via {
+  font-size: 9px;
+  color: var(--muted2);
+}
+
+/* Carousel dots */
+.carousel-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  padding: 0 28px;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--muted2);
+  opacity: .4;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all .3s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.dot.active {
+  width: 16px;
+  border-radius: 3px;
+  background: var(--accent);
+  opacity: .7;
+}
+
+/* Carousel arrows (desktop only) */
+.carousel-arrow {
+  display: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg2);
+  color: var(--sub2);
+  font-size: 14px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  transition: all .2s;
+  z-index: 2;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-arrow:hover {
+  border-color: var(--border-h);
+  color: var(--accent);
+}
+
+.carousel-prev { left: 8px; }
+.carousel-next { right: 8px; }
+
+@media (min-width: 600px) {
+  .carousel-arrow { display: flex; }
+}
+
+/* ===== CONTACT ===== */
+.contact {
+  padding: 28px 28px 24px;
+  opacity: 0;
+  animation: fi .5s ease .6s forwards;
+}
+
+.line-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+  background: var(--accent-dim);
+  border: 1px solid var(--border-h);
+  border-radius: 14px;
+  text-decoration: none;
+  color: var(--accent);
+  font-family: var(--jp);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: .04em;
+  margin-bottom: 6px;
+  transition: all .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.line-cta:hover {
+  background: rgba(191,169,138,.18);
+  color: var(--accent-h);
+}
+
+.line-cta svg { width: 20px; height: 20px; }
+
+.line-sub {
+  text-align: center;
+  font-family: var(--jp);
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 16px;
+  transition: opacity .2s;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.link:hover {
+  border-color: var(--border-h);
+  background: var(--accent-dim);
+}
+
+.link-icon {
+  width: 16px;
+  height: 16px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.link-main {
+  flex: 1;
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.link-badge {
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: .5px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: transparent;
+  color: var(--sub2);
+  font-family: var(--jp);
+  font-size: 12px;
+  cursor: pointer;
+  transition: all .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn:hover {
+  border-color: var(--border-h);
+  color: var(--text);
+  background: var(--accent-dim);
+}
+
+.btn svg { width: 14px; height: 14px; }
+
+/* ===== FOOTER ===== */
+.foot {
+  text-align: center;
+  padding: 16px 28px 24px;
+  border-top: 1px solid var(--border);
+  opacity: 0;
+  animation: fi .5s ease .7s forwards;
+}
+
+.foot-brand {
+  font-family: var(--en);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--muted);
+  letter-spacing: 2px;
+}
+
+.foot-sub {
+  font-family: var(--ui);
+  font-size: 10px;
+  color: var(--muted2);
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+}
+
+/* Translatable fade */
+[data-ja] { transition: opacity .2s; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
+  background: var(--bg2);
+  border: 1px solid var(--border-h);
+  color: var(--text);
+  font-family: var(--jp);
+  font-size: 13px;
+  padding: 10px 24px;
+  border-radius: 10px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s, transform .3s;
+  z-index: 100;
+  box-shadow: 0 4px 20px rgba(0,0,0,.5);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (min-width: 600px) {
+  .card { max-width: 420px; border-radius: 24px; }
+  .about, .contact { padding-left: 32px; padding-right: 32px; }
+  .reviews .sec-title { padding: 0 32px; }
+  .carousel-slide { padding: 0 32px; }
+  .carousel-dots { padding: 0 32px; }
+  .hero { aspect-ratio: 4 / 3; }
+  .hero-name { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <!-- Hero -->
+  <div class="hero">
+    <img src="profile.jpg" alt="LEA KIM" width="800" height="900">
+
+    <!-- Lang toggle -->
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="ja" onclick="switchLang('ja')">JA</button>
+      <button class="lang-btn" data-lang="en" onclick="switchLang('en')">EN</button>
+    </div>
+
+    <div class="hero-id">
+      <div class="hero-logo"><img src="logo-white.png" alt="lea"></div>
+      <div class="hero-text">
+        <div class="hero-name">Lea Kim</div>
+        <div class="hero-role" data-ja="花タトゥー専門アーティスト" data-en="Floral Tattoo Artist">花タトゥー専門アーティスト</div>
+        <div class="hero-loc">Osaka, Japan</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stats -->
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">6</div>
+      <div class="stat-label" data-ja="ヶ国で施術経験" data-en="Countries">ヶ国で施術経験</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100<span>+</span></div>
+      <div class="stat-label" data-ja="件以上の施術実績" data-en="Tattoos">件以上の施術実績</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label" data-ja="フリーハンド施術" data-en="Freehand">フリーハンド施術</div>
+    </div>
+  </div>
+
+  <!-- About -->
+  <div class="about">
+    <div class="sec-title">About</div>
+    <p class="bio" data-ja="日本人の妻と大阪在住。アメリカ・イギリス・フランス・韓国・台湾・日本、6ヶ国で活動してきたフリーハンドタトゥーアーティスト。体のラインに合わせてその場でデザインする、完全オーダーメイドの花タトゥーを専門としています。" data-en="Based in Osaka with my Japanese wife. A freehand tattoo artist with experience across 6 countries — US, UK, France, Korea, Taiwan, and Japan. I specialize in bespoke floral tattoos, designing each piece in real-time to complement the natural lines of your body.">日本人の妻と大阪在住。アメリカ・イギリス・フランス・韓国・台湾・日本、6ヶ国で活動してきたフリーハンドタトゥーアーティスト。体のラインに合わせてその場でデザインする、完全オーダーメイドの花タトゥーを専門としています。</p>
+  </div>
+
+  <!-- Reviews carousel -->
+  <div class="reviews">
+    <div class="sec-title" data-ja="お客様の声" data-en="Voices">お客様の声</div>
+
+    <div class="carousel" id="carousel">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-slide">
+          <div class="review-card">
+            <div class="review-body">
+              <div class="review-q">"</div>
+              <div class="review-content">
+                <div class="review-text" data-ja="繊細で美しく優しさもあり、その中に力強さもある雰囲気が作品に表れていると彫って頂いたタトゥーを見て思います。" data-en="Delicate and beautiful with a sense of gentleness, yet there's also a powerful presence that comes through in the work. I feel it every time I look at the tattoo.">繊細で美しく優しさもあり、その中に力強さもある雰囲気が作品に表れていると彫って頂いたタトゥーを見て思います。</div>
+                <div class="review-author">
+                  <div class="review-avatar">C</div>
+                  <div class="review-meta" data-ja="東京在住 Cさん" data-en="C — Tokyo">東京在住 Cさん<br><span class="review-via">Instagram DM</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="review-card">
+            <div class="review-body">
+              <div class="review-q">"</div>
+              <div class="review-content">
+                <div class="review-text" data-ja="とても素晴らしい物をありがとうございました。脇腹に入れる勇気が出た際にはまたよろしくお願いいたします！" data-en="Thank you so much for the amazing work. When I build up the courage to get one on my side, I'll definitely come back!">とても素晴らしい物をありがとうございました。脇腹に入れる勇気が出た際にはまたよろしくお願いいたします！</div>
+                <div class="review-author">
+                  <div class="review-avatar">T</div>
+                  <div class="review-meta" data-ja="東京在住 Tさん" data-en="T — Tokyo">東京在住 Tさん<br><span class="review-via">Instagram DM</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="review-card">
+            <div class="review-body">
+              <div class="review-q">"</div>
+              <div class="review-content">
+                <div class="review-text" data-ja="最高に可愛いくて美しく完成がとても楽しみです！またよろしくお願いします。" data-en="It's the cutest and most beautiful thing — I can't wait to see it fully healed! I'll be back for sure.">最高に可愛いくて美しく完成がとても楽しみです！またよろしくお願いします。</div>
+                <div class="review-author">
+                  <div class="review-avatar">K</div>
+                  <div class="review-meta" data-ja="大阪在住 Kさん" data-en="K — Osaka">大阪在住 Kさん<br><span class="review-via">Instagram DM</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="review-card">
+            <div class="review-body">
+              <div class="review-q">"</div>
+              <div class="review-content">
+                <div class="review-text" data-ja="このタトゥーは私にとって本当に大切なものです。お会いできてとても嬉しかったです。またいつかお会いできますように。" data-en="This tattoo means so much to me. I was so happy to meet you. I hope we can meet again someday.">このタトゥーは私にとって本当に大切なものです。お会いできてとても嬉しかったです。またいつかお会いできますように。</div>
+                <div class="review-author">
+                  <div class="review-avatar">A</div>
+                  <div class="review-meta" data-ja="フランス在住 Aさん" data-en="A — France">フランス在住 Aさん<br><span class="review-via">Instagram DM</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="carousel-slide">
+          <div class="review-card">
+            <div class="review-body">
+              <div class="review-q">"</div>
+              <div class="review-content">
+                <div class="review-text" data-ja="周りのアーティスト仲間たちも「本当に素敵な作品だね」と。必ず行きます！" data-en="Even my artist friends said 'that's truly a beautiful piece.' I'll definitely visit!">周りのアーティスト仲間たちも「本当に素敵な作品だね」と。必ず行きます！</div>
+                <div class="review-author">
+                  <div class="review-avatar">N</div>
+                  <div class="review-meta" data-ja="東京在住 Nさん" data-en="N — Tokyo">東京在住 Nさん<br><span class="review-via">Instagram DM</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <button class="carousel-arrow carousel-prev" onclick="slideTo(curSlide-1)">&lsaquo;</button>
+      <button class="carousel-arrow carousel-next" onclick="slideTo(curSlide+1)">&rsaquo;</button>
+    </div>
+
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact">
+    <a id="msgCta" href="https://line.me/R/ti/p/@722xsnht" target="_blank" rel="noopener" class="line-cta">
+      <svg id="msgCtaIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.81 2 10.5c0 3.77 3.05 6.94 7.16 7.87.28.06.66.18.76.42.09.21.06.55.03.77l-.12.74c-.04.22-.17.87.76.47.93-.4 5.03-2.96 6.86-5.07C19.27 13.72 22 12.26 22 10.5 22 5.81 17.52 2 12 2z"/></svg>
+      <span id="msgCtaText" data-ja="LINEでお気軽にご相談ください" data-en="Chat on WhatsApp">LINEでお気軽にご相談ください</span>
+    </a>
+    <div class="line-sub" data-ja="相談無料 ・ 24時間以内に返信" data-en="Free consultation — Reply within 24h">相談無料 ・ 24時間以内に返信</div>
+
+    <div class="links">
+      <a href="https://instagram.com/lea.inked" target="_blank" rel="noopener" class="link">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="2" width="20" height="20" rx="5"/>
+          <circle cx="12" cy="12" r="5"/>
+          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="link-main">@lea.inked</span>
+        <span class="link-badge">Instagram</span>
+      </a>
+      <a href="mailto:kimlea0328@gmail.com" class="link">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+          <polyline points="22,4 12,13 2,4"/>
+        </svg>
+        <span class="link-main">kimlea0328@gmail.com</span>
+        <span class="link-badge">Email</span>
+      </a>
+      <a href="https://leakim.art" target="_blank" rel="noopener" class="link">
+        <svg class="link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <ellipse cx="12" cy="12" rx="4" ry="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+        </svg>
+        <span class="link-main">leakim.art</span>
+        <span class="link-badge">Portfolio</span>
+      </a>
+    </div>
+
+    <div class="actions">
+      <button class="btn" onclick="saveContact()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4-4v2"/>
+          <circle cx="9" cy="7" r="4"/>
+          <line x1="19" y1="8" x2="19" y2="14"/>
+          <line x1="22" y1="11" x2="16" y2="11"/>
+        </svg>
+        <span data-ja="連絡先を保存" data-en="Save Contact">連絡先を保存</span>
+      </button>
+      <button class="btn" onclick="shareCard()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="5" r="3"/>
+          <circle cx="6" cy="12" r="3"/>
+          <circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        <span data-ja="共有" data-en="Share">共有</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-brand">lea</div>
+    <div class="foot-sub">OSAKA, JAPAN</div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== CAROUSEL =====
+var curSlide = 0;
+var totalSlides = 5;
+var track = document.getElementById('carouselTrack');
+var dotsWrap = document.getElementById('carouselDots');
+
+// Build dots
+for (var i = 0; i < totalSlides; i++) {
+  var d = document.createElement('button');
+  d.className = 'dot' + (i === 0 ? ' active' : '');
+  d.setAttribute('aria-label', 'Slide ' + (i + 1));
+  d.onclick = (function(idx) { return function() { slideTo(idx); }; })(i);
+  dotsWrap.appendChild(d);
+}
+
+function slideTo(idx) {
+  if (idx < 0) idx = totalSlides - 1;
+  if (idx >= totalSlides) idx = 0;
+  curSlide = idx;
+  track.style.transform = 'translateX(-' + (curSlide * 100) + '%)';
+  var dots = dotsWrap.querySelectorAll('.dot');
+  for (var i = 0; i < dots.length; i++) {
+    dots[i].className = 'dot' + (i === curSlide ? ' active' : '');
+  }
+}
+
+// Touch swipe
+var touchX0 = 0;
+var touchX1 = 0;
+var carousel = document.getElementById('carousel');
+
+carousel.addEventListener('touchstart', function(e) {
+  touchX0 = e.touches[0].clientX;
+  touchX1 = touchX0;
+}, { passive: true });
+
+carousel.addEventListener('touchmove', function(e) {
+  touchX1 = e.touches[0].clientX;
+}, { passive: true });
+
+carousel.addEventListener('touchend', function() {
+  var dx = touchX0 - touchX1;
+  if (Math.abs(dx) > 50) {
+    slideTo(dx > 0 ? curSlide + 1 : curSlide - 1);
+  }
+  touchX0 = 0;
+  touchX1 = 0;
+});
+
+// ===== LANGUAGE TOGGLE =====
+var currentLang = 'ja';
+
+function switchLang(lang) {
+  if (lang === currentLang) return;
+  currentLang = lang;
+
+  // Update toggle buttons
+  var btns = document.querySelectorAll('.lang-btn');
+  for (var i = 0; i < btns.length; i++) {
+    btns[i].className = 'lang-btn' + (btns[i].getAttribute('data-lang') === lang ? ' active' : '');
+  }
+
+  // Fade out -> swap -> fade in
+  var els = document.querySelectorAll('[data-ja]');
+  for (var j = 0; j < els.length; j++) {
+    els[j].style.opacity = '0';
+  }
+
+  setTimeout(function() {
+    for (var k = 0; k < els.length; k++) {
+      var el = els[k];
+      var val = el.getAttribute('data-' + lang);
+      // review-meta has <br><span> structure — use innerHTML with via appended
+      if (el.classList.contains('review-meta')) {
+        el.innerHTML = val + '<br><span class="review-via">Instagram DM</span>';
+      } else if (el.classList.contains('review-text')) {
+        el.textContent = val;
+        el.style.fontFamily = lang === 'en' ? 'var(--ui)' : 'var(--jp)';
+      } else {
+        el.textContent = val;
+      }
+      el.style.opacity = '1';
+    }
+    // Switch bio font
+    var bio = document.querySelector('.bio');
+    if (bio) bio.style.fontFamily = lang === 'en' ? 'var(--ui)' : 'var(--jp)';
+
+    // Switch CTA: LINE (JA) ↔ WhatsApp (EN)
+    var cta = document.getElementById('msgCta');
+    var icon = document.getElementById('msgCtaIcon');
+    if (lang === 'en') {
+      cta.href = 'https://wa.me/821031543050';
+      icon.innerHTML = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>';
+    } else {
+      cta.href = 'https://line.me/R/ti/p/@722xsnht';
+      icon.innerHTML = '<path d="M12 2C6.48 2 2 5.81 2 10.5c0 3.77 3.05 6.94 7.16 7.87.28.06.66.18.76.42.09.21.06.55.03.77l-.12.74c-.04.22-.17.87.76.47.93-.4 5.03-2.96 6.86-5.07C19.27 13.72 22 12.26 22 10.5 22 5.81 17.52 2 12 2z"/>';
+    }
+  }, 200);
+
+  // Update html lang
+  document.documentElement.lang = lang;
+}
+
+// ===== VCARD =====
+function saveContact() {
+  var v = ['BEGIN:VCARD','VERSION:3.0','N:Kim;Lea;;;','FN:LEA KIM',
+    'TITLE:Floral Tattoo Artist','ORG:lea',
+    'ADR;TYPE=WORK:;;Osaka;;Osaka;;Japan',
+    'EMAIL;TYPE=INTERNET:kimlea0328@gmail.com',
+    'URL:https://leakim.art',
+    'X-SOCIALPROFILE;TYPE=instagram:https://instagram.com/lea.inked',
+    'NOTE:Freehand floral tattoo artist. 6 countries experience. LINE: @722xsnht',
+    'END:VCARD'].join('\r\n');
+  var b = new Blob([v], { type: 'text/vcard;charset=utf-8' });
+  var u = URL.createObjectURL(b);
+  var a = document.createElement('a');
+  a.href = u; a.download = 'LEA_KIM.vcf'; a.click();
+  URL.revokeObjectURL(u);
+  showToast(currentLang === 'ja' ? '連絡先をダウンロードしました' : 'Contact saved');
+}
+
+function shareCard() {
+  var d = { title: 'LEA KIM — Tattoo Artist, Osaka',
+    text: currentLang === 'ja' ? '花タトゥー専門アーティスト・大阪' : 'Floral Tattoo Artist, Osaka',
+    url: 'https://leakim.art/card/' };
+  if (navigator.share) { navigator.share(d).catch(function(){}); }
+  else { navigator.clipboard.writeText(d.url).then(function() {
+    showToast(currentLang === 'ja' ? 'URLをコピーしました' : 'URL copied');
+  }).catch(function() {
+    showToast(currentLang === 'ja' ? 'URLをコピーしました' : 'URL copied');
+  }); }
+}
+
+function showToast(m) {
+  var e = document.getElementById('toast');
+  e.textContent = m;
+  e.classList.add('show');
+  setTimeout(function() { e.classList.remove('show'); }, 2400);
+}
+</script>
+
+</body>
+</html>
