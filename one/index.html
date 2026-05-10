@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>lea — 花タトゥー専門 · 大阪</title>
+<meta name="description" content="Lea Kim — 大阪の花タトゥー専門。完全オーダーメイドの花タトゥー。LINEでお気軽にご相談ください。">
+
+<!-- OG -->
+<meta property="og:title" content="lea — 花タトゥー専門 · 大阪">
+<meta property="og:description" content="完全オーダーメイドの花タトゥー。LINEでお気軽にご相談ください。">
+<meta property="og:image" content="https://leakim.art/small-1.jpg">
+<meta property="og:url" content="https://leakim.art/one/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Outfit:wght@300;400&display=swap" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Outfit:wght@300;400&display=swap"></noscript>
+
+<!-- META PIXEL -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+if(window.location.search.indexOf('test=1') === -1){
+  fbq('init', '1003353476194605');
+  fbq('track', 'PageView');
+  fbq('track', 'ViewContent', { content_name: 'one_page_lp' });
+} else {
+  window.fbq = function(){};
+}
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></noscript>
+
+<!-- GA4 -->
+<script>
+if(window.location.search.indexOf('test=1') === -1){
+  var s=document.createElement('script');s.async=true;
+  s.src='https://www.googletagmanager.com/gtag/js?id=G-QZSP3DHNW6';
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QZSP3DHNW6');
+}
+</script>
+
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+if(window.location.search.indexOf('test=1') === -1){
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "vintd57trs");
+}
+</script>
+
+<!-- fbclid / UTM 저장 (랜딩 즉시) -->
+<script>
+(function(){
+  try {
+    var params = new URLSearchParams(window.location.search);
+    var data = {};
+    var hasParam = false;
+    ['fbclid','utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){
+      var v = params.get(k);
+      if(v){ data[k] = v; hasParam = true; }
+    });
+    if(hasParam){
+      data.ts = Date.now();
+      data.landing = 'one';
+      localStorage.setItem('lea_ad_visit', JSON.stringify(data));
+    }
+  } catch(e){}
+})();
+</script>
+
+<style>
+:root {
+  --bg: #080808;
+  --text: #e8e0d4;
+  --sub: #8a8078;
+  --accent: #bfa98a;
+  --accent-h: #d4c0a6;
+  --jp: 'Shippori Mincho', 'Yu Mincho', serif;
+  --en: 'Cormorant Garamond', serif;
+  --ui: 'Outfit', sans-serif;
+  --shadow: 0 1px 8px rgba(0,0,0,.7), 0 0 20px rgba(0,0,0,.4);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+html,body{height:100%;overflow:hidden}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:var(--ui);
+  -webkit-font-smoothing:antialiased;
+}
+
+.page{
+  position:relative;
+  width:100%;
+  height:100vh;
+  height:100svh;
+  overflow:hidden;
+}
+
+.bg{position:absolute;inset:0}
+
+.bg img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:25% 58%;
+}
+
+.overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    to top,
+    var(--bg) 0%,
+    rgba(8,8,8,.95) 30%,
+    rgba(8,8,8,.65) 55%,
+    rgba(8,8,8,.25) 75%,
+    transparent 100%
+  );
+}
+
+.content{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:0 28px 48px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  z-index:2;
+}
+
+.brand{
+  font-family:var(--en);
+  font-size:32px;
+  font-weight:300;
+  font-style:italic;
+  color:var(--accent);
+  letter-spacing:3px;
+  margin-bottom:10px;
+  text-shadow:var(--shadow);
+  opacity:0;animation:fu .6s ease .1s forwards;
+}
+
+.copy{
+  font-family:var(--jp);
+  font-size:15px;
+  font-weight:400;
+  color:var(--text);
+  letter-spacing:.08em;
+  line-height:1.7;
+  margin-bottom:28px;
+  text-shadow:var(--shadow);
+  opacity:0;animation:fu .6s ease .2s forwards;
+}
+
+.cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  width:100%;
+  max-width:340px;
+  background:var(--accent);
+  color:var(--bg);
+  font-family:var(--jp);
+  font-size:15px;
+  font-weight:500;
+  letter-spacing:.1em;
+  text-decoration:none;
+  padding:16px 24px;
+  border:none;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .2s ease;
+  opacity:0;animation:fu .6s ease .3s forwards;
+}
+
+.cta:active{background:var(--accent-h)}
+
+.cta svg{width:18px;height:18px;flex-shrink:0}
+
+.note{
+  font-family:var(--jp);
+  font-size:11px;
+  color:var(--sub);
+  letter-spacing:.06em;
+  margin-top:12px;
+  text-shadow:var(--shadow);
+  opacity:0;animation:fu .6s ease .35s forwards;
+}
+
+@keyframes fu{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@media (min-width:768px){
+  .content{padding-bottom:80px}
+  .brand{font-size:40px}
+  .copy{font-size:17px}
+  .cta{max-width:380px;font-size:16px;padding:18px 28px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="bg">
+    <img src="/small-1.jpg" alt="花タトゥー作品" fetchpriority="high">
+  </div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="brand">lea</div>
+    <div class="copy">大阪 · 花タトゥー専門</div>
+    <button class="cta" id="line-cta">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.271.173-.508.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      LINEで気軽に相談する
+    </button>
+    <div class="note">相談無料 · 予約義務なし</div>
+  </div>
+</div>
+
+<script>
+document.getElementById('line-cta').addEventListener('click', function(e){
+  e.preventDefault();
+
+  var adVisit = null;
+  try {
+    var stored = localStorage.getItem('lea_ad_visit');
+    if(stored){ adVisit = JSON.parse(stored); if(Date.now()-adVisit.ts>604800000) adVisit=null; }
+  } catch(ex){}
+
+  var isPremium = adVisit && adVisit.utm_campaign && adVisit.utm_campaign.indexOf('premium') !== -1;
+  var leadValue = isPremium ? 120000 : 60000;
+  var contentName = isPremium ? 'premium_one' : 'one_page_line';
+
+  // Lead (Pixel)
+  if(typeof fbq === 'function'){
+    fbq('track', 'Lead', {
+      content_name: contentName,
+      value: leadValue,
+      currency: 'JPY'
+    });
+  }
+
+  // generate_lead (GA4)
+  if(typeof gtag === 'function'){
+    gtag('event', 'generate_lead', {
+      content_name: contentName,
+      value: leadValue,
+      currency: 'JPY',
+      landing_page: 'one',
+      send_to: 'G-QZSP3DHNW6',
+      transport_type: 'beacon'
+    });
+  }
+
+  setTimeout(function(){
+    window.location.href = 'https://line.me/R/ti/p/@722xsnht';
+  }, 300);
+});
+</script>
+</body>
+</html>
