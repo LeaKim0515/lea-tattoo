@@ -1,3 +1,16 @@
+# 루트=죽은 index.html이 폐가격 노출 — /card/로 강제 리다이렉트 (2026-07-06 프리모템 GO)
+[[redirects]]
+  from = "/"
+  to = "/card/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/index.html"
+  to = "/card/"
+  status = 302
+  force = true
+
 [[redirects]]
   from = "/bio"
   to = "https://lealinebot-production.up.railway.app/r?source=ig&medium=bio&campaign=ig_bio&content=link_in_bio&conversion_path=ig_bio"
