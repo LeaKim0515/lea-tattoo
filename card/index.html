@@ -101,12 +101,13 @@ body {
   z-index: 3;
   display: flex;
   align-items: center;
-  background: rgba(0,0,0,.5);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(191,169,138,.12);
+  background: rgba(0,0,0,.65);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(191,169,138,.25);
   border-radius: 8px;
-  padding: 3px;
+  padding: 4px;
   gap: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.3);
 }
 
 .lang-btn {
@@ -458,9 +459,12 @@ body {
 .links {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 16px;
+  gap: 4px;
+  margin-bottom: 12px;
+  opacity: .5;
+  transition: opacity .2s;
 }
+.links:hover { opacity: .8; }
 
 .link {
   display: flex;
@@ -502,7 +506,10 @@ body {
 .actions {
   display: flex;
   gap: 8px;
+  opacity: .4;
+  transition: opacity .2s;
 }
+.actions:hover { opacity: .7; }
 
 .btn {
   flex: 1;
@@ -735,9 +742,9 @@ body {
   <div class="contact">
     <a id="msgCta" href="https://lealinebot-production.up.railway.app/r?source=ig&medium=card&campaign=ig_card&conversion_path=ig_card" target="_blank" rel="noopener" class="line-cta">
       <svg id="msgCtaIcon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.81 2 10.5c0 3.77 3.05 6.94 7.16 7.87.28.06.66.18.76.42.09.21.06.55.03.77l-.12.74c-.04.22-.17.87.76.47.93-.4 5.03-2.96 6.86-5.07C19.27 13.72 22 12.26 22 10.5 22 5.81 17.52 2 12 2z"/></svg>
-      <span id="msgCtaText" data-ja="LINEでお気軽にご相談ください" data-en="Chat on WhatsApp">LINEでお気軽にご相談ください</span>
+      <span id="msgCtaText" data-ja="まずLINEでご相談ください" data-en="Start a consultation on LINE">まずLINEでご相談ください</span>
     </a>
-    <div class="line-sub" data-ja="24時間以内に返信" data-en="Reply within 24h">24時間以内に返信</div>
+    <div class="line-sub" data-ja="お一人ずつ丁寧にご対応しております" data-en="Each inquiry handled with care">お一人ずつ丁寧にご対応しております</div>
 
     <div class="links">
       <a href="https://instagram.com/lea.inked" target="_blank" rel="noopener" class="link">
@@ -878,15 +885,12 @@ function switchLang(lang) {
     var bio = document.querySelector('.bio');
     if (bio) bio.style.fontFamily = lang === 'en' ? 'var(--ui)' : 'var(--jp)';
 
-    // Switch CTA: LINE (JA) ↔ WhatsApp (EN)
+    // Switch CTA: LINE JA ↔ LINE EN (lang param으로 봇 영문 시작)
     var cta = document.getElementById('msgCta');
-    var icon = document.getElementById('msgCtaIcon');
     if (lang === 'en') {
-      cta.href = 'https://wa.me/821031543050';
-      icon.innerHTML = '<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>';
+      cta.href = 'https://lealinebot-production.up.railway.app/r?source=ig&medium=card&campaign=ig_card&conversion_path=ig_card&lang=en';
     } else {
       cta.href = 'https://lealinebot-production.up.railway.app/r?source=ig&medium=card&campaign=ig_card&conversion_path=ig_card';
-      icon.innerHTML = '<path d="M12 2C6.48 2 2 5.81 2 10.5c0 3.77 3.05 6.94 7.16 7.87.28.06.66.18.76.42.09.21.06.55.03.77l-.12.74c-.04.22-.17.87.76.47.93-.4 5.03-2.96 6.86-5.07C19.27 13.72 22 12.26 22 10.5 22 5.81 17.52 2 12 2z"/>';
     }
   }, 200);
 
