@@ -26,7 +26,7 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1003353476194605');
 fbq('track', 'PageView');
-fbq('track', 'ViewContent', {content_name: 'card'});
+/* ViewContent는 서버(/r) 발사와 이벤트명 충돌 — 이중계상 방지로 미사용 (0828 회의 R-2) */
 </script>
 <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/></noscript>
 
