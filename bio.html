@@ -32,13 +32,29 @@
   // ── 테스트 유입 배제 마커 (r3 devil 해소조건 ①) ──
   //   배포 후 실패 재현 테스트(미친추 계정 등)가 실유입과 같은 라벨로 적립되면
   //   ig_bio_inflow_7d 모니터·T-B(K=0)가 그 1건으로 최대 7일 무음화된다.
-  //   /bio?e2e=1 로 열면 campaign·conversion_path만 _e2e 접미사로 갈라 적립한다
-  //   (모니터 SQL의 conversion_path='ig_bio' 분자에서 자동 제외. LIKE 'ig_%' 분모에는 남으므로
-  //    "ig_ 유입은 있는데 ig_bio가 0" = 위반 판정이 오히려 보수적으로 유지된다).
+  //   /bio?e2e=1 로 열면 campaign·conversion_path를 **`e2e_` 접두**로 갈라 적립한다.
+  //
+  //   ★ 접미(`ig_bio_e2e`)가 아니라 접두(`e2e_ig_bio`)인 이유 — 서버 /r의 CAPI 분기 때문이다.
+  //     src/index.js:449 `if (conversionPath && conversionPath.indexOf('ig_') === 0)` 가
+  //     **접두 `ig_`만** 보고 IGBioVisit CAPI를 발사한다. 접미형(`ig_bio_e2e`)은 이 조건을
+  //     그대로 통과해 **테스트 유입이 IGBioVisit 커스텀 이벤트로 Meta에 실계상**된다.
+  //     그 블록(:436-449)은 try/catch 밖·302 앞이라 **바이트 무접촉 락** 대상이라 서버에서
+  //     예외를 팔 수 없다 → 배제는 여기(클라이언트 라벨)에서만 가능하다.
+  //     `e2e_` 접두면 indexOf('ig_')===0 이 거짓 → **IGBioVisit 미발사**.
+  //
+  //   ★ 모니터 정합: absence-watch의 3건은 분자 `conversion_path = 'ig_bio'`(정확일치),
+  //     분모 `LIKE 'ig\_%' ESCAPE '\'` 다. `e2e_ig_bio`는 **분자·분모 양쪽에서 빠진다**
+  //     — 테스트 1건이 최후 그물을 무음화하지도, 없는 위반을 만들지도 않는다.
+  //
+  //   ★ 남는 것(명시 수용): `/r`은 크롤러가 아닌 모든 히트에 ViewContent(`vc_r_`+token)를
+  //     무조건 발사한다(index.js:446, 경로 무관). 따라서 **E2E 1회당 ViewContent 1건은 계상된다.**
+  //     제거하려면 무접촉 락 구간을 건드려야 하므로 수용한다 — ViewContent는 P59 판정축
+  //     (서버 QL 절대수·클릭 연령·친추 절대수) 어디에도 들어가지 않고, E2E는 배포당 1~2회다.
+  //
   //   ※ 실운영 링크(파라미터 없음)는 항상 위 DEST 그대로 — 귀속 체인 바이트 무변경.
   if (/(?:^|[?&])e2e=1(?:&|$)/.test(location.search)) {
-    DEST = DEST.replace('campaign=ig_bio', 'campaign=ig_bio_e2e')
-               .replace('conversion_path=ig_bio', 'conversion_path=ig_bio_e2e');
+    DEST = DEST.replace('campaign=ig_bio', 'campaign=e2e_ig_bio')
+               .replace('conversion_path=ig_bio', 'conversion_path=e2e_ig_bio');
   }
 
   // fbp = Meta Browser ID. 서브도메인 인덱스(fb.0/fb.1/fb.2.*)를 전부 허용한다 —
