@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<!--
+  /bio 인터스티셜 (설계서 v3 D-1, 2026-08-28) — IG 프로필 바이오 링크 전용.
+  목적: 현행 「/bio → Railway /r 302」 사이에 leakim.art 도메인의 정적 1페이지를 끼워
+        Meta Pixel PageView를 발사하고(_fbp 쿠키 발급) 그 쿠키를 /r에 &fbp=로 넘긴다.
+
+  ★ 절대 원칙 3개 (깨지면 이 페이지는 폐기)
+   1) JS 내비게이션은 우리 도메인(Railway /r)까지만. LINE 앱 핸드오프는 지금과 **완전히 같은**
+      서버 302(index.js:449 → line.me/R/oaMessage/...)가 담당한다. LINE으로 가는 홉을 JS로 바꾸면
+      iOS 인앱 브라우저의 딥링크 인터셉트 제외 함정에 걸린다.
+   2) 목적지 문자열(DEST)은 현행 netlify.toml:16 / _redirects:3 과 **문자 단위 동일**.
+      utm·conversion_path·프리필·ZW 토큰 귀속 체인은 서버가 만들며 여기서 손대지 않는다.
+   3) 화면 텍스트 0자·배경 1색. <title>도 두지 않는다(인앱 브라우저 헤더에 문구가 뜨지 않게).
+
+  ★ meta refresh 백스톱은 **의도적으로 두지 않는다** (r3 devil 급소3).
+     JS가 정상 동작해도 취소되지 않아, iOS IAB가 유니버설 링크 핸드오프 시 문서를 언로드하지 않는
+     경우 3초 뒤 /r로 재이동 → pending_utm 중복행 + ViewContent/IGBioVisit CAPI 이중 발사.
+     JS 사망 커버는 아래 1200ms 상한 타이머(인라인 = 외부 스크립트 실패와 무관)로 대신한다.
+     JS 자체가 꺼진 브라우저만 <noscript> meta refresh가 받는다(이 경우 go()는 애초에 안 돈다 = 이중 히트 없음).
+-->
+<style>html,body{background:#080808;margin:0;height:100%}</style>
+<script>
+(function () {
+  // 현행 리다이렉트 목적지와 문자 단위 동일 — 이 상수는 손대지 않는다.
+  var DEST = 'https://lealinebot-production.up.railway.app/r?source=ig&medium=bio&campaign=ig_bio&content=link_in_bio&conversion_path=ig_bio';
+
+  // ── 테스트 유입 배제 마커 (r3 devil 해소조건 ①) ──
+  //   배포 후 실패 재현 테스트(미친추 계정 등)가 실유입과 같은 라벨로 적립되면
+  //   ig_bio_inflow_7d 모니터·T-B(K=0)가 그 1건으로 최대 7일 무음화된다.
+  //   /bio?e2e=1 로 열면 campaign·conversion_path만 _e2e 접미사로 갈라 적립한다
+  //   (모니터 SQL의 conversion_path='ig_bio' 분자에서 자동 제외. LIKE 'ig_%' 분모에는 남으므로
+  //    "ig_ 유입은 있는데 ig_bio가 0" = 위반 판정이 오히려 보수적으로 유지된다).
+  //   ※ 실운영 링크(파라미터 없음)는 항상 위 DEST 그대로 — 귀속 체인 바이트 무변경.
+  if (/(?:^|[?&])e2e=1(?:&|$)/.test(location.search)) {
+    DEST = DEST.replace('campaign=ig_bio', 'campaign=ig_bio_e2e')
+               .replace('conversion_path=ig_bio', 'conversion_path=ig_bio_e2e');
+  }
+
+  // fbp = Meta Browser ID. 서브도메인 인덱스(fb.0/fb.1/fb.2.*)를 전부 허용한다 —
+  //   apex/www 구성에 따라 1이 아닌 값이 나올 수 있고, 여기서 과차단하면 재료가 조용히 0이 된다.
+  //   서버(src/lib/fbp.js)와 **같은 정규식**. 값은 브라우저 쿠키 원문만 쓴다(자체생성 금지).
+  var FBP_RE = /^fb\.[0-9]\.\d{10,16}\.\d{1,20}$/;
+  function readFbp() {
+    var m = String(document.cookie || '').match(/(?:^|;\s*)_fbp=([^;]+)/);
+    if (!m) return null;
+    var v = decodeURIComponent(m[1]);
+    return FBP_RE.test(v) ? v : null;
+  }
+
+  // 이동은 1회뿐 — 어느 트리거가 먼저 오든 뒤엣것은 전부 무시된다.
+  var fired = false;
+  function go() {
+    if (fired) return;
+    fired = true;
+    var fbp = null;
+    try { fbp = readFbp(); } catch (e) {}
+    // ★ 재료보다 이동이 항상 우선: fbp가 없으면 없는 대로 간다.
+    var url = fbp ? (DEST + '&fbp=' + encodeURIComponent(fbp)) : DEST;
+    location.replace(url); // replace = 뒤로가기 루프 방지
+  }
+
+  // 상한 1200ms: fbevents.js가 차단(광고차단기·기업 DNS)되거나 늦으면 픽셀은 포기하고 이동만 지킨다.
+  //   인라인 타이머라 외부 스크립트 로드 실패와 무관하게 반드시 돈다.
+  setTimeout(go, 1200);
+
+  // Meta Pixel — card/index.html과 같은 데이터셋. PageView만(ViewContent는 서버 /r와 이중계상, 0828 R-2).
+  //   표준 스니펫 + onload/onerror 훅: 정상이면 발사 200ms 뒤 출발, 로드 실패면 즉시 출발.
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;t.onload=function(){setTimeout(go,200)};t.onerror=function(){go()};
+  s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1003353476194605');
+  fbq('track', 'PageView');
+})();
+</script>
+<noscript>
+<meta http-equiv="refresh" content="0;url=https://lealinebot-production.up.railway.app/r?source=ig&medium=bio&campaign=ig_bio&content=link_in_bio&conversion_path=ig_bio">
+<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1003353476194605&ev=PageView&noscript=1"/>
+</noscript>
+</head>
+<body></body>
+</html>

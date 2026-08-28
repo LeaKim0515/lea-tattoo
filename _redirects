@@ -1,5 +1,6 @@
 / /card/ 302!
 /index.html /card/ 302!
-/bio https://lealinebot-production.up.railway.app/r?source=ig&medium=bio&campaign=ig_bio&content=link_in_bio&conversion_path=ig_bio 302!
+# /bio = 인터스티셜 rewrite (200) — 목적지 문자열은 bio.html DEST 상수. netlify.toml과 동시 유지 (0828 D-1)
+/bio /bio.html 200!
 /dm https://lealinebot-production.up.railway.app/r?source=instagram&medium=dm&campaign=ig_dm&content=faq_transfer&conversion_path=ig_dm 302!
 /r https://lealinebot-production.up.railway.app/r 302!
