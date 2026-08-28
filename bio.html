@@ -11,7 +11,7 @@
 
   ★ 절대 원칙 3개 (깨지면 이 페이지는 폐기)
    1) JS 내비게이션은 우리 도메인(Railway /r)까지만. LINE 앱 핸드오프는 지금과 **완전히 같은**
-      서버 302(index.js:449 → line.me/R/oaMessage/...)가 담당한다. LINE으로 가는 홉을 JS로 바꾸면
+      서버 302(index.js /r 핸들러 res.redirect(302, lineUrl) → line.me/R/oaMessage/...)가 담당한다. LINE으로 가는 홉을 JS로 바꾸면
       iOS 인앱 브라우저의 딥링크 인터셉트 제외 함정에 걸린다.
    2) 목적지 문자열(DEST)은 현행 netlify.toml:16 / _redirects:3 과 **문자 단위 동일**.
       utm·conversion_path·프리필·ZW 토큰 귀속 체인은 서버가 만들며 여기서 손대지 않는다.
@@ -35,7 +35,7 @@
   //   /bio?e2e=1 로 열면 campaign·conversion_path를 **`e2e_` 접두**로 갈라 적립한다.
   //
   //   ★ 접미(`ig_bio_e2e`)가 아니라 접두(`e2e_ig_bio`)인 이유 — 서버 /r의 CAPI 분기 때문이다.
-  //     src/index.js:449 `if (conversionPath && conversionPath.indexOf('ig_') === 0)` 가
+  //     src/index.js /r의 IGBioVisit 분기 `if (conversionPath && conversionPath.indexOf('ig_') === 0)` 가
   //     **접두 `ig_`만** 보고 IGBioVisit CAPI를 발사한다. 접미형(`ig_bio_e2e`)은 이 조건을
   //     그대로 통과해 **테스트 유입이 IGBioVisit 커스텀 이벤트로 Meta에 실계상**된다.
   //     그 블록(:436-449)은 try/catch 밖·302 앞이라 **바이트 무접촉 락** 대상이라 서버에서
@@ -47,7 +47,7 @@
   //     — 테스트 1건이 최후 그물을 무음화하지도, 없는 위반을 만들지도 않는다.
   //
   //   ★ 남는 것(명시 수용): `/r`은 크롤러가 아닌 모든 히트에 ViewContent(`vc_r_`+token)를
-  //     무조건 발사한다(index.js:446, 경로 무관). 따라서 **E2E 1회당 ViewContent 1건은 계상된다.**
+  //     무조건 발사한다(index.js /r의 vc_r_ ViewContent 발사부, 경로 무관). 따라서 **E2E 1회당 ViewContent 1건은 계상된다.**
   //     제거하려면 무접촉 락 구간을 건드려야 하므로 수용한다 — ViewContent는 P59 판정축
   //     (서버 QL 절대수·클릭 연령·친추 절대수) 어디에도 들어가지 않고, E2E는 배포당 1~2회다.
   //
