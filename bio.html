@@ -57,6 +57,50 @@
                .replace('conversion_path=ig_bio', 'conversion_path=e2e_ig_bio');
   }
 
+  // ── 착지 비콘 (홉③ 카운터, 2026-09-04 R-NEW) ──────────────────────────
+  //   왜: IG 바이오 탭 → /bio 착지 → /r 도달 사이가 우리 원장에 한 줄도 없었다
+  //       (9/3 실측 "바이오 탭 14 vs /r 도달 2"의 사이가 블랙박스 · 계측 허점 감사 B1·A20).
+  //       Meta 픽셀 PageView는 경로를 버려(/bio vs /card 분해 불가) + p51 락으로 판정 인용 금지.
+  //   엔드포인트: POST https://lealinebot-production.up.railway.app/api/bio-hit
+  //       (서버 저장 = bio_hits 테이블, 집계 병기 = GET /api/r-hits 의 bio_hits 절)
+  //
+  //   ★ 리다이렉트 무영향 계약 (이 페이지의 절대 원칙 3개와 같은 급):
+  //     · sendBeacon은 **큐에 넣고 즉시 반환**한다 — 응답을 기다리지 않고, location.replace로
+  //       문서가 사라져도 브라우저가 대신 보낸다. go()의 타이밍(onload+200ms / 상한 1200ms)과
+  //       DEST 문자열은 이 블록으로 인해 1바이트도 바뀌지 않는다.
+  //     · 전부 try/catch. 실패·차단·오프라인·403 어느 경우에도 조용히 넘어간다.
+  //     · Content-Type은 **text/plain 고정** — application/json이면 CORS preflight(OPTIONS)가 생기고,
+  //       언로드 직전 preflight는 통째로 취소돼 카운터가 조용히 0이 된다. 바꾸지 말 것.
+  //   ★ PII 미전송: referrer는 **호스트명만**, UA는 mobile/desktop 2값으로만. 쿠키·fbp·전체 URL 금지.
+  //   ★ e2e 라벨 분리: ?e2e=1 검증 유입은 e2e:1로 보내 서버 집계·0감시에서 빠진다(실유입 오염 방지).
+  //   ★ 롤백: 이 커밋 revert 1회(bio.html 단일 파일). 서버 엔드포인트는 남아도 무해(요청이 안 올 뿐).
+  try {
+    var HIT_URL = 'https://lealinebot-production.up.railway.app/api/bio-hit';
+    var refHost = '';
+    try {
+      var rm = /^[a-zA-Z][a-zA-Z0-9+.-]*:\/\/([^/?#]+)/.exec(String(document.referrer || ''));
+      refHost = rm ? rm[1].split(':')[0] : '';
+    } catch (e) { refHost = ''; }
+    var payload = JSON.stringify({
+      page: 'bio',
+      e2e: /(?:^|[?&])e2e=1(?:&|$)/.test(location.search) ? 1 : 0,
+      ref: refHost,
+      ua_class: /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent || '') ? 'mobile' : 'desktop'
+    });
+    var sent = false;
+    if (navigator.sendBeacon) {
+      // Blob type = text/plain → 단순 요청(preflight 없음). 반환 false면 큐 적재 실패라 폴백으로 넘어간다.
+      sent = navigator.sendBeacon(HIT_URL, new Blob([payload], { type: 'text/plain;charset=UTF-8' }));
+    }
+    if (!sent) {
+      // 폴백: keepalive fetch — 문서 언로드 후에도 전송이 유지된다. 응답은 읽지 않는다.
+      fetch(HIT_URL, {
+        method: 'POST', keepalive: true, mode: 'cors', cache: 'no-store',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: payload
+      }).catch(function () {});
+    }
+  } catch (e) { /* 착지 계측 실패는 이동을 절대 막지 않는다 */ }
+
   // fbp = Meta Browser ID. 서브도메인 인덱스(fb.0/fb.1/fb.2.*)를 전부 허용한다 —
   //   apex/www 구성에 따라 1이 아닌 값이 나올 수 있고, 여기서 과차단하면 재료가 조용히 0이 된다.
   //   서버(src/lib/fbp.js)와 **같은 정규식**. 값은 브라우저 쿠키 원문만 쓴다(자체생성 금지).
