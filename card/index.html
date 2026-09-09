@@ -950,6 +950,33 @@ function showToast(m) {
   e.classList.add('show');
   setTimeout(function() { e.classList.remove('show'); }, 2400);
 }
+
+// ===== FBP PASSTHRU (0909) =====
+// bio.html과 동일 배선: 위 Meta Pixel PageView가 발급한 _fbp 쿠키 원문을 CTA 클릭 시점에
+//   /r 의 &fbp= 로 넘긴다. 서버(Lea.line.bot src/index.js /r → fbpLib.normalize → pending_utm.fbp)는
+//   이미 수신 준비돼 있어 서버 변경 없음. 정규식은 서버 src/lib/fbp.js FBP_RE 와 **같은 식** — 바꾸면 양쪽 동시 수정.
+// ★ 이동이 항상 우선: 쿠키 없음·형식 불일치·예외 어느 경우에도 href 원본 그대로 이동한다(자체생성 금지).
+// ★ 클릭 시점에 읽는 이유: switchLang()이 href를 통째로 갈아끼우므로 로드 시점 부착은 언어 전환에 유실된다.
+(function() {
+  var FBP_RE = /^fb\.[0-9]\.\d{10,16}\.\d{1,20}$/;
+  function readFbp() {
+    var m = String(document.cookie || '').match(/(?:^|;\s*)_fbp=([^;]+)/);
+    if (!m) return null;
+    var v = decodeURIComponent(m[1]);
+    return FBP_RE.test(v) ? v : null;
+  }
+  var cta = document.getElementById('msgCta');
+  if (!cta) return;
+  cta.addEventListener('click', function() {
+    try {
+      var fbp = readFbp();
+      var href = cta.getAttribute('href') || '';
+      href = href.replace(/&fbp=[^&]*/g, ''); // 재클릭·언어 전환 잔여 제거 후 1회만 부착
+      if (fbp) href += '&fbp=' + encodeURIComponent(fbp);
+      cta.setAttribute('href', href);
+    } catch (e) { /* 부착 실패는 이동을 절대 막지 않는다 */ }
+  });
+})();
 </script>
 
 </body>
