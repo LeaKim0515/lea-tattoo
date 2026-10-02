@@ -1,5 +1,14 @@
 / /card/ 302!
 /index.html /card/ 302!
+# 죽은 페이지(옛 금액 노출) → 카드로 강제 리다이렉트 (2026-10-03 오너 「꺼놔」). netlify.toml 과 동시 유지
+/en /card/?lang=en 302!
+/en/* /card/?lang=en 302!
+/menu /card/ 302!
+/menu/* /card/ 302!
+/premium /card/ 302!
+/premium/* /card/ 302!
+/one /card/ 302!
+/one/* /card/ 302!
 # /bio = 인터스티셜 rewrite (200) — 목적지 문자열은 bio.html DEST 상수. netlify.toml과 동시 유지 (0828 D-1)
 /bio /bio.html 200!
 /dm https://lealinebot-production.up.railway.app/r?source=instagram&medium=dm&campaign=ig_dm&content=faq_transfer&conversion_path=ig_dm 302!

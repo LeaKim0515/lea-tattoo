@@ -11,6 +11,55 @@
   status = 302
   force = true
 
+# 죽은 페이지(옛 금액 노출) → 카드로 강제 리다이렉트 (2026-10-03 오너 「꺼놔」). _redirects 와 동시 유지
+[[redirects]]
+  from = "/en"
+  to = "/card/?lang=en"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/en/*"
+  to = "/card/?lang=en"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/menu"
+  to = "/card/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/menu/*"
+  to = "/card/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/premium"
+  to = "/card/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/premium/*"
+  to = "/card/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/one"
+  to = "/card/"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/one/*"
+  to = "/card/"
+  status = 302
+  force = true
+
 # /bio = IG 프로필 바이오 링크 — 인터스티셜 rewrite (설계서 v3 D-1, 2026-08-28)
 #   status 200(rewrite) = 주소창 URL 불변(leakim.art/bio 그대로). 302로 바꾸면 URL이 노출된다.
 #   Railway /r 로 가는 목적지 문자열은 bio.html 안의 DEST 상수로 이동했다 — 문자 단위 동일.
